@@ -4,9 +4,12 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { api } from '@/lib/api';
+import { useAuthStore } from '@/lib/stores/auth.store';
 
 export default function LoginForm() {
   const router = useRouter();
+  const setAuth = useAuthStore(state => state.setAuth);
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -56,11 +59,18 @@ export default function LoginForm() {
     try {
       const { data } = await api.post('/auth/login', { email, password });
       
+      // Update the global auth store
+      setAuth(data.user, { 
+        access_token: data.access_token, 
+        refresh_token: data.refresh_token,
+        expires_in: data.expires_in,
+      });
+
+      // Also keep in localStorage for axios interceptor if needed
       localStorage.setItem('access_token', data.access_token);
       localStorage.setItem('refresh_token', data.refresh_token);
-      localStorage.setItem('user', JSON.stringify(data.user));
       
-      router.push('/leads');
+      router.push('/dashboard');
     } catch (err: any) {
       setError(err.response?.data?.error?.message || 'Invalid email or password');
     } finally {
