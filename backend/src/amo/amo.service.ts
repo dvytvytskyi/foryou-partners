@@ -306,7 +306,16 @@ export class AmoService {
       }
     }
 
-    return Array.from(matched);
+    if (matched.size > 0) {
+      return Array.from(matched);
+    }
+
+    // Fallback for single-partner installations: import all leads even when source/tags are absent.
+    if (activePartners.length === 1) {
+      return [activePartners[0].id];
+    }
+
+    return [];
   }
 
   private normalizeApiLead(raw: unknown): AmoLead | null {
