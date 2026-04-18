@@ -56,10 +56,6 @@ jobs:
             AMO_ACCOUNT_ID=${{ secrets.AMO_ACCOUNT_ID }}
             AMO_API_DOMAIN=${{ secrets.AMO_API_DOMAIN }}
             AMO_REDIRECT_URI=${{ secrets.AMO_REDIRECT_URI }}
-            EMAIL_PROVIDER=${{ secrets.EMAIL_PROVIDER }}
-            EMAIL_API_KEY=${{ secrets.EMAIL_API_KEY }}
-            EMAIL_FROM=${{ secrets.EMAIL_FROM }}
-            WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }}
             NEXT_PUBLIC_API_URL=https://partners.foryou-realestate.com/api/v1
             EOF
 

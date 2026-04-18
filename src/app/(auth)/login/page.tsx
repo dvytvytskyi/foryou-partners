@@ -4,7 +4,7 @@ import LoginForm from '@/components/auth/LoginForm';
 export default function LoginPage() {
   return (
     <AuthLayout 
-      title="" 
+      title="Log in" 
       subtitle="Enter your credentials to access your leads"
     >
       <LoginForm />

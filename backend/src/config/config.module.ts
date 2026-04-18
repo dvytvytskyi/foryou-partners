@@ -40,12 +40,12 @@ import * as Joi from 'joi';
         AMOCRM_REDIRECT_URI: Joi.string().uri().optional(),
 
         // Email (optional until email sending is enabled)
-        EMAIL_PROVIDER: Joi.string().valid('sendgrid', 'postmark').default('sendgrid'),
-        EMAIL_API_KEY: Joi.string().optional().allow(''),
-        EMAIL_FROM: Joi.string().email().optional().allow(''),
+        EMAIL_PROVIDER: Joi.string().valid('sendgrid', 'postmark').empty('').default('sendgrid'),
+        EMAIL_API_KEY: Joi.string().empty('').optional(),
+        EMAIL_FROM: Joi.string().email().empty('').optional(),
 
         // Webhook
-        WEBHOOK_SECRET: Joi.string().min(16).optional().allow(''),
+        WEBHOOK_SECRET: Joi.string().min(16).empty('').optional(),
       }),
       validationOptions: {
         allowUnknown: false,
