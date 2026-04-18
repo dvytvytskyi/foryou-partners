@@ -23,7 +23,7 @@ import * as Joi from 'joi';
         // JWT
         JWT_ACCESS_SECRET: Joi.string().min(32).required(),
         JWT_REFRESH_SECRET: Joi.string().min(32).required(),
-        JWT_ACCESS_TTL: Joi.string().default('15m'),
+        JWT_ACCESS_TTL: Joi.string().default('7d'),
         JWT_REFRESH_TTL: Joi.string().default('30d'),
 
         // amoCRM

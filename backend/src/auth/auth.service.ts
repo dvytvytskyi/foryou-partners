@@ -48,12 +48,12 @@ export class AuthService {
 
     const accessToken = await this.jwtService.signAsync(payload, {
       secret: this.configService.get<string>('JWT_ACCESS_SECRET'),
-      expiresIn: this.configService.get<string>('JWT_ACCESS_TTL', '15m'),
+      expiresIn: this.getAccessTtl(),
     });
 
     const refreshToken = await this.jwtService.signAsync(payload, {
       secret: this.configService.get<string>('JWT_REFRESH_SECRET'),
-      expiresIn: this.configService.get<string>('JWT_REFRESH_TTL', '30d'),
+      expiresIn: this.getRefreshTtl(),
     });
 
     const refreshTokenHash = await bcrypt.hash(refreshToken, 10);
@@ -72,7 +72,7 @@ export class AuthService {
     return {
       access_token: accessToken,
       refresh_token: refreshToken,
-      expires_in: 900,
+      expires_in: this.parseTtlToSeconds(this.getAccessTtl()),
       user: {
         id: user.id,
         email: user.email,
@@ -127,12 +127,12 @@ export class AuthService {
 
     const accessToken = await this.jwtService.signAsync(newPayload, {
       secret: this.configService.get<string>('JWT_ACCESS_SECRET'),
-      expiresIn: this.configService.get<string>('JWT_ACCESS_TTL', '15m'),
+      expiresIn: this.getAccessTtl(),
     });
 
     const newRefreshToken = await this.jwtService.signAsync(newPayload, {
       secret: this.configService.get<string>('JWT_REFRESH_SECRET'),
-      expiresIn: this.configService.get<string>('JWT_REFRESH_TTL', '30d'),
+      expiresIn: this.getRefreshTtl(),
     });
 
     const newRefreshHash = await bcrypt.hash(newRefreshToken, 10);
@@ -154,7 +154,7 @@ export class AuthService {
     return {
       access_token: accessToken,
       refresh_token: newRefreshToken,
-      expires_in: 900,
+      expires_in: this.parseTtlToSeconds(this.getAccessTtl()),
     };
   }
 
@@ -250,8 +250,37 @@ export class AuthService {
   }
 
   private getRefreshExpirationDate(): Date {
-    const d = new Date();
-    d.setDate(d.getDate() + 30);
-    return d;
+    const seconds = this.parseTtlToSeconds(this.getRefreshTtl());
+    return new Date(Date.now() + seconds * 1000);
+  }
+
+  private getAccessTtl(): string {
+    return this.configService.get<string>('JWT_ACCESS_TTL', '7d');
+  }
+
+  private getRefreshTtl(): string {
+    return this.configService.get<string>('JWT_REFRESH_TTL', '30d');
+  }
+
+  private parseTtlToSeconds(ttl: string): number {
+    const value = ttl.trim();
+    if (!value) return 7 * 24 * 60 * 60;
+
+    if (/^\d+$/.test(value)) {
+      return Number(value);
+    }
+
+    const m = value.match(/^(\d+)\s*([smhd])$/i);
+    if (!m) {
+      return 7 * 24 * 60 * 60;
+    }
+
+    const amount = Number(m[1]);
+    const unit = m[2].toLowerCase();
+
+    if (unit === 's') return amount;
+    if (unit === 'm') return amount * 60;
+    if (unit === 'h') return amount * 60 * 60;
+    return amount * 24 * 60 * 60;
   }
 }
