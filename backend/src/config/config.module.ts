@@ -10,6 +10,7 @@ import * as Joi from 'joi';
         NODE_ENV: Joi.string().valid('development', 'staging', 'production').default('development'),
         PORT: Joi.number().default(3001),
         FRONTEND_URL: Joi.string().uri().required(),
+        CORS_ALLOWED_ORIGINS: Joi.string().empty('').optional(),
 
         // Database
         DATABASE_URL: Joi.string().required(),
@@ -32,6 +33,8 @@ import * as Joi from 'joi';
         AMO_ACCOUNT_ID: Joi.alternatives().try(Joi.string(), Joi.number()).required(),
         AMO_API_DOMAIN: Joi.string().required(),
         AMO_REDIRECT_URI: Joi.string().uri().required(),
+        AMO_ACCESS_TOKEN: Joi.string().empty('').optional(),
+        AMO_REFRESH_TOKEN: Joi.string().empty('').optional(),
 
         // Backward-compatible aliases
         AMOCRM_BASE_URL: Joi.string().uri().optional(),
