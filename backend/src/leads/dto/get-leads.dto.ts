@@ -16,6 +16,13 @@ export class GetLeadsDto {
   page_size?: number = 20;
 
   @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  @Max(1000)
+  board_limit?: number = 500;
+
+  @IsOptional()
   @Transform(({ value }) => (Array.isArray(value) ? value : String(value).split(',')))
   @IsArray()
   @IsString({ each: true })

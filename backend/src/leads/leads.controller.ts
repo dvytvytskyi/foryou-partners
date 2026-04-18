@@ -15,6 +15,11 @@ export class LeadsController {
     return this.leadsService.getLeads(dto, user);
   }
 
+  @Get('board')
+  getLeadsBoard(@Query() dto: GetLeadsDto, @CurrentUser() user: AuthenticatedUser) {
+    return this.leadsService.getLeadsBoard(dto, user);
+  }
+
   @Get(':id')
   getLeadById(@Param('id') id: string, @CurrentUser() user: AuthenticatedUser, @Query('partner_id') partnerId?: string) {
     return this.leadsService.getLeadById(id, user, partnerId);

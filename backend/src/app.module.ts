@@ -7,6 +7,8 @@ import { HealthModule } from './health/health.module';
 import { AuthModule } from './auth/auth.module';
 import { LeadsModule } from './leads/leads.module';
 import { AdminModule } from './admin/admin.module';
+import { WebhookModule } from './webhook/webhook.module';
+import { AuditModule } from './audit/audit.module';
 
 @Module({
   imports: [
@@ -19,10 +21,12 @@ import { AdminModule } from './admin/admin.module';
     ]),
     DatabaseModule,
     RedisModule,
+    AuditModule,
     HealthModule,
     AuthModule,
     LeadsModule,
     AdminModule,
+    WebhookModule,
   ],
 })
 export class AppModule {}
