@@ -33,14 +33,14 @@ export default function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
       {error && (
         <div className="badge" style={{ backgroundColor: '#fee2e2', color: '#dc2626', width: '100%', justifyContent: 'center', padding: '0.75rem', borderRadius: '6px' }}>
           {error}
         </div>
       )}
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-1.5">
         <label style={{ fontSize: '13px', fontWeight: '500', color: 'var(--grey-500)' }}>Email address</label>
         <input
           type="email"
@@ -54,7 +54,7 @@ export default function LoginForm() {
         />
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-1.5">
         <div className="flex justify-between items-center">
           <label style={{ fontSize: '13px', fontWeight: '500', color: 'var(--grey-500)' }}>Password</label>
           <Link href="/forgot-password" style={{ fontSize: '12px', color: 'var(--primary-color)' }}>
@@ -71,20 +71,20 @@ export default function LoginForm() {
           autoComplete="new-password"
           name="user_password_secure"
         />
-        <p style={{ fontSize: '11px', color: 'var(--grey-400)', marginTop: '6px' }}>
+        <p style={{ fontSize: '11px', color: 'var(--grey-400)', marginTop: '4px' }}>
           Must be at least 8 characters
         </p>
       </div>
 
       <button 
         type="submit" 
-        className="button button-primary mt-4" 
+        className="button button-primary mt-1" 
         disabled={loading}
       >
         {loading ? 'Logging in...' : 'Sign in'}
       </button>
 
-      <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+      <div style={{ textAlign: 'center', marginTop: '0.5rem' }}>
         <p style={{ fontSize: '13px', color: 'var(--grey-500)' }}>
           Don't have an account? <Link href="#" style={{ color: 'var(--primary-color)', fontWeight: '500' }}>Contact administrator</Link>
         </p>

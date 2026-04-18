@@ -14,23 +14,6 @@ services:
       - frontend
       - backend
 
-  postgres:
-    image: postgres:16-alpine
-    restart: unless-stopped
-    environment:
-      POSTGRES_DB: partner_portal
-      POSTGRES_USER: ${POSTGRES_USER:-portal}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?required}
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-portal} -d partner_portal"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
   redis:
     image: redis:7-alpine
     restart: unless-stopped
@@ -55,9 +38,7 @@ services:
         condition: service_healthy
     env_file: .env
     environment:
-      # Use external DATABASE_URL (Neon, Supabase, etc.) if provided;
-      # otherwise fallback to local compose postgres.
-      DATABASE_URL: ${DATABASE_URL:-postgresql://${POSTGRES_USER:-portal}:${POSTGRES_PASSWORD}@postgres:5432/partner_portal}
+      DATABASE_URL: ${DATABASE_URL}
       REDIS_HOST: redis
       REDIS_PORT: 6379
     ports:
@@ -82,7 +63,6 @@ services:
       - "127.0.0.1:3000:3000"
 
 volumes:
-  postgres_data:
   redis_data:
   caddy_data:
   caddy_config:

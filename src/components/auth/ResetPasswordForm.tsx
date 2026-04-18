@@ -17,7 +17,7 @@ export default function ResetPasswordForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      setError('Паролі не співпадають');
+      setError('Passwords do not match');
       return;
     }
     
@@ -28,7 +28,7 @@ export default function ResetPasswordForm() {
       await api.post('/auth/password/reset', { token, password });
       router.push('/login?reset=success');
     } catch (err: any) {
-      setError('Помилка при скиданні пароля. Можливо, посилання застаріло');
+      setError('Error resetting password. The link may have expired');
     } finally {
       setLoading(false);
     }
@@ -36,22 +36,22 @@ export default function ResetPasswordForm() {
 
   if (!token) {
     return (
-      <div className="badge" style={{ backgroundColor: '#fee2e2', color: '#dc2626', width: '100%', padding: '0.75rem' }}>
-        Токен відсутній або недійсний
+      <div className="badge" style={{ backgroundColor: '#fee2e2', color: '#dc2626', width: '100%', padding: '0.75rem', borderRadius: '6px' }}>
+        Token is missing or invalid
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
       {error && (
-        <div className="badge" style={{ backgroundColor: '#fee2e2', color: '#dc2626', width: '100%', padding: '0.75rem' }}>
+        <div className="badge" style={{ backgroundColor: '#fee2e2', color: '#dc2626', width: '100%', padding: '0.75rem', borderRadius: '6px' }}>
           {error}
         </div>
       )}
 
-      <div className="flex flex-col gap-1">
-        <label style={{ fontSize: '14px', fontWeight: 'var(--font-weight-medium)' }}>Новий пароль</label>
+      <div className="flex flex-col gap-2">
+        <label style={{ fontSize: '13px', fontWeight: '500', color: 'var(--grey-500)' }}>New password</label>
         <input
           type="password"
           className="input"
@@ -63,8 +63,8 @@ export default function ResetPasswordForm() {
         />
       </div>
 
-      <div className="flex flex-col gap-1">
-        <label style={{ fontSize: '14px', fontWeight: 'var(--font-weight-medium)' }}>Підтвердіть пароль</label>
+      <div className="flex flex-col gap-2">
+        <label style={{ fontSize: '13px', fontWeight: '500', color: 'var(--grey-500)' }}>Confirm password</label>
         <input
           type="password"
           className="input"
@@ -80,9 +80,8 @@ export default function ResetPasswordForm() {
         type="submit" 
         className="button button-primary mt-2" 
         disabled={loading}
-        style={{ fontSize: '14px' }}
       >
-        {loading ? 'Збереження...' : 'Змінити пароль'}
+        {loading ? 'Saving...' : 'Set new password'}
       </button>
     </form>
   );

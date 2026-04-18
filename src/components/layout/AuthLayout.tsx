@@ -45,7 +45,7 @@ export default function AuthLayout({ children, title, subtitle }: AuthLayoutProp
           </div>
           
           <div className={styles.header}>
-            <h1>{title}</h1>
+            {title && <h1>{title}</h1>}
             {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
           </div>
 
