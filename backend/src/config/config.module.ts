@@ -48,7 +48,7 @@ import * as Joi from 'joi';
         WEBHOOK_SECRET: Joi.string().min(16).empty('').optional(),
       }),
       validationOptions: {
-        allowUnknown: false,
+        allowUnknown: true,
         abortEarly: true,
       },
     }),
