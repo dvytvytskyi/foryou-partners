@@ -10,8 +10,8 @@ export default function LoginForm() {
   const router = useRouter();
   const setAuth = useAuthStore(state => state.setAuth);
   
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('admin.demo@foryou-realestate.com');
+  const [password, setPassword] = useState('Admin123!');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   

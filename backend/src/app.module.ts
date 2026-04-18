@@ -9,6 +9,7 @@ import { LeadsModule } from './leads/leads.module';
 import { AdminModule } from './admin/admin.module';
 import { WebhookModule } from './webhook/webhook.module';
 import { AuditModule } from './audit/audit.module';
+import { AmoModule } from './amo/amo.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { AuditModule } from './audit/audit.module';
     LeadsModule,
     AdminModule,
     WebhookModule,
+    AmoModule,
   ],
 })
 export class AppModule {}
