@@ -1,0 +1,74 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to Hetzner
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            set -e
+
+            # First-time setup: clone repo if not exists
+            if [ ! -d /opt/foryou-partners/.git ]; then
+              apt-get update -qq && apt-get install -y -qq git docker.io docker-compose-plugin
+              mkdir -p /opt/foryou-partners
+              git clone https://github.com/dvytvytskyi/foryou-partners.git /opt/foryou-partners
+            fi
+
+            cd /opt/foryou-partners
+
+            # Pull latest code
+            git pull origin main
+
+            # Write .env from secrets
+            cat > .env << 'EOF'
+            NODE_ENV=production
+            PORT=3001
+            FRONTEND_URL=https://partners.foryou-realestate.com
+            DATABASE_URL=${{ secrets.DATABASE_URL }}
+            REDIS_HOST=redis
+            REDIS_PORT=6379
+            REDIS_PASSWORD=${{ secrets.REDIS_PASSWORD }}
+            JWT_ACCESS_SECRET=${{ secrets.JWT_ACCESS_SECRET }}
+            JWT_REFRESH_SECRET=${{ secrets.JWT_REFRESH_SECRET }}
+            JWT_ACCESS_TTL=15m
+            JWT_REFRESH_TTL=30d
+            AMO_DOMAIN=${{ secrets.AMO_DOMAIN }}
+            AMO_CLIENT_ID=${{ secrets.AMO_CLIENT_ID }}
+            AMO_CLIENT_SECRET=${{ secrets.AMO_CLIENT_SECRET }}
+            AMO_ACCOUNT_ID=${{ secrets.AMO_ACCOUNT_ID }}
+            AMO_API_DOMAIN=${{ secrets.AMO_API_DOMAIN }}
+            AMO_REDIRECT_URI=${{ secrets.AMO_REDIRECT_URI }}
+            EMAIL_PROVIDER=${{ secrets.EMAIL_PROVIDER }}
+            EMAIL_API_KEY=${{ secrets.EMAIL_API_KEY }}
+            EMAIL_FROM=${{ secrets.EMAIL_FROM }}
+            WEBHOOK_SECRET=${{ secrets.WEBHOOK_SECRET }}
+            NEXT_PUBLIC_API_URL=https://partners.foryou-realestate.com/api/v1
+            EOF
+
+            # Build and restart
+            docker compose pull || true
+            docker compose build --no-cache
+            docker compose up -d --remove-orphans
+
+            # Run DB migrations (backend container)
+            docker compose exec -T backend npx prisma migrate deploy
+
+            echo "Deploy complete"
