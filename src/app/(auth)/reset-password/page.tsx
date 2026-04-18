@@ -1,14 +1,14 @@
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
 import AuthLayout from '@/components/layout/AuthLayout';
 import ResetPasswordForm from '@/components/auth/ResetPasswordForm';
 
 export default function ResetPasswordPage() {
   return (
     <AuthLayout 
-      title="Новий пароль" 
-      subtitle="Встановіть новий міцний пароль для вашого акаунту"
+      title="Set New Password" 
+      subtitle="Create a secure password for your account"
     >
-      <Suspense fallback={<div className="badge">Завантаження...</div>}>
+      <Suspense fallback={<div>Loading...</div>}>
         <ResetPasswordForm />
       </Suspense>
     </AuthLayout>

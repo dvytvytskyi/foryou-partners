@@ -13,11 +13,27 @@ export default function ResetPasswordForm() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  
+  const [passwordError, setPasswordError] = useState<string | null>(null);
+  const [confirmError, setConfirmError] = useState<string | null>(null);
+
+  const validatePassword = (val: string) => {
+    if (!val) return 'Password is required';
+    if (val.length < 8) return 'Password must be at least 8 characters';
+    return null;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    const pErr = validatePassword(password);
+    if (pErr) {
+      setPasswordError(pErr);
+      return;
+    }
+
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      setConfirmError('Passwords do not match');
       return;
     }
     
@@ -55,12 +71,19 @@ export default function ResetPasswordForm() {
         <input
           type="password"
           className="input"
+          style={{ borderColor: passwordError ? '#dc2626' : undefined }}
           placeholder="••••••••"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            if (passwordError) setPasswordError(null);
+          }}
           required
           autoComplete="new-password"
         />
+        {passwordError && (
+          <p style={{ fontSize: '11px', color: '#dc2626', marginTop: '-4px' }}>{passwordError}</p>
+        )}
       </div>
 
       <div className="flex flex-col gap-2">
@@ -68,17 +91,24 @@ export default function ResetPasswordForm() {
         <input
           type="password"
           className="input"
+          style={{ borderColor: confirmError ? '#dc2626' : undefined }}
           placeholder="••••••••"
           value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          onChange={(e) => {
+            setConfirmPassword(e.target.value);
+            if (confirmError) setConfirmError(null);
+          }}
           required
           autoComplete="new-password"
         />
+        {confirmError && (
+          <p style={{ fontSize: '11px', color: '#dc2626', marginTop: '-4px' }}>{confirmError}</p>
+        )}
       </div>
 
       <button 
         type="submit" 
-        className="button button-primary mt-2" 
+        className="button button-primary mt-1" 
         disabled={loading}
       >
         {loading ? 'Saving...' : 'Set new password'}

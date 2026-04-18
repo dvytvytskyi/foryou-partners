@@ -8,9 +8,28 @@ export default function ForgotPasswordForm() {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
+  const [emailError, setEmailError] = useState<string | null>(null);
+
+  const validateEmail = (value: string) => {
+    if (!value) return 'Email is required';
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(value)) return 'Please enter a valid email address';
+    return null;
+  };
+
+  const handleBlur = () => {
+    setEmailError(validateEmail(email));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    const err = validateEmail(email);
+    if (err) {
+      setEmailError(err);
+      return;
+    }
+
     setLoading(true);
     setMessage(null);
 
@@ -44,26 +63,34 @@ export default function ForgotPasswordForm() {
         <input
           type="email"
           className="input"
+          style={{ borderColor: emailError ? '#dc2626' : undefined }}
           placeholder="eg. john@company.com"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            if (emailError) setEmailError(null);
+          }}
+          onBlur={handleBlur}
           required
           autoComplete="off"
           name="forgot_email"
         />
+        {emailError && (
+          <p style={{ fontSize: '11px', color: '#dc2626', marginTop: '-4px' }}>{emailError}</p>
+        )}
       </div>
 
       <button 
         type="submit" 
-        className="button button-primary mt-2" 
+        className="button button-primary mt-1" 
         disabled={loading}
       >
         {loading ? 'Sending...' : 'Reset Password'}
       </button>
 
-      <div style={{ textAlign: 'center', marginTop: '1rem' }}>
-        <Link href="/login" style={{ fontSize: '14px', color: 'var(--grey-500)' }}>
-          Back to logic
+      <div style={{ textAlign: 'center', marginTop: '0.25rem' }}>
+        <Link href="/login" style={{ fontSize: '14px', color: 'var(--grey-500)', fontWeight: '500' }}>
+          Back to login
         </Link>
       </div>
     </form>
