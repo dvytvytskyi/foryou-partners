@@ -60,4 +60,35 @@ export class AmoController {
     const result = await this.amoService.runBackfill();
     return result;
   }
+
+  @Post('backfill-history')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('admin')
+  async backfillHistory() {
+    const result = await this.amoService.backfillLeadHistory();
+    return result;
+  }
+
+  @Get('sources')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('admin')
+  async getSources() {
+    const sources = await this.amoService.getAvailableSources();
+    return { items: sources };
+  }
+
+  @Get('tags')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles('admin')
+  async getTags() {
+    const tags = await this.amoService.getAvailableTags();
+    return { items: tags };
+  }
+
+  @Get('pipelines')
+  @UseGuards(JwtAuthGuard) // allow any authenticated user to fetch pipelines
+  async getPipelines() {
+    const pipelines = await this.amoService.getCachedPipelines();
+    return { items: pipelines };
+  }
 }

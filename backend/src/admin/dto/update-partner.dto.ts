@@ -23,4 +23,21 @@ export class UpdatePartnerDto {
   @IsOptional()
   @IsBoolean()
   is_active?: boolean;
+
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  labels?: string[];
+
+  @IsOptional()
+  @IsString()
+  country?: string;
+
+  @IsOptional()
+  @IsString()
+  direction?: string;
+
+  @IsOptional()
+  @IsString()
+  partnerType?: string;
 }

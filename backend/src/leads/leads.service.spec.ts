@@ -11,9 +11,10 @@ describe('LeadsService partner scope', () => {
     } as any;
 
     const config = { get: jest.fn() } as any;
+    const amoService = { createAmoLead: jest.fn() } as any;
     const redis = { get: jest.fn(), set: jest.fn(), del: jest.fn() } as any;
 
-    const service = new LeadsService(prisma, config, redis);
+    const service = new LeadsService(prisma, config, amoService, redis);
 
     await expect(
       service.getLeads(

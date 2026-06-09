@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { useAuthStore } from './stores/auth.store';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/v1';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3002/api/v1';
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
@@ -11,11 +12,12 @@ export const api = axios.create({
 
 // Interceptor to add access token
 api.interceptors.request.use((config) => {
-  const token = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null;
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
+  // Request interceptor: attach access token from the Zustand auth store (sessionStorage persistence)
+const token = typeof window !== 'undefined' ? useAuthStore.getState().accessToken : null;
+if (token) {
+  config.headers.Authorization = `Bearer ${token}`;
+}
+return config;
 });
 
 // Interceptor to handle token refresh
@@ -26,28 +28,35 @@ api.interceptors.response.use(
 
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
-      const refreshToken = localStorage.getItem('refresh_token');
+      const refreshToken = typeof window !== 'undefined' ? useAuthStore.getState().refreshToken : null;
 
-      if (refreshToken) {
-        try {
-          const { data } = await axios.post(`${API_BASE_URL}/auth/refresh`, {
-            refresh_token: refreshToken,
-          });
+      // Response interceptor: handle 401 by attempting token refresh via backend endpoint.
+if (refreshToken) {
+  try {
+    const { data } = await axios.post(`${API_BASE_URL}/auth/refresh`, {
+      refresh_token: refreshToken,
+    });
 
-          localStorage.setItem('access_token', data.access_token);
-          localStorage.setItem('refresh_token', data.refresh_token);
+    // Update tokens in the auth store (sessionStorage persisted)
+    useAuthStore.getState().setTokens(data.access_token, data.refresh_token);
 
-          originalRequest.headers.Authorization = `Bearer ${data.access_token}`;
-          return api(originalRequest);
-        } catch (refreshError) {
-          // If refresh fails, logout
-          localStorage.removeItem('access_token');
-          localStorage.removeItem('refresh_token');
-          if (typeof window !== 'undefined') {
-            window.location.href = '/login';
-          }
-        }
-      }
+    // Retry original request with new access token
+    originalRequest.headers.Authorization = `Bearer ${data.access_token}`;
+    return api(originalRequest);
+  } catch (refreshError) {
+    // Refresh failed – clear auth and redirect to login
+    useAuthStore.getState().clearAuth();
+    if (typeof window !== 'undefined') {
+      window.location.href = '/login';
+    }
+  }
+} else {
+  // No refresh token available – clear auth and redirect
+  useAuthStore.getState().clearAuth();
+  if (typeof window !== 'undefined') {
+    window.location.href = '/login';
+  }
+}
     }
 
     return Promise.reject(error);

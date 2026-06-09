@@ -11,7 +11,8 @@ interface AuthState {
   isAuthenticated: boolean;
 
   setAuth: (user: AuthUser, tokens: AuthTokens) => void;
-  setAccessToken: (token: string, expiresIn: number) => void;
+  setAccessToken: (token: string, expiresIn?: number) => void;
+  setTokens: (accessToken: string, refreshToken: string) => void;
   clearAuth: () => void;
 }
 
@@ -33,6 +34,9 @@ export const useAuthStore = create<AuthState>()(
 
       setAccessToken: (token) =>
         set({ accessToken: token }),
+
+      setTokens: (accessToken, refreshToken) =>
+        set({ accessToken, refreshToken }),
 
       clearAuth: () =>
         set({

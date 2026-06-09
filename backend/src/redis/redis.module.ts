@@ -9,14 +9,16 @@ import { REDIS_CLIENT } from './redis.constants';
     {
       provide: REDIS_CLIENT,
       useFactory: (configService: ConfigService): Redis => {
-        return new Redis({
+        const config = {
           host: configService.get<string>('REDIS_HOST', 'localhost'),
           port: configService.get<number>('REDIS_PORT', 6379),
           password: configService.get<string>('REDIS_PASSWORD') || undefined,
           maxRetriesPerRequest: 3,
           enableReadyCheck: true,
           lazyConnect: false,
-        });
+        };
+        console.log('Redis config:', config);
+        return new Redis(config);
       },
       inject: [ConfigService],
     },

@@ -38,7 +38,8 @@ describe('AuthService.refresh', () => {
     const redis = { get: jest.fn(), set: jest.fn(), del: jest.fn() } as any;
     const emailService = { send: jest.fn() } as any;
 
-    const service = new AuthService(prisma, jwtService, config, redis, emailService);
+    const amoService = { createPartnerRegistrationLead: jest.fn() } as any;
+    const service = new AuthService(prisma, jwtService, config, redis, emailService, amoService);
 
     let thrown: unknown;
     try {

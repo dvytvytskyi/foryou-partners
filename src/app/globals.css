@@ -63,9 +63,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 { 
-  font-size: 14px; 
-  text-transform: uppercase; 
-  letter-spacing: 0.02em; 
+  font-size: 24px; 
 }
 h2 { font-size: 14px; }
 
@@ -165,19 +163,38 @@ button {
   background-color: #ffffff;
   border: 1px solid var(--border-color);
   border-radius: 6px;
-  padding: 1rem 1rem;
+  height: 42px;
+  padding: 0 12px;
+  font-family: var(--font-inter);
   font-size: 14px;
   color: var(--foreground);
   transition: all 0.2s;
   outline: none;
 }
 
+.input:hover:not(:focus) {
+  border-color: var(--grey-400);
+}
+
 .input:focus {
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 4px rgba(0, 48, 119, 0.05);
 }
 
 .input::placeholder {
+  color: var(--grey-400);
+}
+
+select.input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+select.input:invalid, select.input option[value=""] {
   color: var(--grey-400);
 }
 
@@ -194,4 +211,42 @@ button {
 .badge-success {
   background: #ecfdf5;
   color: #059669;
+}
+
+/* Auth Custom Utilities */
+.auth-button {
+  transition: all 0.2s ease-in-out;
+}
+.auth-button:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 4px 12px rgba(0, 89, 221, 0.3);
+}
+
+.auth-link {
+  transition: color 0.2s ease-in-out;
+}
+.auth-link:hover {
+  color: #1d4ed8 !important;
+}
+
+.auth-checkbox-label {
+  transition: color 0.2s ease-in-out;
+}
+.auth-checkbox-label:hover {
+  color: #475569 !important;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-slide-up {
+  animation: fadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

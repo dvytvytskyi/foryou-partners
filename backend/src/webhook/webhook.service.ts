@@ -2,6 +2,9 @@ import { HttpStatus, Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from '../database/prisma.service';
 import { AppException } from '../common/errors/app-exception';
+import { AmoService } from '../amo/amo.service';
+import { EmailService } from '../common/email/email.service';
+import { NotificationsService } from '../notifications/notifications.service';
 
 type WebhookLead = {
   externalLeadId: bigint;
@@ -13,8 +16,16 @@ type WebhookLead = {
   comment: string | null;
   source: string | null;
   tagIds: bigint[];
+  mainContactId: bigint | null;
+  contactName: string | null;
+  contactPhone: string | null;
+  contactEmail: string | null;
   updatedAt: Date;
   createdAt: Date;
+  responsibleUserId: number | null;
+  brokerName?: string | null;
+  brokerEmail?: string | null;
+  isApprovedPartner?: boolean;
 };
 
 @Injectable()
@@ -24,6 +35,9 @@ export class WebhookService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly configService: ConfigService,
+    private readonly amoService: AmoService,
+    private readonly emailService: EmailService,
+    private readonly notificationsService: NotificationsService,
   ) {}
 
   async handleAmocrmWebhook(params: {
@@ -85,7 +99,81 @@ export class WebhookService {
   private async processLeads(leads: WebhookLead[]) {
     if (leads.length === 0) return;
 
+    // Enrich missing contact details from API if needed
+    const needsContactFetch = leads.filter(l => !l.contactPhone && l.mainContactId);
+    if (needsContactFetch.length > 0) {
+      try {
+        const domain = this.configService.getOrThrow<string>('AMO_DOMAIN');
+        const accessToken = await this.amoService.getAmoAccessTokenPublic();
+        if (accessToken) {
+          const contactsMap = await this.amoService.fetchContactsByIds(
+            domain,
+            accessToken,
+            needsContactFetch.map(l => l.mainContactId!)
+          );
+          
+          for (const lead of leads) {
+            if (!lead.contactPhone && lead.mainContactId) {
+              const info = contactsMap.get(lead.mainContactId.toString());
+              if (info) {
+                if (!lead.contactName) lead.contactName = info.name;
+                lead.contactPhone = info.phone;
+                if (!lead.contactEmail) lead.contactEmail = info.email;
+              }
+            }
+          }
+        }
+      } catch (err) {
+        this.logger.warn(`Failed to enrich leads with contacts: ${err}`);
+      }
+    }
+
+    // Enrich broker details from cached users map
+    try {
+      const usersMap = await this.amoService.getCachedUsersMap();
+      if (usersMap.size > 0) {
+        for (const lead of leads) {
+          if (lead.responsibleUserId && usersMap.has(lead.responsibleUserId)) {
+            const user = usersMap.get(lead.responsibleUserId)!;
+            lead.brokerName = user.name;
+            lead.brokerEmail = user.email;
+          }
+        }
+      }
+    } catch (err) {
+      this.logger.warn(`Failed to enrich leads with broker details: ${err}`);
+    }
+
     for (const lead of leads) {
+      // PARTNER APPROVAL LOGIC
+      if (lead.isApprovedPartner && (lead.contactEmail || lead.contactPhone)) {
+        try {
+          const whereClause: any = [];
+          if (lead.contactEmail) whereClause.push({ email: lead.contactEmail.toLowerCase() });
+          if (lead.contactPhone) whereClause.push({ phone: lead.contactPhone });
+
+          const user = await this.prisma.user.findFirst({
+            where: { OR: whereClause },
+            include: { partner: true }
+          });
+
+          if (user && !user.isActive) {
+            await this.prisma.user.update({
+              where: { id: user.id },
+              data: { isActive: true }
+            });
+            if (user.partnerId) {
+              await this.prisma.partner.update({
+                where: { id: user.partnerId },
+                data: { isActive: true }
+              });
+            }
+            this.logger.log(`Partner ${user.email} auto-approved via amoCRM webhook`);
+          }
+        } catch (err) {
+          this.logger.error(`Error auto-approving partner: ${err}`);
+        }
+      }
       const partnerIds = await this.resolvePartnerIdsForLead(lead);
       if (partnerIds.length === 0) {
         continue;
@@ -99,6 +187,7 @@ export class WebhookService {
               partnerId,
             },
           },
+          select: { status: true, brokerName: true },
         });
 
         await this.prisma.leadSnapshot.upsert({
@@ -114,8 +203,14 @@ export class WebhookService {
             budget: lead.budget,
             city: lead.city,
             comment: lead.comment,
+            contactName: lead.contactName,
+            contactPhone: lead.contactPhone,
+            contactEmail: lead.contactEmail,
+            brokerName: lead.brokerName,
+            brokerEmail: lead.brokerEmail,
             amocrmSource: lead.source,
             tagIds: lead.tagIds,
+            createdAtSource: lead.createdAt,
             updatedAtSource: lead.updatedAt,
             syncedAt: new Date(),
           },
@@ -127,15 +222,24 @@ export class WebhookService {
             budget: lead.budget,
             city: lead.city,
             comment: lead.comment,
+            contactName: lead.contactName,
+            contactPhone: lead.contactPhone,
+            contactEmail: lead.contactEmail,
+            brokerName: lead.brokerName,
+            brokerEmail: lead.brokerEmail,
             amocrmSource: lead.source,
             tagIds: lead.tagIds,
+            createdAtSource: lead.createdAt,
             updatedAtSource: lead.updatedAt,
             syncedAt: lead.createdAt,
           },
         });
 
         const fromStatus = existing?.status ?? lead.previousStatus ?? null;
-        if (!existing || fromStatus !== lead.status) {
+        const statusChanged = !existing || fromStatus !== lead.status;
+        const brokerChanged = !!existing && existing.brokerName !== lead.brokerName;
+
+        if (statusChanged) {
           await this.prisma.leadStatusHistory.create({
             data: {
               externalLeadId: lead.externalLeadId,
@@ -147,6 +251,108 @@ export class WebhookService {
             },
           });
         }
+
+        // Send email notifications (fire-and-forget, do not block processing)
+        if (statusChanged || brokerChanged) {
+          void this.sendNotifications({
+            partnerId,
+            lead,
+            statusChanged,
+            brokerChanged,
+            fromStatus,
+          });
+        }
+      }
+    }
+  }
+
+  private async sendNotifications(params: {
+    partnerId: string;
+    lead: WebhookLead;
+    statusChanged: boolean;
+    brokerChanged: boolean;
+    fromStatus: string | null;
+  }) {
+    const { partnerId, lead, statusChanged, brokerChanged, fromStatus } = params;
+
+    // Find all active users for this partner with their notification prefs
+    const users = await this.prisma.user.findMany({
+      where: { partnerId, isActive: true },
+      select: {
+        id: true,
+        email: true,
+        notificationPrefs: {
+          select: { onStatusChange: true, onBrokerChange: true },
+        },
+      },
+    });
+
+    const appUrl = this.configService.get<string>('APP_URL') ?? 'https://portal.foryou-realestate.com';
+    const leadUrl = `${appUrl}/leads`;
+    const leadName = lead.contactName ?? lead.title ?? 'Клієнт';
+    const leadId = lead.externalLeadId.toString();
+
+    for (const user of users) {
+      const prefs = user.notificationPrefs;
+
+      if (statusChanged && prefs?.onStatusChange) {
+        const toStatusName = lead.status;
+        const fromStatusName = fromStatus ?? '—';
+        const subject = `Зміна статусу: ${leadName}`;
+        const html = `
+          <div style="font-family:sans-serif;max-width:560px;margin:0 auto">
+            <h2 style="color:#003077">Зміна статусу клієнта</h2>
+            <p>Статус клієнта <strong>${leadName}</strong> змінився:</p>
+            <p style="font-size:16px">
+              <span style="color:#71717a">${fromStatusName}</span>
+              &nbsp;→&nbsp;
+              <strong style="color:#003077">${toStatusName}</strong>
+            </p>
+            <a href="${leadUrl}" style="display:inline-block;margin-top:16px;padding:10px 20px;background:#003077;color:white;text-decoration:none;border-radius:6px">
+              Переглянути ліди
+            </a>
+            <p style="margin-top:24px;font-size:12px;color:#a1a1aa">For You Real Estate Partner Portal</p>
+          </div>
+        `;
+        await this.emailService.send({ to: user.email, subject, html }).catch((err) =>
+          this.logger.warn(`Failed to send status-change email to ${user.email}: ${err}`),
+        );
+
+        // App Notification
+        await this.notificationsService.createNotification({
+          userId: user.id,
+          type: 'LEAD_STATUS_CHANGED',
+          title: 'Зміна статусу ліда',
+          message: `Статус ліда "${leadName}" змінився: ${fromStatusName} → ${toStatusName}`,
+          link: `/deals/${leadId}`,
+        }).catch((err) => this.logger.warn(`Failed to create app notification: ${err}`));
+      }
+
+      if (brokerChanged && prefs?.onBrokerChange) {
+        const subject = `Змінився брокер: ${leadName}`;
+        const html = `
+          <div style="font-family:sans-serif;max-width:560px;margin:0 auto">
+            <h2 style="color:#003077">Зміна відповідального брокера</h2>
+            <p>По клієнту <strong>${leadName}</strong> змінився відповідальний брокер.</p>
+            ${lead.brokerName ? `<p>Новий брокер: <strong>${lead.brokerName}</strong>${lead.brokerEmail ? ` (${lead.brokerEmail})` : ''}</p>` : ''}
+            <a href="${leadUrl}" style="display:inline-block;margin-top:16px;padding:10px 20px;background:#003077;color:white;text-decoration:none;border-radius:6px">
+              Переглянути ліди
+            </a>
+            <p style="margin-top:24px;font-size:12px;color:#a1a1aa">For You Real Estate Partner Portal</p>
+          </div>
+        `;
+        await this.emailService.send({ to: user.email, subject, html }).catch((err) =>
+          this.logger.warn(`Failed to send broker-change email to ${user.email}: ${err}`),
+        );
+
+        // App Notification
+        await this.notificationsService.createNotification({
+          userId: user.id,
+          type: 'BROKER_ASSIGNED',
+          title: 'Призначено брокера',
+          message: `Брокера ${lead.brokerName || ''} призначено для ліда "${leadName}"`,
+          link: `/deals/${leadId}`,
+        }).catch((err) => this.logger.warn(`Failed to create app notification: ${err}`));
       }
     }
   }
@@ -267,6 +473,93 @@ export class WebhookService {
       ?? this.toOptionalString(raw.comment)
       ?? null;
 
+    let isApprovedPartner = false;
+    if (pipelineId === 8600274 && statusId === 142) {
+      isApprovedPartner = true;
+    }
+    const cfArr = raw.custom_fields as any[];
+    if (Array.isArray(cfArr)) {
+      for (const field of cfArr) {
+        const name = (field.name || '').toLowerCase();
+        if (name.includes('одобрить') || name.includes('approve') || name.includes('схвалити')) {
+          const val = field.values?.[0]?.value;
+          if (val === 'Да' || val === '1' || val === true || val === 'Yes') {
+            isApprovedPartner = true;
+          }
+        }
+      }
+    }
+
+    let mainContactId: bigint | null = null;
+    let contactName: string | null = null;
+    let contactPhone: string | null = null;
+    let contactEmail: string | null = null;
+
+    // 1. Try to get mainContactId
+    const mcid = raw.main_contact_id ?? raw.contact_id;
+    if (mcid) {
+      try {
+        mainContactId = BigInt(String(mcid));
+      } catch {}
+    }
+
+    // 2. Try to find phone/email in lead's OWN custom fields (some webhooks include them)
+    const cfv = (raw.custom_fields_values as unknown[]) ?? [];
+    for (const field of cfv) {
+      if (!field || typeof field !== 'object') continue;
+      const f = field as Record<string, unknown>;
+      const code = this.toOptionalString(f.field_code);
+      const fieldName = this.toOptionalString(f.field_name);
+      const values = (f.values as unknown[]) ?? [];
+      const firstVal = values[0] as Record<string, unknown> | undefined;
+      const value = this.toOptionalString(firstVal?.value);
+
+      if (value && this.amoService.isPhoneField(code ?? null, fieldName ?? null)) {
+        contactPhone = value;
+      }
+      if (value && this.amoService.isEmailField(code ?? null, fieldName ?? null)) {
+        contactEmail = value;
+      }
+    }
+
+    // 3. Try to extract from _embedded.contacts if present in webhook
+    const embedded = (raw._embedded as Record<string, unknown> | undefined);
+    const contacts = (embedded?.contacts as unknown[]) ?? [];
+    for (const c of contacts) {
+      if (!c || typeof c !== 'object') continue;
+      const contact = c as Record<string, unknown>;
+      const isMain = contact.is_main === true || contacts.length === 1;
+
+      if (!mainContactId || isMain) {
+        try {
+          const cid = contact.id ?? contact.contact_id;
+          if (cid) mainContactId = BigInt(String(cid));
+        } catch {}
+      }
+
+      if (isMain || !contactName) {
+        contactName = this.toOptionalString(contact.name) ?? contactName;
+        
+        const ccfv = (contact.custom_fields_values as unknown[]) ?? [];
+        for (const field of ccfv) {
+          if (!field || typeof field !== 'object') continue;
+          const f = field as Record<string, unknown>;
+          const code = this.toOptionalString(f.field_code);
+          const fieldName = this.toOptionalString(f.field_name);
+          const values = (f.values as unknown[]) ?? [];
+          const firstVal = values[0] as Record<string, unknown> | undefined;
+          const value = this.toOptionalString(firstVal?.value);
+
+          if (!contactPhone && value && this.amoService.isPhoneField(code ?? null, fieldName ?? null)) {
+            contactPhone = value;
+          }
+          if (!contactEmail && value && this.amoService.isEmailField(code ?? null, fieldName ?? null)) {
+            contactEmail = value;
+          }
+        }
+      }
+    }
+
     return {
       externalLeadId,
       title: this.toOptionalString(raw.name) ?? `Lead ${externalLeadId.toString()}`,
@@ -277,8 +570,14 @@ export class WebhookService {
       comment,
       source,
       tagIds: this.extractTagIds(raw),
+      mainContactId,
+      contactName,
+      contactPhone,
+      contactEmail,
       updatedAt: this.toTimestamp(raw.updated_at),
       createdAt: this.toTimestamp(raw.created_at),
+      responsibleUserId: this.toOptionalNumber(raw.responsible_user_id) ?? null,
+      isApprovedPartner,
     };
   }
 

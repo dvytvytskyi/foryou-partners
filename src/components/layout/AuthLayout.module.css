@@ -5,11 +5,13 @@
   color: var(--foreground);
 }
 
-/* Left Side */
 .infoSide {
-  flex: 1.2;
+  flex: 0 0 60%;
   position: relative;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: linear-gradient(180deg, rgba(0, 48, 119, 0.6) 0%, rgba(255, 255, 255, 0.6) 75%), url('/bg-image.webp');
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: flex-end;
   padding: 4rem;
@@ -105,28 +107,29 @@
 
 /* Right Side */
 .formSide {
-  flex: 1;
+  flex: 0 0 40%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 2rem 1.5rem;
   background-color: #ffffff;
 }
 
 .formContent {
   width: 100%;
-  max-width: 400px;
+  max-width: 460px;
 }
 
 .logoSideWrapper {
   position: absolute;
-  top: 3rem;
-  left: 3rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 10;
 }
 
 .logoInfo {
-  height: 26px;
+  height: 80px;
   width: auto;
 }
 
@@ -135,12 +138,14 @@
 }
 
 .header h1 {
-  font-size: 26px;
-  font-weight: 700;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 36px;
+  font-weight: 600;
   margin-bottom: 0.5rem;
   color: var(--primary-color);
   text-transform: none;
-  letter-spacing: -0.01em;
+  letter-spacing: 0%;
+  line-height: 1.2;
 }
 
 .subtitle {

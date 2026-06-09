@@ -1,255 +1,112 @@
 .sidebar {
-  width: 280px;
-  background-color: #f6f6f6; /* Off-white as in screenshot */
+  width: 248px;
+  background: var(--Color-Tokens-Background-Secondary, #F9F9F9);
   display: flex;
   flex-direction: column;
   height: 100vh;
   position: sticky;
   top: 0;
-  padding: 1rem;
   font-family: var(--font-inter);
+  border-right: 1px solid #e5e7eb;
 }
 
-.header {
-  margin-bottom: 1.5rem;
-}
-
-.profileCard {
-  background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 0.5rem 0.6rem;
+.logoContainer {
+  padding: 0 1.5rem;
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  cursor: pointer;
-  transition: all 0.2s;
+  border-bottom: 1px solid #e5e7eb;
+  height: 64px;
+  box-sizing: border-box;
 }
 
-.profileCard:hover {
-  background-color: #f1f5f9;
-  border-color: #cbd5e1;
+.logo {
+  height: 25px;
+  max-width: 100%;
+  object-fit: contain;
 }
 
-.avatarSquare {
-  width: 26px;
-  height: 26px;
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 700;
-  color: #1e293b;
-  flex-shrink: 0;
-}
-
-.profileInfo {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.profileName {
-  font-size: 13px;
-  font-weight: 700;
-  color: #0f172a;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 1.2;
-}
-
-.profileRole {
-  font-size: 11px;
-  color: #64748b;
-  line-height: 1.2;
-  margin-top: 1px;
-}
-
-.chevron {
-  color: #94a3b8;
-  opacity: 0.7;
-}
-
-/* Search */
-.searchBox {
-  position: relative;
-  margin-bottom: 1.5rem;
-}
-
-.searchInput {
-  width: 100%;
-  background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px; /* Reduced radius */
-  padding: 0.5rem 0.75rem 0.5rem 2.2rem;
-  font-size: 12px;
-  color: #1a1a1a;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.searchInput:hover {
-  border-color: #cbd5e1;
-}
-
-.searchInput:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 4px rgba(0, 48, 119, 0.1);
-  background-color: #ffffff;
-}
-
-.searchIcon {
-  position: absolute;
-  left: 0.75rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #999;
-}
-
-.searchShortcut {
-  position: absolute;
-  right: 0.75rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 10px;
-  color: #999;
-  background-color: #f1f1f1;
-  padding: 2px 4px;
-  border-radius: 4px;
-  border: 1px solid #e2e2e2;
-}
-
-/* Nav */
 .navSection {
   flex: 1;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+}
+
+.navGroup {
+  display: flex;
+  flex-direction: column;
   gap: 0.25rem;
+  padding: 1rem 1rem;
 }
 
 .navItem {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 0.75rem;
-  border-radius: 10px;
-  color: #666;
-  font-size: 14px;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  color: rgba(114, 114, 114, 1);
+  font-family: Inter, var(--font-inter), sans-serif;
   font-weight: 500;
-  transition: all 0.2s;
-}
-
-.navItemLeft {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
 
 .navItem:hover {
-  background-color: #f0f0f0;
-  color: #000;
+  background-color: rgba(242, 242, 242, 0.5);
+  color: rgba(0, 48, 119, 1);
+}
+
+.navItem:hover .icon {
+  filter: brightness(0) saturate(100%) invert(13%) sepia(61%) saturate(3786%) hue-rotate(202deg) brightness(91%) contrast(110%);
 }
 
 .navItemActive {
-  background-color: #ffffff; /* Lighter active state as in screen */
-  color: #000;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  background-color: rgba(242, 242, 242, 1);
+  color: rgba(0, 48, 119, 1);
+  font-weight: 500;
+}
+
+.navItemActive .icon {
+  filter: brightness(0) saturate(100%) invert(13%) sepia(61%) saturate(3786%) hue-rotate(202deg) brightness(91%) contrast(110%);
+}
+
+.divider {
+  height: 1px;
+  background-color: #e5e7eb;
+  margin: 0;
+}
+
+.bottomNav {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
 }
 
 .icon {
-  width: 18px;
-  height: 18px;
-  opacity: 0.8;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(48%) sepia(0%) saturate(6%) hue-rotate(187deg) brightness(96%) contrast(89%);
 }
 
 .badge {
-  background-color: #ff5c5c;
-  color: #ffffff;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 2px 6px;
-  border-radius: 10px;
-}
-
-.sectionLabel {
+  background-color: #ef4444;
+  color: white;
   font-size: 11px;
-  text-transform: uppercase;
-  color: #999;
-  font-weight: 700;
-  margin: 1.5rem 0.75rem 0.5rem 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  min-width: 18px;
+  height: 18px;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-}
-
-/* Upgrade Card */
-.upgradeCard {
-  background-color: #ffffff;
-  border: 1px solid #e5e5e5;
-  border-radius: 14px;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  position: relative;
-}
-
-.upgradeClose {
+  justify-content: center;
+  padding: 0 5px;
   position: absolute;
-  top: 0.5rem;
-  right: 0.6rem;
-  color: #999;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.upgradeTitle {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 12px;
-  font-weight: 700;
-  margin-bottom: 0.6rem;
-}
-
-.progressBar {
-  height: 4px;
-  background-color: #f1f1f1;
-  border-radius: 2px;
-  margin-bottom: 0.85rem;
-  overflow: hidden;
-}
-
-.progressFill {
-  height: 100%;
-  background: #333;
-  width: 60%;
-}
-
-.upgradeDesc {
-  font-size: 11px;
-  color: #888;
-  line-height: 1.4;
-  margin-bottom: 0.85rem;
-}
-
-.upgradeCta {
-  font-size: 12px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  cursor: pointer;
-}
-
-/* Bottom Nav */
-.bottomNav {
-  border-top: 1px solid #e5e5e5;
-  padding-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
 }

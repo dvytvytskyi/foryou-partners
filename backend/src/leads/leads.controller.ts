@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, Query, UseGuards, Post, Body } from '@nestjs/common';
 import { LeadsService } from './leads.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
@@ -15,6 +15,11 @@ export class LeadsController {
     return this.leadsService.getLeads(dto, user);
   }
 
+  @Post()
+  createLead(@Body() dto: import('./dto/create-lead.dto').CreateLeadDto, @CurrentUser() user: AuthenticatedUser) {
+    return this.leadsService.createLead(dto, user);
+  }
+
   @Get('board')
   getLeadsBoard(@Query() dto: GetLeadsDto, @CurrentUser() user: AuthenticatedUser) {
     return this.leadsService.getLeadsBoard(dto, user);
@@ -28,5 +33,15 @@ export class LeadsController {
   @Get(':id/history')
   getLeadHistory(@Param('id') id: string, @CurrentUser() user: AuthenticatedUser, @Query('partner_id') partnerId?: string) {
     return this.leadsService.getLeadHistory(id, user, partnerId);
+  }
+
+  @Get(':id/notes')
+  getLeadNotes(@Param('id') id: string, @CurrentUser() user: AuthenticatedUser) {
+    return this.leadsService.getLeadNotes(id, user);
+  }
+
+  @Post(':id/notes')
+  addLeadNote(@Param('id') id: string, @Body('text') text: string, @CurrentUser() user: AuthenticatedUser) {
+    return this.leadsService.addLeadNote(id, text, user);
   }
 }

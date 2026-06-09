@@ -1,0 +1,2433 @@
+
+> portal@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.100:3000
+- Environments: .env.local, .env
+✓ Ready in 348ms
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/vytvytskyi/package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * /Users/vytvytskyi/foryou_partners/package-lock.json
+
+⚠ Slow filesystem detected. The benchmark took 1007ms. If /Users/vytvytskyi/foryou_partners/.next/dev is a network drive, consider moving it to a local folder.
+See more: https://nextjs.org/docs/app/guides/local-development
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+
+ GET /ru/login 200 in 1310ms (next.js: 1035ms, proxy.ts: 115ms, application-code: 159ms)
+ GET /ru/.well-known/appspecific/com.chrome.devtools.json 404 in 503ms (next.js: 427ms, proxy.ts: 6ms, application-code: 70ms)
+ GET /ru/login 200 in 97ms (next.js: 22ms, proxy.ts: 20ms, application-code: 56ms)
+ GET /ru/.well-known/appspecific/com.chrome.devtools.json 404 in 67ms (next.js: 30ms, proxy.ts: 4ms, application-code: 34ms)
+ GET /ru/dashboard 200 in 787ms (next.js: 721ms, proxy.ts: 10ms, application-code: 56ms)
+○ Compiling /[locale]/settings ...
+ GET /ru/settings 200 in 6.1s (next.js: 6.0s, proxy.ts: 23ms, application-code: 43ms)
+[browser] Failed to fetch users AxiosError: Request failed with status code 403 (src/components/admin/UsersTable.tsx:39:15)
+[browser] Failed to fetch users AxiosError: Request failed with status code 403 (src/components/admin/UsersTable.tsx:39:15)
+ GET /ru/settings 200 in 482ms (next.js: 112ms, proxy.ts: 115ms, application-code: 255ms)
+[browser] Failed to fetch users AxiosError: Request failed with status code 403
+    at async fetchUsers (src/components/admin/UsersTable.tsx:34:24)
+  32 |     setLoading(true);
+  33 |     try {
+> 34 |       const { data } = await api.get(`/admin/partners/users?role=${currentTab}&page=${curr...
+     |                        ^
+  35 |       setUsers(data.items);
+  36 |       setTotalPages(data.totalPages);
+  37 |       setTotalItems(data.total); (src/components/admin/UsersTable.tsx:39:15)
+[browser] Failed to fetch users AxiosError: Request failed with status code 403
+    at async fetchUsers (src/components/admin/UsersTable.tsx:34:24)
+  32 |     setLoading(true);
+  33 |     try {
+> 34 |       const { data } = await api.get(`/admin/partners/users?role=${currentTab}&page=${curr...
+     |                        ^
+  35 |       setUsers(data.items);
+  36 |       setTotalPages(data.totalPages);
+  37 |       setTotalItems(data.total); (src/components/admin/UsersTable.tsx:39:15)
+✓ Compiled in 844ms
+ GET /ru/support 200 in 3.4s (next.js: 3.3s, proxy.ts: 52ms, application-code: 44ms)
+✓ Compiled in 374ms
+ GET /ru/support 200 in 211ms (next.js: 59ms, proxy.ts: 51ms, application-code: 101ms)
+✓ Compiled in 492ms
+[browser] ./foryou_partners/src/components/layout/PageHeader.tsx:101:5
+Expression expected
+   99 |         )}
+  100 |       </div>
+> 101 |     </div>
+      |     ^
+  102 |   );
+  103 | }
+  104 |
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/PageHeader.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/PageHeader.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component] 
+[browser] ./foryou_partners/src/components/layout/PageHeader.tsx:101:6
+Unterminated regexp literal
+   99 |         )}
+  100 |       </div>
+> 101 |     </div>
+      |      ^^^^^
+  102 |   );
+  103 | }
+  104 |
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/PageHeader.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/PageHeader.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component] 
+[browser] ./foryou_partners/src/components/layout/PageHeader.tsx:101:5
+Expression expected
+   99 |         )}
+  100 |       </div>
+> 101 |     </div>
+      |     ^
+  102 |   );
+  103 | }
+  104 |
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/PageHeader.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/PageHeader.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component] 
+[browser] ./foryou_partners/src/components/layout/PageHeader.tsx:101:6
+Unterminated regexp literal
+   99 |         )}
+  100 |       </div>
+> 101 |     </div>
+      |      ^^^^^
+  102 |   );
+  103 | }
+  104 |
+
+Parsing ecmascript source code failed
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/PageHeader.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/PageHeader.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component] 
+✓ Compiled in 189ms
+ GET /ru/support 200 in 94ms (next.js: 25ms, proxy.ts: 25ms, application-code: 45ms)
+ GET /ru/support 200 in 21ms (next.js: 2ms, proxy.ts: 1350µs, application-code: 17ms)
+ GET /ru/support 200 in 19ms (next.js: 3ms, proxy.ts: 1194µs, application-code: 14ms)
+✓ Compiled in 203ms
+ GET /ru/.well-known/appspecific/com.chrome.devtools.json 404 in 61ms (next.js: 13ms, proxy.ts: 3ms, application-code: 45ms)
+ GET /ru/support/656b5d13-8006-417d-afc2-43430161e50d 200 in 2.8s (next.js: 2.8s, proxy.ts: 6ms, application-code: 14ms)
+ GET /ru/login 200 in 87ms (next.js: 41ms, proxy.ts: 4ms, application-code: 42ms)
+ GET /ru/login 200 in 110ms (next.js: 78ms, proxy.ts: 18ms, application-code: 14ms)
+ GET /ru/dashboard 200 in 77ms (next.js: 44ms, proxy.ts: 1355µs, application-code: 32ms)
+ GET /ru/support 200 in 49ms (next.js: 23ms, proxy.ts: 6ms, application-code: 20ms)
+ GET /ru/support/656b5d13-8006-417d-afc2-43430161e50d 200 in 31ms (next.js: 9ms, proxy.ts: 4ms, application-code: 18ms)
+ GET /ru/support 200 in 37ms (next.js: 9ms, proxy.ts: 3ms, application-code: 25ms)
+ GET /ru/support/656b5d13-8006-417d-afc2-43430161e50d 200 in 38ms (next.js: 13ms, proxy.ts: 4ms, application-code: 21ms)
+ GET /ru/support 200 in 33ms (next.js: 7ms, proxy.ts: 9ms, application-code: 17ms)
+ GET /ru/support/75301d28-3f58-4c19-b93f-9709293ed6a0 200 in 21ms (next.js: 5ms, proxy.ts: 1968µs, application-code: 13ms)
+ GET /ru/support 200 in 46ms (next.js: 24ms, proxy.ts: 2ms, application-code: 19ms)
+ GET /en/support 200 in 36ms (next.js: 7ms, proxy.ts: 5ms, application-code: 24ms)
+ GET /ru/support 200 in 36ms (next.js: 9ms, proxy.ts: 9ms, application-code: 18ms)
+ GET /en/support 200 in 38ms (next.js: 13ms, proxy.ts: 5ms, application-code: 20ms)
+ GET /ru/support 200 in 40ms (next.js: 12ms, proxy.ts: 7ms, application-code: 22ms)
+ GET /en/support 200 in 57ms (next.js: 13ms, proxy.ts: 23ms, application-code: 20ms)
+ GET /ru/support 200 in 42ms (next.js: 11ms, proxy.ts: 6ms, application-code: 24ms)
+ GET /ru/knowledge 200 in 1294ms (next.js: 1259ms, proxy.ts: 6ms, application-code: 29ms)
+ GET /ru/support 200 in 20ms (next.js: 5ms, proxy.ts: 2ms, application-code: 13ms)
+ GET /ru/referrals 200 in 295ms (next.js: 256ms, proxy.ts: 20ms, application-code: 19ms)
+ GET /ru/payouts 200 in 277ms (next.js: 255ms, proxy.ts: 7ms, application-code: 15ms)
+ GET /ru/deals 200 in 352ms (next.js: 325ms, proxy.ts: 10ms, application-code: 17ms)
+ GET /en/deals 200 in 39ms (next.js: 13ms, proxy.ts: 5ms, application-code: 21ms)
+✓ Compiled in 343ms
+[browser] Uncaught ReferenceError: currentLocale is not defined
+    at eval (src/components/deals/DealsTable.tsx:174:67)
+    at Array.map (<anonymous>)
+    at DealsTable (src/components/deals/DealsTable.tsx:142:17)
+    at Set.forEach (<anonymous>)
+    at DealsClient (src/components/deals/DealsClient.tsx:46:28)
+    at DealsPage (src/app/[locale]/(protected)/deals/page.tsx:9:10)
+  172 | ...assName={styles.cell}>
+  173 | ... className={styles.date}>
+> 174 | ...w Date(deal.updated_at).toLocaleDateString(currentLocale, { day: '2-digit', month: 'sh...
+      |                                               ^
+  175 | ...n>
+  176 | ...
+  177 | ...
+✓ Compiled in 508ms
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /en/deals 200 in 275ms (next.js: 42ms, proxy.ts: 74ms, application-code: 158ms)
+✓ Compiled in 57ms
+ GET /en/dashboard 200 in 89ms (next.js: 37ms, proxy.ts: 16ms, application-code: 35ms)
+✓ Compiled in 16ms
+✓ Compiled in 310ms
+ GET /en/dashboard 500 in 2.4s (next.js: 1971ms, proxy.ts: 324ms, application-code: 131ms)
+ GET /en/dashboard 500 in 9ms (next.js: 3ms, proxy.ts: 1865µs, application-code: 5ms)
+ GET /en/dashboard 500 in 9ms (next.js: 3ms, proxy.ts: 1858µs, application-code: 5ms)
+ GET /en/dashboard 500 in 14ms (next.js: 5ms, proxy.ts: 1908µs, application-code: 7ms)
+ GET /en/dashboard 500 in 11ms (next.js: 4ms, proxy.ts: 1315µs, application-code: 5ms)
+[browser] Uncaught Error: ./foryou_partners/src/components/payouts/PayoutsClient.tsx:194:1
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+  192 |     </div>
+  193 |   );
+> 194 | }
+      | ^
+  195 |
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./foryou_partners/src/components/payouts/PayoutsClient.tsx
+    ./foryou_partners/src/app/[locale]/(protected)/payouts/page.tsx
+
+
+    at <unknown> (Error: ./foryou_partners/src/components/payouts/PayoutsClient.tsx:194:1)
+    at <unknown> (Error: (./foryou_partners/src/components/payouts/PayoutsClient.tsx:194:1)
+ GET /en/dashboard 500 in 71ms (next.js: 12ms, proxy.ts: 29ms, application-code: 30ms)
+[browser] Uncaught Error: ./foryou_partners/src/components/payouts/PayoutsClient.tsx:189:12
+Expected ',', got 'ident'
+  187 |       </div>
+  188 |
+> 189 |       <div className={styles.footerNote}>
+      |            ^^^^^^^^^
+  190 |         {dict.footer}
+  191 |       </div>
+  192 |     </div>
+
+Parsing ecmascript source code failed
+
+Import trace:
+  Server Component:
+    ./foryou_partners/src/components/payouts/PayoutsClient.tsx
+    ./foryou_partners/src/app/[locale]/(protected)/payouts/page.tsx
+
+
+    at <unknown> (Error: ./foryou_partners/src/components/payouts/PayoutsClient.tsx:189:12)
+    at <unknown> (Error: (./foryou_partners/src/components/payouts/PayoutsClient.tsx:189:12)
+✓ Compiled in 1165ms
+ GET /en/dashboard 200 in 488ms (next.js: 153ms, proxy.ts: 11ms, application-code: 324ms)
+✓ Compiled in 1913ms
+ GET /en/deals 200 in 210ms (next.js: 127ms, proxy.ts: 40ms, application-code: 44ms)
+ GET /ru/deals/47603076 200 in 299ms (next.js: 268ms, proxy.ts: 4ms, application-code: 27ms)
+ GET /en/payouts 200 in 207ms (next.js: 142ms, proxy.ts: 13ms, application-code: 53ms)
+ GET /en/referrals 200 in 92ms (next.js: 57ms, proxy.ts: 17ms, application-code: 18ms)
+✓ Compiled in 285ms
+✓ Compiled in 37ms
+✓ Compiled in 176ms
+✓ Compiled in 412ms
+✓ Compiled in 121ms
+ GET /en/payouts 200 in 531ms (next.js: 253ms, proxy.ts: 116ms, application-code: 162ms)
+ GET /en/deals 200 in 114ms (next.js: 74ms, proxy.ts: 6ms, application-code: 33ms)
+ GET /en/dashboard 200 in 274ms (next.js: 139ms, proxy.ts: 3ms, application-code: 133ms)
+ GET /en/settings 200 in 192ms (next.js: 145ms, proxy.ts: 13ms, application-code: 34ms)
+ GET /en/support 200 in 112ms (next.js: 65ms, proxy.ts: 15ms, application-code: 31ms)
+ GET /en/support/75301d28-3f58-4c19-b93f-9709293ed6a0 200 in 58ms (next.js: 35ms, proxy.ts: 3ms, application-code: 20ms)
+ GET /en/deals 200 in 123ms (next.js: 56ms, proxy.ts: 17ms, application-code: 50ms)
+ GET /en/deals/1781046309457 200 in 86ms (next.js: 65ms, proxy.ts: 2ms, application-code: 18ms)
+✓ Compiled in 1585ms
+ GET /en/deals/1781046309457 200 in 813ms (next.js: 243ms, proxy.ts: 434ms, application-code: 135ms)
+ GET /en/deals/1781046309457 200 in 65ms (next.js: 17ms, proxy.ts: 4ms, application-code: 44ms)
+ GET /en/deals/1781046309457 200 in 147ms (next.js: 21ms, proxy.ts: 4ms, application-code: 121ms)
+ GET /en/deals/1781046309457 200 in 88ms (next.js: 4ms, proxy.ts: 1789µs, application-code: 82ms)
+ GET /en/deals/1781046309457 200 in 41ms (next.js: 8ms, proxy.ts: 6ms, application-code: 27ms)
+[browser] Uncaught TypeError: Cannot read properties of undefined (reading 'back')
+    at DealDetailClient (src/components/deals/DealDetailClient.tsx:79:37)
+    at DealDetailPage (src/app/[locale]/(protected)/deals/[id]/page.tsx:9:10)
+  77 |         <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+  78 |           <Link href={`/${locale}/deals`} style={{ display: 'inline-flex', alignItems: 'ce...
+> 79 |             <ArrowLeftIcon /> {dict.back || 'Вернуться к сделкам'}
+     |                                     ^
+  80 |           </Link>
+  81 |           
+  82 |           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+✓ Compiled in 325ms
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /en/deals/1781046309457 200 in 975ms (next.js: 56ms, proxy.ts: 21ms, application-code: 898ms)
+ GET /ru/login 200 in 155ms (next.js: 65ms, proxy.ts: 5ms, application-code: 85ms)
+✓ Compiled in 269ms
+✓ Compiled in 461ms
+ GET /ru/login 200 in 88ms (next.js: 20ms, proxy.ts: 18ms, application-code: 50ms)
+ GET /ru/login 200 in 63ms (next.js: 2ms, proxy.ts: 1989µs, application-code: 59ms)
+ GET /ru/login 200 in 75ms (next.js: 10ms, proxy.ts: 1747µs, application-code: 64ms)
+ GET /ru/login 200 in 54ms (next.js: 5ms, proxy.ts: 2ms, application-code: 47ms)
+ GET /ru/login 200 in 40ms (next.js: 4ms, proxy.ts: 3ms, application-code: 32ms)
+ GET /ru/login 200 in 38ms (next.js: 3ms, proxy.ts: 1329µs, application-code: 34ms)
+ GET /ru/login 200 in 38ms (next.js: 3ms, proxy.ts: 1251µs, application-code: 34ms)
+ GET /ru/login 200 in 42ms (next.js: 3ms, proxy.ts: 1179µs, application-code: 39ms)
+ GET /ru/login 200 in 46ms (next.js: 5ms, proxy.ts: 1378µs, application-code: 40ms)
+ GET /ru/login 200 in 25ms (next.js: 6ms, proxy.ts: 1553µs, application-code: 17ms)
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+  [90m 6 |[0m [36mimport[0m { useQuery } [36mfrom[0m [32m'@tanstack/react-query'[0m;
+  [90m 7 |[0m [36mimport[0m { leadsApi } [36mfrom[0m [32m'@/lib/api-leads'[0m;
+[31m[1m>[0m [90m 8 |[0m [36mimport[0m { useDebounce } [36mfrom[0m [32m'@/hooks/use-debounce'[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m 9 |[0m [36mimport[0m styles [36mfrom[0m [32m'./SpotlightSearch.module.css'[0m;
+  [90m10 |[0m
+  [90m11 |[0m [36minterface[0m [33mSpotlightSearchProps[0m {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+✓ Compiled in 1600ms
+ GET /ru/login 500 in 272ms (next.js: 108ms, proxy.ts: 134ms, application-code: 30ms)
+ GET /ru/login 500 in 72ms (next.js: 28ms, proxy.ts: 11ms, application-code: 33ms)
+ GET /ru/login 500 in 77ms (next.js: 48ms, proxy.ts: 6ms, application-code: 23ms)
+ GET /ru/login 500 in 50ms (next.js: 31ms, proxy.ts: 4ms, application-code: 15ms)
+[browser] Uncaught Error: ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (Error: (./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+ GET /ru/login 500 in 246ms (next.js: 71ms, proxy.ts: 115ms, application-code: 60ms)
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] Uncaught Error: ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at <unknown> (Error: (./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./foryou_partners/src/components/layout/SpotlightSearch.tsx:8:1
+Module not found: Can't resolve '@/hooks/use-debounce'
+   6 | import { useQuery } from '@tanstack/react-query';
+   7 | import { leadsApi } from '@/lib/api-leads';
+>  8 | import { useDebounce } from '@/hooks/use-debounce';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 | import styles from './SpotlightSearch.module.css';
+  10 |
+  11 | interface SpotlightSearchProps {
+
+Import map: aliased to relative './src/hooks/use-debounce' inside of [project]/foryou_partners
+
+Import traces:
+  Client Component Browser:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component Browser]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./foryou_partners/src/components/layout/SpotlightSearch.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/Header.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Client Component SSR]
+    ./foryou_partners/src/components/layout/DashboardLayout.tsx [Server Component]
+    ./foryou_partners/src/app/[locale]/(protected)/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found 
+✓ Compiled in 600ms
+ GET /ru/login 200 in 488ms (next.js: 151ms, proxy.ts: 7ms, application-code: 330ms)
+ GET /ru/dashboard 200 in 172ms (next.js: 122ms, proxy.ts: 3ms, application-code: 48ms)
+ GET /en/dashboard 200 in 47ms (next.js: 12ms, proxy.ts: 5ms, application-code: 30ms)
+ GET /en/deals 200 in 112ms (next.js: 54ms, proxy.ts: 7ms, application-code: 51ms)
+ GET /en/deals/47603076 200 in 91ms (next.js: 34ms, proxy.ts: 10ms, application-code: 46ms)
+ GET /en/deals/47603076 200 in 329ms (next.js: 69ms, proxy.ts: 22ms, application-code: 238ms)
+ GET /en/referrals 200 in 161ms (next.js: 91ms, proxy.ts: 21ms, application-code: 49ms)
+ GET /en/payouts 200 in 114ms (next.js: 69ms, proxy.ts: 12ms, application-code: 33ms)
+ GET /en/knowledge 200 in 125ms (next.js: 70ms, proxy.ts: 8ms, application-code: 46ms)
+ GET /en/support 200 in 224ms (next.js: 95ms, proxy.ts: 17ms, application-code: 112ms)
+ GET /ru/transfer 200 in 305ms (next.js: 279ms, proxy.ts: 2ms, application-code: 23ms)
+ GET /en/transfer 200 in 72ms (next.js: 21ms, proxy.ts: 21ms, application-code: 30ms)
+✓ Compiled in 356ms
+ GET /en/profile 200 in 653ms (next.js: 598ms, proxy.ts: 24ms, application-code: 32ms)
+✓ Compiled in 303ms
+✓ Compiled in 87ms
+ GET /en/profile 200 in 208ms (next.js: 29ms, proxy.ts: 19ms, application-code: 159ms)
+ GET /en/profile 200 in 131ms (next.js: 17ms, proxy.ts: 7ms, application-code: 108ms)
+ GET /en/profile 200 in 84ms (next.js: 8ms, proxy.ts: 2ms, application-code: 74ms)
+ GET /en/profile 200 in 66ms (next.js: 5ms, proxy.ts: 5ms, application-code: 56ms)
+ GET /en/profile 200 in 69ms (next.js: 4ms, proxy.ts: 3ms, application-code: 62ms)
+ GET /en/profile 200 in 58ms (next.js: 6ms, proxy.ts: 3ms, application-code: 48ms)
+ GET /en/profile 200 in 40ms (next.js: 4ms, proxy.ts: 4ms, application-code: 32ms)
+ GET /en/profile 200 in 38ms (next.js: 2ms, proxy.ts: 4ms, application-code: 31ms)
+ GET /en/profile 200 in 39ms (next.js: 3ms, proxy.ts: 3ms, application-code: 34ms)
+ GET /en/profile 200 in 35ms (next.js: 2ms, proxy.ts: 2ms, application-code: 31ms)
+ GET /en/profile 200 in 38ms (next.js: 3ms, proxy.ts: 1390µs, application-code: 34ms)
+ GET /en/profile 200 in 24ms (next.js: 5ms, proxy.ts: 1597µs, application-code: 17ms)
+✓ Compiled in 321ms
+✓ Compiled in 93ms
+ GET /en/dashboard 200 in 143ms (next.js: 79ms, proxy.ts: 31ms, application-code: 33ms)
+ GET /en/deals 200 in 25ms (next.js: 9ms, proxy.ts: 1641µs, application-code: 15ms)
+ GET /en/dashboard 200 in 52ms (next.js: 12ms, proxy.ts: 11ms, application-code: 29ms)
+ GET /en/deals 200 in 45ms (next.js: 14ms, proxy.ts: 6ms, application-code: 26ms)
+✓ Compiled in 341ms
+ GET /en/deals/47603076 200 in 181ms (next.js: 91ms, proxy.ts: 29ms, application-code: 61ms)
+ GET /en/dashboard 200 in 77ms (next.js: 28ms, proxy.ts: 6ms, application-code: 44ms)
+ GET /en/settings 200 in 118ms (next.js: 54ms, proxy.ts: 24ms, application-code: 40ms)
+[browser] Failed to fetch users AxiosError: Request failed with status code 403 (src/components/admin/UsersTable.tsx:39:15)
+[browser] Failed to fetch users AxiosError: Request failed with status code 403 (src/components/admin/UsersTable.tsx:39:15)
+✓ Compiled in 276ms
+ GET /en/payouts 200 in 169ms (next.js: 92ms, proxy.ts: 39ms, application-code: 38ms)
+ GET /en/deals 200 in 56ms (next.js: 24ms, proxy.ts: 11ms, application-code: 22ms)
+ GET /en/payouts 200 in 60ms (next.js: 20ms, proxy.ts: 8ms, application-code: 32ms)
+ GET /en/referrals 200 in 50ms (next.js: 27ms, proxy.ts: 6ms, application-code: 16ms)
+ GET /en/knowledge 200 in 52ms (next.js: 24ms, proxy.ts: 7ms, application-code: 21ms)
+ GET /en/support 200 in 47ms (next.js: 22ms, proxy.ts: 5ms, application-code: 21ms)
+ GET /en/support/656b5d13-8006-417d-afc2-43430161e50d 200 in 57ms (next.js: 35ms, proxy.ts: 4ms, application-code: 18ms)
+ GET /en/support 200 in 26ms (next.js: 6ms, proxy.ts: 3ms, application-code: 17ms)
+✓ Compiled in 1389ms
+ GET /en/support 200 in 1044ms (next.js: 464ms, proxy.ts: 378ms, application-code: 202ms)
+ GET /en/support 200 in 264ms (next.js: 18ms, proxy.ts: 4ms, application-code: 242ms)
+ GET /en/support 200 in 339ms (next.js: 38ms, proxy.ts: 4ms, application-code: 297ms)
+✓ Compiled in 380ms
+ GET /en/support/75301d28-3f58-4c19-b93f-9709293ed6a0 200 in 525ms (next.js: 222ms, proxy.ts: 103ms, application-code: 201ms)
+ GET /en/login 200 in 198ms (next.js: 55ms, proxy.ts: 40ms, application-code: 103ms)
+ GET /ru/login 200 in 154ms (next.js: 92ms, proxy.ts: 7ms, application-code: 55ms)
+ GET /ru/dashboard 200 in 207ms (next.js: 161ms, proxy.ts: 4ms, application-code: 43ms)
+ GET /ru/support 200 in 162ms (next.js: 100ms, proxy.ts: 14ms, application-code: 48ms)
+✓ Compiled in 562ms
+ GET /ru/support 200 in 221ms (next.js: 55ms, proxy.ts: 35ms, application-code: 131ms)
+ GET /ru/support 200 in 100ms (next.js: 13ms, proxy.ts: 5ms, application-code: 82ms)
+ GET /ru/support 200 in 67ms (next.js: 9ms, proxy.ts: 3ms, application-code: 54ms)
+ GET /ru/support 200 in 43ms (next.js: 3ms, proxy.ts: 1265µs, application-code: 39ms)
+ GET /ru/support 200 in 44ms (next.js: 3ms, proxy.ts: 1764µs, application-code: 39ms)
+ GET /ru/support 200 in 41ms (next.js: 2ms, proxy.ts: 2ms, application-code: 37ms)
+ GET /ru/support 200 in 24ms (next.js: 3ms, proxy.ts: 1295µs, application-code: 19ms)
+ GET /ru/support 200 in 38ms (next.js: 3ms, proxy.ts: 6ms, application-code: 30ms)
+ GET /ru/support 200 in 38ms (next.js: 2ms, proxy.ts: 1342µs, application-code: 34ms)
+ GET /ru/support 200 in 37ms (next.js: 3ms, proxy.ts: 1236µs, application-code: 32ms)
+ GET /ru/support 200 in 41ms (next.js: 3ms, proxy.ts: 1270µs, application-code: 38ms)
+ GET /ru/support 200 in 29ms (next.js: 6ms, proxy.ts: 2ms, application-code: 21ms)
+✓ Compiled in 393ms
+✓ Finished filesystem cache database compaction in 18.7s
+✓ Compiled in 998ms
+✓ Compiled in 309ms
+ GET /ru/support 200 in 612ms (next.js: 241ms, proxy.ts: 138ms, application-code: 232ms)
+ GET /ru/support/4f5b6ab6-57a0-4828-9463-9a899be0c031 200 in 76ms (next.js: 34ms, proxy.ts: 13ms, application-code: 28ms)
+[browser] Failed to close ticket AxiosError: Request failed with status code 404 (src/app/[locale]/(protected)
+✓ Compiled in 172ms

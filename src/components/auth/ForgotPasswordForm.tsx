@@ -4,16 +4,16 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { api } from '@/lib/api';
 
-export default function ForgotPasswordForm() {
+export default function ForgotPasswordForm({ dict }: { dict: any }) {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
   const [emailError, setEmailError] = useState<string | null>(null);
 
   const validateEmail = (value: string) => {
-    if (!value) return 'Email is required';
+    if (!value) return dict.email_required;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(value)) return 'Please enter a valid email address';
+    if (!emailRegex.test(value)) return dict.email_invalid;
     return null;
   };
 
@@ -35,9 +35,9 @@ export default function ForgotPasswordForm() {
 
     try {
       await api.post('/auth/password/forgot', { email });
-      setMessage({ type: 'success', text: 'Instructions have been sent to your email' });
+      setMessage({ type: 'success', text: dict.success_msg });
     } catch (err: any) {
-      setMessage({ type: 'error', text: 'Error processing request. Please try again later' });
+      setMessage({ type: 'error', text: dict.error_msg });
     } finally {
       setLoading(false);
     }
@@ -59,12 +59,12 @@ export default function ForgotPasswordForm() {
       )}
 
       <div className="flex flex-col gap-2">
-        <label style={{ fontSize: '13px', fontWeight: '500', color: 'var(--grey-500)' }}>Email address</label>
+        <label style={{ fontSize: '13px', fontWeight: '500', color: 'var(--grey-500)' }}>{dict.email_label}</label>
         <input
           type="email"
           className="input"
           style={{ borderColor: emailError ? '#dc2626' : undefined }}
-          placeholder="eg. john@company.com"
+          placeholder={dict.email_placeholder}
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
@@ -85,12 +85,12 @@ export default function ForgotPasswordForm() {
         className="button button-primary mt-1" 
         disabled={loading}
       >
-        {loading ? 'Sending...' : 'Reset Password'}
+        {loading ? dict.loading_btn : dict.submit_btn}
       </button>
 
       <div style={{ textAlign: 'center', marginTop: '0.25rem' }}>
         <Link href="/login" style={{ fontSize: '14px', color: 'var(--grey-500)', fontWeight: '500' }}>
-          Back to login
+          {dict.back_to_login}
         </Link>
       </div>
     </form>

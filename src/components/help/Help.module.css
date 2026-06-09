@@ -1,0 +1,161 @@
+.container {
+  padding: 0 24px 24px 24px;
+  max-width: none;
+}
+
+.hero {
+  text-align: left;
+  padding: 0.5rem 0 1.5rem 0;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 2px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #71717a;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 1rem;
+}
+
+.categoryCard {
+  background: #ffffff;
+  border: 1px solid #f1f1f1;
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: left;
+  transition: all 0.2s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryCard:hover {
+  transform: translateY(-4px);
+  border-color: #003077;
+  box-shadow: 0 12px 20px -5px rgba(0, 48, 119, 0.08);
+}
+
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+  background: #f0f7ff;
+  color: #003077;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 1.25rem;
+}
+
+.catTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111111;
+  margin-bottom: 6px;
+}
+
+.catDesc {
+  font-size: 12px;
+  color: #71717a;
+  line-height: 1.5;
+}
+
+.supportCard {
+  background: #003077;
+  border: 1px solid #003077;
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.supportCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px -5px rgba(0, 48, 119, 0.2);
+}
+
+.supportIconWrapper {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.supportInfo {
+  margin-bottom: 1.25rem;
+}
+
+.supportBtn {
+  margin-top: auto;
+  background: white;
+  color: #003077;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  transition: all 0.2s;
+}
+
+.supportBtn:hover {
+  background: #f0f9ff;
+  transform: scale(1.02);
+}
+
+.faqSection {
+  margin-top: 2rem;
+}
+
+.faqTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faqItem {
+  background: #ffffff;
+  border: 1px solid #f1f1f1;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.faqQuestion {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111111;
+  margin-bottom: 8px;
+}
+
+.faqAnswer {
+  font-size: 13px;
+  color: #71717a;
+  line-height: 1.6;
+}

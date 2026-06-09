@@ -1,0 +1,151 @@
+.container {
+  background: #ffffff;
+  border: 1px solid #f1f1f1;
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111111;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.actionBtn {
+  font-size: 12px;
+  font-weight: 500;
+  color: #71717a;
+  padding: 6px 12px;
+  border: 1px solid #f1f1f1;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.actionBtn:hover {
+  background: #f8fafc;
+  color: #111111;
+}
+
+.tabs {
+  display: flex;
+  gap: 2rem;
+  border-bottom: 1px solid #f1f1f1;
+  margin-bottom: 1.5rem;
+}
+
+.tab {
+  padding: 0.75rem 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: #71717a;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tabActive {
+  color: #003077;
+  font-weight: 600;
+}
+
+.tabActive::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #003077;
+}
+
+.tabBadge {
+  background: #003077;
+  color: white;
+  font-size: 10px;
+  padding: 1px 5px;
+  border-radius: 10px;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  color: #a1a1aa;
+  text-transform: uppercase;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.table td {
+  padding: 12px 16px;
+  font-size: 12px;
+  color: #3f3f46;
+  border-bottom: 1px solid #f8fafc;
+}
+
+.clientCell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  color: #111111;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+}
+
+.priceCell {
+  font-weight: 600;
+  color: #111111;
+}
+
+.status {
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.completed { background: #ecfdf5; color: #059669; }
+.pending, .pendingapproval { background: #fffbeb; color: #d97706; }
+.progress { background: #f0f9ff; color: #0284c7; }
+.cancelled { background: #fef2f2; color: #dc2626; }
+
+.moreCell {
+  color: #a1a1aa;
+  cursor: pointer;
+  text-align: right;
+}

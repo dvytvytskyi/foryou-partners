@@ -29,11 +29,12 @@ async function bootstrap() {
   // Security headers
   app.use(helmet());
 
-  // Request id for traceability across logs/errors/audit
+  // Request id and logger for traceability
   app.use((req, res, next) => {
     const requestId = (req.headers['x-request-id'] as string) || randomUUID();
     req['requestId'] = requestId;
     res.setHeader('X-Request-ID', requestId);
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url} - Query: ${JSON.stringify(req.query)}`);
     next();
   });
 
@@ -61,6 +62,10 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
       transform: true,
       transformOptions: { enableImplicitConversion: true },
+      exceptionFactory: (errors) => {
+        console.error('Validation errors:', JSON.stringify(errors, null, 2));
+        return new ValidationPipe().createExceptionFactory()(errors);
+      },
     }),
   );
 

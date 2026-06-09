@@ -1,0 +1,176 @@
+.container {
+  padding: 0 32px 32px 32px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111111;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.tableCard {
+  background: #ffffff;
+  border: 1px solid #f1f1f1;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.tableHeader {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #f1f1f1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tableTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111111;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  color: #a1a1aa;
+  text-transform: uppercase;
+  padding: 10px 1.5rem;
+  border-bottom: 1px solid #f1f1f1;
+  background: #fcfcfc;
+}
+
+.table td {
+  padding: 12px 1.5rem;
+  font-size: 13px;
+  color: #3f3f46;
+  border-bottom: 1px solid #f8fafc;
+}
+
+.partnerCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.partnerName {
+  font-weight: 600;
+  color: #111111;
+}
+
+.partnerEmail {
+  font-size: 11px;
+  color: #71717a;
+}
+
+.badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 6px;
+  display: inline-flex;
+}
+
+.badgeActive { background: #ecfdf5; color: #059669; }
+.badgeInactive { background: #f4f4f5; color: #71717a; }
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tag {
+  background: #f0f7ff;
+  color: #003077;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid #dbeafe;
+}
+
+.sourceTag {
+  background: #f5f3ff;
+  color: #5b21b6;
+  border-color: #ede9fe;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actionBtn {
+  background: transparent;
+  border: none;
+  color: #71717a;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.actionBtn:hover {
+  background: #f4f4f5;
+  color: #111111;
+}
+
+.addBtn {
+  background: #003077;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.addBtn:hover {
+  background: #00255c;
+  transform: translateY(-1px);
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  background: #f9fafb;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 6px 12px;
+  width: 240px;
+}
+
+.searchInput {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  width: 100%;
+  margin-left: 8px;
+}

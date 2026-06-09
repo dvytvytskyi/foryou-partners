@@ -5,8 +5,12 @@ export interface BoardLeadCard {
   budget: number | null;
   city: string | null;
   contact_name: string | null;
+  contact_phone?: string | null;
   broker_name: string | null;
+  created_at?: string;
   updated_at: string;
+  last_edited?: string;
+  [key: string]: any;
 }
 
 export interface BoardColumn {

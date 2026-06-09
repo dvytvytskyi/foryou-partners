@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,126 +7,128 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// ─────────────────────────────────────────────
-// PARTNERS & USERS
-// ─────────────────────────────────────────────
-
 model Partner {
-  id        String   @id @default(uuid())
-  name      String
-  isActive  Boolean  @default(true) @map("is_active")
-  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
-  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz
-
-  users          User[]
-  tags           PartnerTag[]
-  sources        PartnerSource[]
-  leadSnapshots  LeadSnapshot[]
-  statusHistory  LeadStatusHistory[]
+  id            String              @id @default(uuid())
+  name          String
+  isActive      Boolean             @default(true) @map("is_active")
+  createdAt     DateTime            @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt     DateTime            @updatedAt @map("updated_at") @db.Timestamptz(6)
+  referredById  String?             @map("referred_by_id")
+  labels        String[]
+  country       String?
+  direction     String?
+  partnerType   String?
+  commissions   Commission[]
+  leadSnapshots LeadSnapshot[]
+  statusHistory LeadStatusHistory[]
+  pipelines     PartnerPipeline[]
+  sources       PartnerSource[]
+  tags          PartnerTag[]
+  referredBy    Partner?            @relation("PartnerReferrals", fields: [referredById], references: [id])
+  referrals     Partner[]           @relation("PartnerReferrals")
+  payouts       Payout[]
+  tickets       Ticket[]
+  users         User[]
 
   @@map("partners")
 }
 
 model User {
-  id           String   @id @default(uuid())
-  email        String   @unique
-  passwordHash String   @map("password_hash")
-  role         UserRole
-  partnerId    String?  @map("partner_id")
-  isActive     Boolean  @default(true) @map("is_active")
-  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz
-  updatedAt    DateTime @updatedAt @map("updated_at") @db.Timestamptz
-
-  partner           Partner?          @relation(fields: [partnerId], references: [id])
-  refreshSessions   RefreshSession[]
-  notificationPrefs NotificationPref?
+  id                String            @id @default(uuid())
+  email             String            @unique
+  name              String?
+  phone             String?
+  passwordHash      String            @map("password_hash")
+  role              UserRole
+  partnerId         String?           @map("partner_id")
+  isActive          Boolean           @default(true) @map("is_active")
+  createdAt         DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt         DateTime          @updatedAt @map("updated_at") @db.Timestamptz(6)
   auditLogs         AuditLog[]
+  notificationPrefs NotificationPref?
+  refreshSessions   RefreshSession[]
+  ticketMessages    TicketMessage[]
+  notifications     Notification[]
+  partner           Partner?          @relation(fields: [partnerId], references: [id])
 
   @@index([partnerId])
   @@map("users")
 }
 
-enum UserRole {
-  partner_user
-  admin
-}
-
-// ─────────────────────────────────────────────
-// PARTNER TAG & SOURCE BINDINGS
-// ─────────────────────────────────────────────
-
 model PartnerTag {
-  id           BigInt   @id @default(autoincrement())
-  partnerId    String   @map("partner_id")
-  amocrmTagId  BigInt   @map("amocrm_tag_id")
-  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz
-
-  partner Partner @relation(fields: [partnerId], references: [id])
+  id          BigInt   @id @default(autoincrement())
+  partnerId   String   @map("partner_id")
+  amocrmTagId BigInt   @map("amocrm_tag_id")
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  partner     Partner  @relation(fields: [partnerId], references: [id])
 
   @@unique([partnerId, amocrmTagId])
   @@index([partnerId])
   @@map("partner_tags")
 }
 
-// Поле "Источник" в amoCRM → дозволені джерела для партнера
 model PartnerSource {
-  id            BigInt   @id @default(autoincrement())
-  partnerId     String   @map("partner_id")
-  amocrmSource  String   @map("amocrm_source")
-  createdAt     DateTime @default(now()) @map("created_at") @db.Timestamptz
-
-  partner Partner @relation(fields: [partnerId], references: [id])
+  id           BigInt   @id @default(autoincrement())
+  partnerId    String   @map("partner_id")
+  amocrmSource String   @map("amocrm_source")
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  partner      Partner  @relation(fields: [partnerId], references: [id])
 
   @@unique([partnerId, amocrmSource])
   @@index([partnerId])
   @@map("partner_sources")
 }
 
-// ─────────────────────────────────────────────
-// AUTH SESSIONS
-// ─────────────────────────────────────────────
+model PartnerPipeline {
+  id               BigInt   @id @default(autoincrement())
+  partnerId        String   @map("partner_id")
+  amocrmPipelineId BigInt   @map("amocrm_pipeline_id")
+  createdAt        DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  partner          Partner  @relation(fields: [partnerId], references: [id])
+
+  @@unique([partnerId, amocrmPipelineId])
+  @@index([partnerId])
+  @@map("partner_pipelines")
+}
 
 model RefreshSession {
   id               String    @id @default(uuid())
   userId           String    @map("user_id")
   refreshTokenHash String    @map("refresh_token_hash")
-  expiresAt        DateTime  @map("expires_at") @db.Timestamptz
-  revokedAt        DateTime? @map("revoked_at") @db.Timestamptz
+  expiresAt        DateTime  @map("expires_at") @db.Timestamptz(6)
+  revokedAt        DateTime? @map("revoked_at") @db.Timestamptz(6)
   userAgent        String?   @map("user_agent")
   ip               String?   @db.Inet
-  createdAt        DateTime  @default(now()) @map("created_at") @db.Timestamptz
-
-  user User @relation(fields: [userId], references: [id])
+  createdAt        DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  user             User      @relation(fields: [userId], references: [id])
 
   @@index([userId])
   @@map("refresh_sessions")
 }
 
-// ─────────────────────────────────────────────
-// LEADS (local projection, synced from amoCRM)
-// ─────────────────────────────────────────────
-
 model LeadSnapshot {
-  id               BigInt   @id @default(autoincrement())
-  externalLeadId   BigInt   @map("external_lead_id")
-  partnerId        String   @map("partner_id")
-  title            String
-  status           String
-  budget           Decimal? @db.Decimal(18, 2)
-  city             String?
-  comment          String?
-  contactName      String?  @map("contact_name")
-  contactPhone     String?  @map("contact_phone")
-  contactEmail     String?  @map("contact_email")
-  brokerName       String?  @map("broker_name")
-  brokerPhone      String?  @map("broker_phone")
-  brokerEmail      String?  @map("broker_email")
-  amocrmSource     String?  @map("amocrm_source")
-  tagIds           BigInt[] @map("tag_ids")
-  updatedAtSource  DateTime @map("updated_at_source") @db.Timestamptz
-  syncedAt         DateTime @map("synced_at") @db.Timestamptz
-
-  partner Partner @relation(fields: [partnerId], references: [id])
+  id              BigInt   @id @default(autoincrement())
+  externalLeadId  BigInt   @map("external_lead_id")
+  partnerId       String   @map("partner_id")
+  title           String
+  status          String
+  budget          Decimal? @db.Decimal(18, 2)
+  city            String?
+  comment         String?
+  contactName     String?  @map("contact_name")
+  contactPhone    String?  @map("contact_phone")
+  contactEmail    String?  @map("contact_email")
+  brokerName      String?  @map("broker_name")
+  brokerPhone     String?  @map("broker_phone")
+  brokerEmail     String?  @map("broker_email")
+  amocrmSource    String?  @map("amocrm_source")
+  tagIds          BigInt[] @map("tag_ids")
+  createdAtSource DateTime @default(now()) @map("created_at_source") @db.Timestamptz(6)
+  updatedAtSource DateTime @map("updated_at_source") @db.Timestamptz(6)
+  syncedAt        DateTime @map("synced_at") @db.Timestamptz(6)
+  pipelineId      BigInt?  @map("pipeline_id")
+  customFields    Json?    @map("custom_fields")
+  partner         Partner  @relation(fields: [partnerId], references: [id])
 
   @@unique([externalLeadId, partnerId])
   @@index([partnerId, updatedAtSource(sort: Desc)])
@@ -143,58 +142,55 @@ model LeadStatusHistory {
   partnerId      String   @map("partner_id")
   fromStatus     String?  @map("from_status")
   toStatus       String   @map("to_status")
-  changedAt      DateTime @map("changed_at") @db.Timestamptz
+  changedAt      DateTime @map("changed_at") @db.Timestamptz(6)
   changedBy      String?  @map("changed_by")
-  createdAt      DateTime @default(now()) @map("created_at") @db.Timestamptz
-
-  partner Partner @relation(fields: [partnerId], references: [id])
+  createdAt      DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  partner        Partner  @relation(fields: [partnerId], references: [id])
 
   @@index([partnerId, changedAt(sort: Desc)])
   @@map("lead_status_history")
 }
 
-// ─────────────────────────────────────────────
-// NOTIFICATIONS
-// ─────────────────────────────────────────────
-
 model NotificationPref {
   userId          String   @id @map("user_id")
   onStatusChange  Boolean  @default(true) @map("on_status_change")
   onBrokerChange  Boolean  @default(true) @map("on_broker_change")
-  updatedAt       DateTime @updatedAt @map("updated_at") @db.Timestamptz
-
-  user User @relation(fields: [userId], references: [id])
+  onWeeklySummary Boolean  @default(false) @map("on_weekly_summary")
+  updatedAt       DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+  user            User     @relation(fields: [userId], references: [id])
 
   @@map("notification_prefs")
 }
 
-// ─────────────────────────────────────────────
-// WEBHOOKS
-// ─────────────────────────────────────────────
+model Notification {
+  id        String           @id @default(uuid())
+  userId    String           @map("user_id")
+  type      NotificationType
+  title     String
+  message   String
+  link      String?
+  isRead    Boolean          @default(false) @map("is_read")
+  createdAt DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  user      User             @relation(fields: [userId], references: [id])
+
+  @@index([userId, createdAt(sort: Desc)])
+  @@index([userId, isRead])
+  @@map("notifications")
+}
 
 model WebhookEvent {
-  id           BigInt           @id @default(autoincrement())
-  eventId      String           @unique @map("event_id")
+  id           BigInt        @id @default(autoincrement())
+  eventId      String        @unique @map("event_id")
   source       String
   payload      Json
-  receivedAt   DateTime         @map("received_at") @db.Timestamptz
-  processedAt  DateTime?        @map("processed_at") @db.Timestamptz
-  status       WebhookStatus    @default(received)
-  errorMessage String?          @map("error_message")
+  receivedAt   DateTime      @map("received_at") @db.Timestamptz(6)
+  processedAt  DateTime?     @map("processed_at") @db.Timestamptz(6)
+  status       WebhookStatus @default(received)
+  errorMessage String?       @map("error_message")
 
   @@index([status, receivedAt])
   @@map("webhook_events")
 }
-
-enum WebhookStatus {
-  received
-  processed
-  failed
-}
-
-// ─────────────────────────────────────────────
-// AUDIT LOG
-// ─────────────────────────────────────────────
 
 model AuditLog {
   id          BigInt   @id @default(autoincrement())
@@ -205,10 +201,124 @@ model AuditLog {
   entityType  String   @map("entity_type")
   entityId    String?  @map("entity_id")
   metadata    Json?
-  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz
-
-  actor User? @relation(fields: [actorUserId], references: [id])
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  actor       User?    @relation(fields: [actorUserId], references: [id])
 
   @@index([createdAt(sort: Desc)])
   @@map("audit_logs")
+}
+
+model Commission {
+  id             BigInt           @id @default(autoincrement())
+  partnerId      String           @map("partner_id")
+  externalLeadId BigInt?          @map("external_lead_id")
+  amount         Decimal          @db.Decimal(18, 2)
+  currency       String           @default("AED")
+  type           CommissionType
+  status         CommissionStatus @default(PENDING)
+  description    String?
+  createdAt      DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt      DateTime         @updatedAt @map("updated_at") @db.Timestamptz(6)
+  partner        Partner          @relation(fields: [partnerId], references: [id])
+
+  @@index([partnerId])
+  @@map("commissions")
+}
+
+model Payout {
+  id          BigInt       @id @default(autoincrement())
+  partnerId   String       @map("partner_id")
+  amount      Decimal      @db.Decimal(18, 2)
+  currency    String       @default("AED")
+  status      PayoutStatus @default(PENDING)
+  type        PayoutType
+  details     Json?
+  createdAt   DateTime     @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime     @updatedAt @map("updated_at") @db.Timestamptz(6)
+  processedAt DateTime?    @map("processed_at") @db.Timestamptz(6)
+  partner     Partner      @relation(fields: [partnerId], references: [id])
+
+  @@index([partnerId])
+  @@map("payouts")
+}
+
+model Ticket {
+  id        String          @id @default(uuid())
+  partnerId String          @map("partner_id")
+  subject   String
+  status    TicketStatus    @default(OPEN)
+  createdAt DateTime        @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime        @updatedAt @map("updated_at") @db.Timestamptz(6)
+  messages  TicketMessage[]
+  partner   Partner         @relation(fields: [partnerId], references: [id])
+
+  @@index([partnerId])
+  @@map("tickets")
+}
+
+model TicketMessage {
+  id        BigInt   @id @default(autoincrement())
+  ticketId  String   @map("ticket_id")
+  senderId  String   @map("sender_id")
+  message   String
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  sender    User     @relation(fields: [senderId], references: [id])
+  ticket    Ticket   @relation(fields: [ticketId], references: [id])
+
+  @@index([ticketId])
+  @@index([senderId])
+  @@map("ticket_messages")
+}
+
+enum UserRole {
+  partner_user
+  admin
+}
+
+enum WebhookStatus {
+  received
+  processed
+  failed
+}
+
+enum CommissionType {
+  DIRECT
+  REFERRAL
+}
+
+enum CommissionStatus {
+  PENDING
+  AVAILABLE
+  PAID
+}
+
+enum PayoutStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  CANCELLED
+}
+
+enum PayoutType {
+  BANK_TRANSFER
+  CASH
+  USDT
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+enum NotificationType {
+  LEAD_STATUS_CHANGED
+  BROKER_ASSIGNED
+  PAYOUT_STATUS_CHANGED
+  NEW_REFERRAL
+  SYSTEM_ALERT
+  NEW_PARTNER
+  SUPPORT_TICKET
+  NEW_LEAD
 }

@@ -28,7 +28,24 @@ export class CreatePartnerDto {
   source_values?: string[];
 
   @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  labels?: string[];
+
+  @IsOptional()
   @ValidateNested()
   @Type(() => CreatePartnerUserDto)
   user?: CreatePartnerUserDto;
+
+  @IsOptional()
+  @IsString()
+  country?: string;
+
+  @IsOptional()
+  @IsString()
+  direction?: string;
+
+  @IsOptional()
+  @IsString()
+  partnerType?: string;
 }

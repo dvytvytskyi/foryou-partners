@@ -1,0 +1,272 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  background: white;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px) scale(0.95); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #f1f1f1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111111;
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  color: #71717a;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.closeBtn:hover {
+  background: #f4f4f5;
+  color: #111111;
+}
+
+.content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #71717a;
+}
+
+.input {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #111111;
+  outline: none;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.input:focus {
+  border-color: #003077;
+  box-shadow: 0 0 0 3px rgba(0, 48, 119, 0.05);
+}
+
+.passwordRow {
+  display: flex;
+  gap: 8px;
+}
+
+.iconBtn {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  width: 40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #64748b;
+}
+
+.iconBtn:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #1e293b;
+}
+
+.hint {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #f1f1f1;
+}
+
+.sectionHeader {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chipGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.chip:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.chipActive {
+  background: #003077;
+  border-color: #003077;
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 4px 6px -1px rgba(0, 48, 119, 0.2);
+}
+
+.footer {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid #f1f1f1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.cancelBtn {
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+}
+
+.cancelBtn:hover {
+  background: #f8fafc;
+}
+
+.submitBtn {
+  background: #003077;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.submitBtn:hover {
+  background: #00255c;
+  box-shadow: 0 4px 6px -1px rgba(0, 48, 119, 0.2);
+}
+
+.loadingSmall {
+  font-size: 11px;
+  color: #94a3b8;
+  padding: 10px 0;
+  font-style: italic;
+}
+
+.noSourcesHint {
+  font-size: 11px;
+  color: #ef4444;
+  padding: 5px 0;
+}
+
+.errorBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #ef4444;
+  background: #fef2f2;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #fee2e2;
+}
+
+.retryBtn {
+  background: white;
+  border: 1px solid #ef4444;
+  color: #ef4444;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  transition: all 0.2s;
+}
+
+.retryBtn:hover {
+  background: #ef4444;
+  color: white;
+}

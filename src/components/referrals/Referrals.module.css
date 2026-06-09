@@ -1,0 +1,337 @@
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 2rem 2rem 2rem;
+  gap: 24px;
+  font-family: var(--font-inter);
+  flex: 1;
+  min-height: 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0 2rem 24px 2rem;
+  margin: 0 -2rem;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #003077;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #71717a;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.btnPrimary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(88.02deg, #003077 2.89%, #0059DD 97.11%);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.btnPrimary:hover {
+  opacity: 0.9;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #0030771F;
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.cardPrimary {
+  background: linear-gradient(88.02deg, #003077 2.89%, #0059DD 97.11%);
+  border: none;
+  color: #ffffff;
+}
+
+.cardIcon {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  color: #003077;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardLabel {
+  font-size: 14px;
+  color: #003077;
+  font-weight: 500;
+  margin-top: auto;
+}
+
+.cardLabelLight {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.cardValueBlue {
+  font-size: 44px;
+  font-weight: 500;
+  color: #003077;
+  margin-bottom: 8px;
+  margin-top: 16px;
+  line-height: 1;
+}
+
+.cardValueWhite {
+  font-size: 44px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.cardSubLight {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  flex: 1;
+  min-height: 0;
+}
+
+.boxSpan2 {
+  grid-column: span 2;
+}
+
+.box {
+  background: #ffffff;
+  border: 1px solid #0030771F;
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.boxTitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: #003077;
+  margin-bottom: 24px;
+}
+
+.partnersList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.partnerItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid #0030771F;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  background: #ffffff;
+}
+
+.partnerName {
+  font-size: 15px;
+  font-weight: 600;
+  color: #18181b;
+}
+
+.partnerMeta {
+  font-size: 13px;
+  color: #71717a;
+}
+
+.badgeActive {
+  display: inline-flex;
+  background: #ecfdf5;
+  color: #10b981;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.badgePending {
+  display: inline-flex;
+  background: #fff7ed;
+  color: #f97316;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.tableList {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  border: 1px solid #0030771F;
+  border-radius: 8px;
+}
+
+.tableHeaderRow {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1.5fr 1fr;
+  padding: 12px 16px;
+  background-color: #f4f7fb;
+  border-bottom: 1px solid #0030771F;
+  font-size: 13px;
+  font-weight: 400;
+  color: #727272;
+}
+
+.tableHeaderCell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 8px;
+  border-right: 1px solid #0030770F;
+}
+.tableHeaderCell:last-child {
+  border-right: none;
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1.5fr 1fr;
+  padding: 16px;
+  border-bottom: 1px solid #0030771F;
+  background: #ffffff;
+  font-size: 14px;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+.tableRow:hover {
+  background-color: #F9F9F9;
+}
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.tableCell {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  border-right: 1px solid #0030770F;
+  color: #71717a;
+}
+.tableCell:last-child {
+  border-right: none;
+}
+
+.statusBlue {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #3b82f6;
+}
+
+.statusGreen {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #10b981;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.amount {
+  font-weight: 600;
+  color: #003077;
+}
+
+.referralLinkContainer {
+  display: flex;
+  align-items: center;
+  background: #f4f7fb;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 4px;
+  width: 320px;
+}
+
+.referralInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #334155;
+  outline: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.copyBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copyBtn:hover:not(:disabled) {
+  color: #0f172a;
+  background: #f8fafc;
+}
+
+.copyBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

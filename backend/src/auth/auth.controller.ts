@@ -3,6 +3,7 @@ import { Throttle } from '@nestjs/throttler';
 import type { Request } from 'express';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
+import { RegisterDto } from './dto/register.dto';
 import { RefreshDto } from './dto/refresh.dto';
 import { LogoutDto } from './dto/logout.dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
@@ -16,6 +17,11 @@ export class AuthController {
   @Throttle({ default: { ttl: 60_000, limit: 10 } })
   async login(@Body() dto: LoginDto, @Req() req: Request, @Ip() ip: string) {
     return this.authService.login(dto, req.headers['user-agent'], ip);
+  }
+
+  @Post('register')
+  async register(@Body() dto: RegisterDto) {
+    return this.authService.register(dto);
   }
 
   @Post('refresh')

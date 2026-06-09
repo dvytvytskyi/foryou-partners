@@ -1,19 +1,25 @@
 .layoutWrapper {
   display: flex;
-  min-height: 100vh;
-  background-color: #ffffff; /* Main clean background */
+  height: 100vh; /* Lock height to viewport */
+  background-color: #ffffff;
   color: var(--foreground);
+  overflow: hidden; /* Prevent body scroll */
 }
 
 .mainContent {
   flex: 1;
   display: flex;
   flex-direction: column;
+  background-color: #ffffff;
   min-width: 0;
+  overflow: hidden; /* Header stays at top */
+  padding-top: 0;
 }
 
 .pageBody {
   flex: 1;
-  padding: 2rem;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Only body scrolls */
+  padding: 0;
 }

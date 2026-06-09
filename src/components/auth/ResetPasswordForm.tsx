@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { api } from '@/lib/api';
 
-export default function ResetPasswordForm() {
+export default function ResetPasswordForm({ dict }: { dict: any }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const token = searchParams.get('token');
@@ -18,8 +18,8 @@ export default function ResetPasswordForm() {
   const [confirmError, setConfirmError] = useState<string | null>(null);
 
   const validatePassword = (val: string) => {
-    if (!val) return 'Password is required';
-    if (val.length < 8) return 'Password must be at least 8 characters';
+    if (!val) return dict.password_required;
+    if (val.length < 8) return dict.password_min;
     return null;
   };
 
@@ -33,7 +33,7 @@ export default function ResetPasswordForm() {
     }
 
     if (password !== confirmPassword) {
-      setConfirmError('Passwords do not match');
+      setConfirmError(dict.password_mismatch);
       return;
     }
     
@@ -44,7 +44,7 @@ export default function ResetPasswordForm() {
       await api.post('/auth/password/reset', { token, password });
       router.push('/login?reset=success');
     } catch (err: any) {
-      setError('Error resetting password. The link may have expired');
+      setError(dict.error_msg);
     } finally {
       setLoading(false);
     }
@@ -67,12 +67,12 @@ export default function ResetPasswordForm() {
       )}
 
       <div className="flex flex-col gap-2">
-        <label style={{ fontSize: '13px', fontWeight: '500', color: 'var(--grey-500)' }}>New password</label>
+        <label style={{ fontSize: '13px', fontWeight: '500', color: 'var(--grey-500)' }}>{dict.password_label}</label>
         <input
           type="password"
           className="input"
           style={{ borderColor: passwordError ? '#dc2626' : undefined }}
-          placeholder="••••••••"
+          placeholder={dict.password_placeholder}
           value={password}
           onChange={(e) => {
             setPassword(e.target.value);
@@ -87,12 +87,12 @@ export default function ResetPasswordForm() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label style={{ fontSize: '13px', fontWeight: '500', color: 'var(--grey-500)' }}>Confirm password</label>
+        <label style={{ fontSize: '13px', fontWeight: '500', color: 'var(--grey-500)' }}>{dict.confirm_password_label}</label>
         <input
           type="password"
           className="input"
           style={{ borderColor: confirmError ? '#dc2626' : undefined }}
-          placeholder="••••••••"
+          placeholder={dict.confirm_password_placeholder}
           value={confirmPassword}
           onChange={(e) => {
             setConfirmPassword(e.target.value);
@@ -111,7 +111,7 @@ export default function ResetPasswordForm() {
         className="button button-primary mt-1" 
         disabled={loading}
       >
-        {loading ? 'Saving...' : 'Set new password'}
+        {loading ? dict.loading_btn : dict.submit_btn}
       </button>
     </form>
   );

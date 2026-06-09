@@ -1,0 +1,191 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.card {
+  background: #fdfdfd;
+  border: 1px solid #0030771F;
+  border-radius: 8px;
+  padding: 1.5rem;
+  font-family: var(--font-inter);
+}
+
+.card:last-child {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  position: relative;
+}
+
+.card:last-child::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, #fdfdfd);
+  pointer-events: none;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.brokerHeader {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.brokerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.brokerName {
+  font-size: 18px;
+  font-weight: 500;
+  color: #18181b;
+}
+
+.brokerRole {
+  font-size: 15px;
+  color: #71717a;
+}
+
+.statusBadge {
+  display: inline-block;
+  background: #eff6ff;
+  color: #3b82f6;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.description {
+  font-size: 15px;
+  color: #71717a;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.contactRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: #52525b;
+}
+
+.contactIcon {
+  color: #a1a1aa;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.actionBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #00307733;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #003077;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.actionBtn:hover {
+  background: #f4f7fb;
+}
+
+/* Client Brief Card */
+.briefTitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: #003077;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+.briefList {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding-right: 4px;
+  padding-bottom: 60px;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.briefList::-webkit-scrollbar {
+  width: 8px;
+}
+
+.briefList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.briefList::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 100px;
+}
+
+.briefList::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+.briefField {
+  padding: 16px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.briefField:first-child {
+  padding-top: 0;
+}
+
+.briefField:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.briefLabel {
+  font-size: 13px;
+  color: #1B4FA6;
+  margin-bottom: 4px;
+}
+
+.briefValue {
+  font-size: 15px;
+  color: #71717a;
+  line-height: 1.4;
+}

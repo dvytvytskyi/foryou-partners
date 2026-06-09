@@ -1,75 +1,187 @@
 .header {
   height: 64px;
   background-color: #ffffff;
-  border-bottom: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 20;
+  border-bottom: 1px solid #e5e7eb;
+  box-sizing: border-box;
 }
 
-.searchArea {
-  flex: 1;
-  max-width: 400px;
-}
-
-.searchInput {
-  width: 100%;
-  background-color: var(--grey-50);
-  border: 1px solid transparent;
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
-  font-size: 13px;
-  transition: all 0.2s;
-}
-
-.searchInput:focus {
-  background-color: #ffffff;
-  border-color: var(--border-color);
-  outline: none;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-}
-
-.actions {
+.leftSection {
   display: flex;
   align-items: center;
-  gap: 1rem;
 }
 
-.iconButton {
-  width: 36px;
-  height: 36px;
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 360px;
+  height: 41px;
+  padding: 10px 12px 10px 12px;
+  background-color: #ffffff;
+  border: 1px solid #dcdce4;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.searchBar:hover {
+  border-color: #003077;
+}
+
+.searchText {
+  color: #003077;
+  font-family: Inter, var(--font-inter), sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0%;
+}
+
+/* Right Actions */
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.languageSwitch {
+  display: flex;
+  align-items: center;
+  font-family: Inder, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+}
+
+.langActive {
+  color: #003077;
+  cursor: pointer;
+}
+
+.langSeparator {
+  color: #a0a0a0;
+  margin: 0 4px;
+}
+
+.langInactive {
+  color: #a0a0a0;
+  cursor: pointer;
+}
+
+.notificationBtn {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
-  color: var(--grey-500);
-  transition: all 0.2s;
   background: none;
   border: none;
   cursor: pointer;
+  padding: 4px;
 }
 
-.iconButton:hover {
-  background-color: var(--grey-50);
-  color: var(--primary-color);
+.notificationIcon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
-.logoutButton {
-  font-size: 12px;
-  font-weight: 600;
-  color: #dc2626;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  transition: all 0.2s;
-  background: none;
-  border: none;
+.notificationDot {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  width: 6px;
+  height: 6px;
+  background-color: #ef4444;
+  border-radius: 50%;
+  border: 1px solid #ffffff;
+}
+
+.profileSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   cursor: pointer;
+  position: relative;
+  padding: 4px;
 }
 
-.logoutButton:hover {
+.avatar {
+  width: 36px;
+  height: 36px;
+  background-color: #003077;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--font-inter);
+}
+
+.profileName {
+  font-family: var(--font-inter);
+  font-size: 14px;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.menuDropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 200px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.menuItem:hover {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+.menuDivider {
+  height: 1px;
+  background-color: #f1f5f9;
+  margin: 4px 0;
+}
+
+.menuItemDanger {
+  color: #ef4444;
+}
+
+.menuItemDanger:hover {
   background-color: #fef2f2;
+  color: #dc2626;
 }

@@ -8,12 +8,14 @@ import { PrismaService } from '../database/prisma.service';
 import { REDIS_CLIENT } from '../redis/redis.constants';
 import { EmailService } from '../common/email/email.service';
 import { LoginDto } from './dto/login.dto';
+import { RegisterDto } from './dto/register.dto';
 import { RefreshDto } from './dto/refresh.dto';
 import { LogoutDto } from './dto/logout.dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
 import { AppException } from '../common/errors/app-exception';
 import { JwtPayload } from './auth.types';
+import { AmoService } from '../amo/amo.service';
 
 const RESET_TOKEN_TTL_SECONDS = 3600; // 1 hour
 
@@ -25,7 +27,46 @@ export class AuthService {
     private readonly configService: ConfigService,
     @Inject(REDIS_CLIENT) private readonly redis: Redis,
     private readonly emailService: EmailService,
+    private readonly amoService: AmoService,
   ) {}
+
+  async register(dto: RegisterDto) {
+    // Ensure email is unique
+    const existing = await this.prisma.user.findUnique({
+      where: { email: dto.email.toLowerCase() },
+    });
+    if (existing) {
+      throw new AppException('VALIDATION_ERROR', 'User already exists', HttpStatus.CONFLICT);
+    }
+
+    const passwordHash = await bcrypt.hash(dto.password, 10);
+    const user = await this.prisma.user.create({
+      data: {
+        email: dto.email.toLowerCase(),
+        passwordHash,
+        role: 'partner_user' as const,
+        isActive: false,
+      },
+    });
+
+    try {
+      await this.amoService.createPartnerRegistrationLead({
+        firstName: dto.firstName,
+        lastName: dto.lastName,
+        phone: dto.phone,
+        email: dto.email,
+        country: dto.country,
+        direction: dto.direction,
+        partnerType: dto.partnerType,
+      });
+    } catch (e) {
+      // Don't fail the registration if AmoCRM integration fails
+      console.error('Failed to create AmoCRM lead on registration', e);
+    }
+
+    // Return minimal user data (front‑end can auto‑login if desired)
+    return { id: user.id, email: user.email, role: user.role };
+  }
 
   async login(dto: LoginDto, userAgent?: string, ip?: string) {
     const user = await this.prisma.user.findUnique({ where: { email: dto.email.toLowerCase() } });

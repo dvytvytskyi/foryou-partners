@@ -1,0 +1,154 @@
+.container {
+  position: relative;
+  display: inline-block;
+}
+
+.notificationBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.notificationBtn:hover {
+  background: #F1F5F9;
+}
+
+.notificationIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: #EF4444;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 2px 5px;
+  line-height: 1;
+  border: 2px solid white;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: -10px;
+  width: 340px;
+  background: white;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 16px;
+  color: #0F172A;
+}
+
+.markAllBtn {
+  background: none;
+  border: none;
+  color: #2563EB;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.markAllBtn:hover {
+  text-decoration: underline;
+}
+
+.list {
+  max-height: 360px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.empty {
+  padding: 32px 16px;
+  text-align: center;
+  color: #64748B;
+  font-size: 14px;
+}
+
+.item {
+  display: flex;
+  padding: 16px;
+  border-bottom: 1px solid #F1F5F9;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+  position: relative;
+  text-align: left;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.item:hover {
+  background: #F8FAFC;
+}
+
+.itemUnread {
+  background: #F0F9FF;
+}
+
+.itemContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.itemTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0F172A;
+}
+
+.itemMessage {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.4;
+}
+
+.itemTime {
+  font-size: 11px;
+  color: #94A3B8;
+  margin-top: 4px;
+}
+
+.unreadDot {
+  width: 8px;
+  height: 8px;
+  background: #3B82F6;
+  border-radius: 50%;
+  margin-top: 4px;
+  flex-shrink: 0;
+  margin-left: 12px;
+}

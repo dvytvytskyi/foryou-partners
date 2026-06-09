@@ -1,0 +1,534 @@
+{
+  "auth": {
+    "login": {
+      "title_1": "Войти в",
+      "title_2": "учетную запись",
+      "email_label": "Email",
+      "email_placeholder": "Введите email",
+      "password_label": "Пароль",
+      "password_placeholder": "Введите пароль",
+      "submit_btn": "Продолжить",
+      "loading_btn": "Вход...",
+      "no_account": "Хотите создать аккаунт?",
+      "register_link": "Регистрация",
+      "errors": {
+        "email_required": "Email обязателен",
+        "email_invalid": "Введите корректный email",
+        "password_required": "Пароль обязателен",
+        "password_min": "Пароль должен содержать минимум 8 символов",
+        "invalid_credentials": "Неверный email или пароль"
+      }
+    },
+    "register": {
+      "title_1": "Создайте",
+      "title_2": "учетную запись",
+      "first_name_placeholder": "Имя",
+      "last_name_placeholder": "Фамилия",
+      "phone_placeholder": "Телефон",
+      "email_placeholder": "Email",
+      "partner_type_label": "Выберите тип партнера:",
+      "partner_type_default": "Выберите тип партнера",
+      "partner_type_freelance": "Фриланс-брокер",
+      "partner_type_agency": "Агентство",
+      "partner_type_bank": "Банк-прайват клиенты",
+      "partner_type_other": "Другое",
+      "direction_label": "Выберите направление:",
+      "direction_default": "Выберите направление",
+      "direction_dubai": "Дубай",
+      "direction_abudhabi": "Абу-Даби",
+      "direction_rak": "РАК",
+      "direction_oman": "Оман",
+      "password_placeholder": "Пароль",
+      "confirm_password_placeholder": "Подтвердите пароль",
+      "consent_label": "Согласен на обработку персональных данных",
+      "submit_btn": "Продолжить",
+      "loading_btn": "Загрузка...",
+      "has_account": "Уже есть аккаунт?",
+      "login_link": "Войти",
+      "errors": {
+        "password_mismatch": "Пароли не совпадают",
+        "consent_required": "Необходима согласия на обработку персональных данных",
+        "partner_type_required": "Выберите тип партнера",
+        "direction_required": "Выберите направление",
+        "register_failed": "Ошибка регистрации"
+      }
+    },
+    "forgot_password": {
+      "title_1": "Восстановить",
+      "title_2": "пароль",
+      "subtitle": "Введите ваш email, и мы отправим вам инструкции",
+      "email_label": "Email адрес",
+      "email_placeholder": "напр. john@company.com",
+      "submit_btn": "Отправить ссылку",
+      "loading_btn": "Отправка...",
+      "back_to_login": "Вернуться ко входу",
+      "success_msg": "Инструкции отправлены на ваш email",
+      "error_msg": "Ошибка обработки запроса. Пожалуйста, попробуйте позже",
+      "email_required": "Email обязателен",
+      "email_invalid": "Введите корректный email"
+    },
+    "reset_password": {
+      "title_1": "Сбросить",
+      "title_2": "пароль",
+      "subtitle": "Пожалуйста, введите ваш новый пароль ниже",
+      "password_label": "Новый пароль",
+      "password_placeholder": "Введите новый пароль",
+      "confirm_password_label": "Подтвердите пароль",
+      "confirm_password_placeholder": "Подтвердите новый пароль",
+      "submit_btn": "Сохранить",
+      "loading_btn": "Сохранение...",
+      "success_msg": "Пароль успешно обновлен",
+      "error_msg": "Не удалось обновить пароль",
+      "password_mismatch": "Пароли не совпадают",
+      "password_min": "Пароль должен содержать минимум 8 символов",
+      "password_required": "Пароль обязателен"
+    },
+    "pending": {
+      "title_1": "Ожидаем",
+      "title_2": "подтверждения",
+      "message_1": "Ваша заявка на регистрацию успешно отправлена.",
+      "message_2": "Пожалуйста, подождите, пока менеджер проверит ваши данные и активирует учетную запись.",
+      "back_to_login": "Вернуться ко входу"
+    }
+  },
+  "dashboard": {
+    "loading": "Загрузка...",
+    "stats": {
+      "periods": {
+        "7d": "7 дней",
+        "30d": "30 дней",
+        "90d": "90 дней",
+        "1y": "Год"
+      },
+      "leads_transferred": "Передано лидов",
+      "new": "Новые",
+      "in_progress": "В работе",
+      "active": "Активные",
+      "closed_successfully": "Закрыто успешно",
+      "conversion": "Конверсия",
+      "total_earned": "Всего заработано (AED)",
+      "commission": "Комиссия"
+    },
+    "recent_events": {
+      "title": "Последние события",
+      "search_placeholder": "Поиск",
+      "filter": "Фильтр",
+      "date": "Дата",
+      "user": "Пользователь",
+      "type": "Тип",
+      "event": "Событие",
+      "client": "Клиент",
+      "action": "Действие",
+      "empty": "Событий пока нет.",
+      "open": "Открыть"
+    },
+    "referrals": {
+      "title": "Реферальная система",
+      "more": "Подробнее",
+      "total_earned": "Всего заработано на рефералах (AED)",
+      "currency": "AED",
+      "active_partners": "Активных приглашённых",
+      "closed_deals": "Закрыто сделок"
+    },
+    "knowledge_base": {
+      "title": "База знаний",
+      "view_all": "Смотреть все"
+    }
+  },
+  "referrals_page": {
+    "loading": "Загрузка...",
+    "title": "Реферальная программа",
+    "subtitle_1": "Приглашайте других партнёров и получайте 1% с каждой их успешной сделки.",
+    "subtitle_2": "Бессрочно. Из доли FOR YOU REAL ESTATE, не из вашей.",
+    "link_generating": "Ссылка генерируется...",
+    "copy_title": "Скопировать ссылку",
+    "copy_prompt": "Ваша реферальная ссылка (скопируйте текст):",
+    "copy_error": "Реферальная ссылка еще не загружена. Пожалуйста, подождите.",
+    "stats": {
+      "earned": "Заработано на рефералах (AED)",
+      "currency": "AED",
+      "active_partners": "Активных приглашённых",
+      "closed_deals": "Закрытых сделок"
+    },
+    "partners": {
+      "title": "Приглашённые партнёры",
+      "from": "с",
+      "closed": "закрытых",
+      "empty": "У вас пока нет приглашённых партнёров."
+    },
+    "deals": {
+      "title": "Сделки приглашённых рефералов",
+      "partner": "Партнер",
+      "status": "Статус",
+      "date": "Дата",
+      "your_percent": "Ваш 1%",
+      "empty": "У ваших рефералов пока нет сделок."
+    }
+  },
+  "leads_page": {
+    "my_leads": "Мои лиды",
+    "updated": "Обновлено",
+    "just_now": "только что",
+    "min_ago": "1 мин назад",
+    "mins_ago": "мин назад",
+    "no_leads": "Лидов не найдено.",
+    "columns": {
+      "name": "Имя лида",
+      "status": "Статус",
+      "budget": "Бюджет",
+      "phone": "Телефон",
+      "tasks": "Задачи",
+      "broker": "Брокер",
+      "source": "Источник",
+      "created": "Создан",
+      "edited": "Изменен"
+    }
+  },
+  "deals_page": {
+    "add_lead": "Добавить лид",
+    "search": "Поиск по сделкам...",
+    "search_client": "Поиск клиента...",
+    "filter": "Фильтр",
+    "empty": "Сделок не найдено.",
+    "unassigned": "Не назначено",
+    "unknown": "Неизвестно",
+    "loading_table": "Загрузка...",
+    "error_table": "Ошибка загрузки сделок",
+    "empty_table": "Сделки не найдены",
+    "loading_board": "Загрузка доски...",
+    "error_board": "Ошибка загрузки доски",
+    "table": {
+      "client": "Клиент",
+      "broker": "Брокер",
+      "city_budget": "Город / Бюджет",
+      "status": "Статус",
+      "updated": "Дата обновления"
+    },
+    "pagination": {
+      "prev": "Предыдущая",
+      "next": "Следующая",
+      "page": "Страница",
+      "of": "из"
+    }
+  },
+  "payouts_page": {
+    "total_earned": "Всего заработано (AED)",
+    "available": "Доступно к выплате (AED)",
+    "request_btn": "Запросить выплату",
+    "total_paid": "Всего выплачено (AED)",
+    "history": "История выплат",
+    "search": "Поиск",
+    "filter": "Фильтр",
+    "table": {
+      "date": "Дата",
+      "status": "Статус",
+      "user": "Исполнитель",
+      "amount": "Сумма",
+      "type": "Тип",
+      "open": "Открыть"
+    },
+    "footer": "Минимальной суммы вывода нет. Способ выплаты — банковский перевод, наличные или USDT — обсуждается с вашим менеджером индивидуально. Срок обработки до 7 рабочих дней."
+  },
+  "transfer_page": {
+    "title": "Передать клиента"
+  },
+  "profile_page": {
+    "admin": "Администратор",
+    "role": "Партнерское агентство",
+    "since": "В системе с",
+    "email_verified": "Email подтвержден",
+    "yes": "Да",
+    "logout": "Выйти из аккаунта",
+    "notifications": "Email Уведомления",
+    "security": "Безопасность и Пароль",
+    "settings": {
+      "status_change": "Изменение статуса сделки",
+      "status_change_desc": "Получайте уведомления, когда сделка переходит на новый этап.",
+      "broker_change": "Назначение брокера",
+      "broker_change_desc": "Получайте оповещения, когда за вашей сделкой закрепляется новый брокер.",
+      "weekly_report": "Еженедельный отчет",
+      "weekly_report_desc": "Еженедельная сводка по вашим сделкам и статистике конверсии.",
+      "current_password": "Текущий пароль",
+      "new_password": "Новый пароль",
+      "confirm_password": "Подтвердите пароль",
+      "update_password": "Обновить пароль",
+      "updating": "Обновление...",
+      "password_mismatch": "Новые пароли не совпадают",
+      "password_length": "Пароль должен содержать минимум 6 символов",
+      "password_success": "Пароль успешно обновлен",
+      "password_error": "Не удалось обновить пароль"
+    }
+  },
+  "settings_page": {
+    "title": "Настройки",
+    "tabs": {
+      "partner": "Партнер",
+      "admin": "Админ"
+    },
+    "table": {
+      "reg_date": "Дата регистрации",
+      "name": "Полное имя",
+      "email": "Email",
+      "phone": "Номер телефона",
+      "status": "Статус",
+      "referrals": "Рефералов",
+      "last_login": "Последний вход"
+    },
+    "status": {
+      "new": "Новая заявка",
+      "active": "Рабочий",
+      "blocked": "Заблокирован"
+    },
+    "loading": "Загрузка...",
+    "empty": "Нет данных для отображения",
+    "page": "Страница",
+    "of": "из",
+    "total": "Всего",
+    "prev": "Назад",
+    "next": "Вперед"
+  },
+  "knowledge_page": {
+    "title": "База знаний",
+    "articles": [
+      {
+        "badge": "Презентация",
+        "title": "Коэксклюзивные проекты",
+        "desc": "Полную презентацию эксклюзивных и коэксклюзивных проектов можно скачать по ссылке."
+      },
+      {
+        "badge": "Презентация",
+        "title": "ВНЖ и Гражданство: Дубай, Абу-Даби, Оман, Катар, Майами и Турция",
+        "desc": "Новая условия в декабре 2026"
+      },
+      {
+        "badge": "Event",
+        "title": "Встреча / обучение современным тенденциям рынка ОАЭ",
+        "desc": "Оставьте заявку"
+      },
+      {
+        "badge": "Статья",
+        "title": "ТОП-5",
+        "desc": "Проектов Дубая в мае"
+      }
+    ]
+  },
+  "help_page": {
+    "categories": [
+      {
+        "title": "С чего начать",
+        "desc": "Узнайте основы работы с партнерским порталом For You и как им пользоваться."
+      },
+      {
+        "title": "Управление лидами",
+        "desc": "Поймите, как распределяются лиды и как отслеживать их статус."
+      },
+      {
+        "title": "Аккаунт и безопасность",
+        "desc": "Управляйте профилем, настройками уведомлений и паролем."
+      }
+    ],
+    "direct_support": "Прямая поддержка",
+    "hours": "Пн-Пт, 9:00 - 18:00 (GST)",
+    "email_support": "Написать в поддержку",
+    "faq_title": "Частые вопросы",
+    "faqs": [
+      {
+        "q": "Как лиды попадают в мой аккаунт?",
+        "a": "Лиды автоматически распределяются на основе тегов CRM, назначенных вашему профилю партнера, и источников, к которым у вас есть доступ."
+      },
+      {
+        "q": "Могу ли я сменить закрепленного брокера?",
+        "a": "Назначения брокеров управляются в amoCRM. Если вам нужно запросить замену, пожалуйста, свяжитесь с администратором через чат поддержки."
+      },
+      {
+        "q": "Как часто синхронизируются данные?",
+        "a": "Данные синхронизируются в реальном времени через вебхуки. Любые изменения в amoCRM появляются в вашем кабинете в течение нескольких секунд."
+      }
+    ],
+    "footer": "Версия 1.2.4 (Production) •",
+    "terms": "Условия использования"
+  },
+  "support_page": {
+    "loading": "Загрузка...",
+    "empty_admin": "Пока нет обращений",
+    "empty_user": "У вас пока нет обращений",
+    "empty_desc": "Если у вас возникли вопросы или вам нужна помощь, создайте новое обращение в службу поддержки.",
+    "create_btn": "Задать вопрос",
+    "search": "Поиск обращений...",
+    "table": {
+      "subject": "Тема обращения",
+      "status": "Статус",
+      "updated_at": "Дата обновления"
+    },
+    "status": {
+      "open": "Открыт",
+      "in_progress": "В работе",
+      "resolved": "Решен",
+      "closed": "Закрыт"
+    },
+    "modal": {
+      "title": "Новое обращение",
+      "subject_label": "Тема",
+      "subject_placeholder": "Например: Проблема с выплатой",
+      "message_label": "Сообщение",
+      "message_placeholder": "Опишите ваш вопрос или проблему подробно...",
+      "cancel": "Отмена",
+      "submit": "Отправить",
+      "submitting": "Отправка..."
+    }
+  },
+  "feedback_page": {
+    "title": "Share your thoughts",
+    "categories": [
+      {
+        "id": "bug",
+        "label": "Bug Report",
+        "desc": "Technical issues or broken features"
+      },
+      {
+        "id": "feature",
+        "label": "New Feature",
+        "desc": "Suggestions for new functionality"
+      },
+      {
+        "id": "other",
+        "label": "General",
+        "desc": "General feedback or questions"
+      }
+    ],
+    "form": {
+      "subject": "Subject",
+      "subject_placeholder": "Summarize your feedback...",
+      "desc": "Description",
+      "desc_placeholder": "Tell us more details...",
+      "attachments": "Attachments (optional)",
+      "upload_text": "Click to upload or drag and drop",
+      "upload_hint": "PNG, JPG or PDF up to 10MB",
+      "submit": "Submit Feedback",
+      "success": "Sent Successfully"
+    },
+    "history": {
+      "title": "Your Previous Feedback"
+    },
+    "roadmap": {
+      "title": "Product Roadmap",
+      "desc": "See what we're working on based on your feedback.",
+      "upvote": "Upvote Features",
+      "upvote_desc": "Join our community calls every Friday to discuss new features.",
+      "urgent_title": "Need urgent help?",
+      "urgent_desc": "For critical system issues, please use the 24/7 Support Chat in the help center."
+    }
+  },
+  "admin_partners_page": {
+    "access_denied": "Access Denied",
+    "add_btn": "Add New Partner",
+    "stats": {
+      "total": "Total Partners",
+      "active": "Active Now",
+      "leads": "Total Leads",
+      "sources": "AmoCRM Sources"
+    },
+    "table": {
+      "title": "Managed Partners",
+      "search": "Search partners...",
+      "name": "Partner Name",
+      "status": "Status",
+      "leads": "Leads",
+      "sources": "AmoCRM Sources",
+      "loading": "Loading partners...",
+      "empty": "No partners found."
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "no_email": "No email",
+      "no_sources": "No sources linked"
+    },
+    "delete_confirm": "Вы уверены, что хотите удалить партнера {name} и все его данные? Это действие нельзя отменить."
+  },
+  "layout": {
+    "sidebar": {
+      "transfer": "Передать клиента",
+      "dashboard": "Дашборд",
+      "deals": "Сделки",
+      "payouts": "Выплаты",
+      "referrals": "Рефералы",
+      "knowledge": "База знаний",
+      "support": "Задать вопрос",
+      "tickets": "Тикеты",
+      "settings": "Настройки"
+    },
+    "header": {
+      "search": "Поиск по...",
+      "profile": "Профиль",
+      "logout": "Выйти",
+      "notifications": "Уведомления",
+      "mark_all_read": "Отметить все как прочитанные",
+      "loading": "Загрузка...",
+      "no_notifications": "Нет новых уведомлений"
+    },
+    "page_header": {
+      "titles": {
+        "dashboard": "Дашборд",
+        "transfer": "Передать клиента",
+        "deals": "Сделки",
+        "payouts": "Выплаты",
+        "referrals": "Рефералы",
+        "support": "Служба поддержки",
+        "knowledge": "База знаний",
+        "settings": "Настройки"
+      },
+      "transfer_desc": "Заполните бриф клиента — брокер свяжется с ним в течение рабочего дня.",
+      "request_payout": "Запросить выплату",
+      "ask_question": "Задать вопрос"
+    }
+  },
+  "deal_detail": {
+    "back": "Вернуться к сделкам",
+    "status": "Статус",
+    "unknown": "Неизвестно",
+    "loading": "Загрузка деталей...",
+    "not_found": "Сделка не найдена",
+    "ask_question": "Задать вопрос",
+    "question_subject": "Вопрос по сделке:",
+    "history": {
+      "created": "Создано",
+      "source": "Источник",
+      "not_specified": "Не указано",
+      "budget": "Бюджет",
+      "finances_locked": "Финансы появятся<br/>после закрытия",
+      "loading_history": "Загрузка истории...",
+      "deal_created": "Сделка создана и передана брокеру",
+      "system": "Система",
+      "status_change": "Изменение статуса:",
+      "type_message": "Написать сообщение..."
+    },
+    "broker": {
+      "not_assigned": "Не назначено",
+      "broker": "Брокер",
+      "assigned": "Назначен",
+      "broker_desc": "Брокер ведет сделку через AmoCRM. Все его действия и комментарии транслируются в ваш кабинет.",
+      "call": "Позвонить",
+      "client_data": "Данные клиента",
+      "client_name": "Имя клиента",
+      "client_phone": "Телефон клиента",
+      "city": "Город",
+      "budget": "Бюджет",
+      "comment": "Комментарий",
+      "no_comments": "Нет комментариев"
+    }
+  },
+  "notification_dropdown": {
+    "notifications": "Уведомления",
+    "mark_all_read": "Пометить всё как прочитанное",
+    "loading": "Загрузка...",
+    "no_notifications": "Нет новых уведомлений",
+    "types": {
+      "NEW_PARTNER": "Новый партнер",
+      "SYSTEM_ALERT": "Системное оповещение",
+      "SUPPORT_TICKET": "Ответ в тикете",
+      "DEFAULT_TITLE": "Уведомление",
+      "PAYOUT_STATUS_CHANGED": "Статус выплаты изменен"
+    }
+  }
+}

@@ -1,0 +1,146 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: var(--font-inter);
+}
+
+.periodSelector {
+  display: flex;
+  background-color: #ffffff;
+  border: 1px solid #00307733;
+  border-radius: 4px;
+  width: 267px;
+  height: 44px;
+  padding: 4px;
+  gap: 4px;
+  box-sizing: border-box;
+}
+
+.periodBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-inter);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #6380AC;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.periodBtnActive {
+  background-color: #F2F2F2;
+  color: #003077;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #00307733;
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.iconWrapper {
+  color: #003077;
+}
+
+.arrowBtn {
+  background: transparent;
+  border: none;
+  color: #003077;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardValue {
+  font-family: var(--font-inter);
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  color: #003077;
+  margin-bottom: 4px;
+}
+
+.cardLabel {
+  font-size: 14px;
+  color: #6380AC;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.badgeGreen {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #ecfdf5;
+  color: var(--Color-Tokens-Interaction-Green-Base, #589E67);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.badgeBlue {
+  display: inline-flex;
+  align-items: center;
+  background-color: #e0e7ff;
+  color: #6380AC;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+/* Card 4 Primary Style */
+.cardPrimary {
+  background: linear-gradient(88.02deg, #003077 2.89%, #0059DD 97.11%);
+  border: none;
+  color: #ffffff;
+}
+
+.cardPrimary .iconWrapper,
+.cardPrimary .arrowBtn,
+.cardPrimary .cardValue {
+  color: #ffffff;
+}
+
+.cardPrimary .cardLabel {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.primarySubtext {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}

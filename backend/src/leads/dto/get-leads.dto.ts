@@ -51,4 +51,8 @@ export class GetLeadsDto {
   @IsOptional()
   @IsString()
   partner_id?: string;
+
+  @IsOptional()
+  @IsString()
+  pipeline_id?: string;
 }
