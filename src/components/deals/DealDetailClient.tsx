@@ -81,7 +81,7 @@ export function DealDetailClient({ id, locale, dict }: { id: string; locale: str
     }
   };
 
-  const diffDays = lead.createdAtSource ? Math.round((Date.now() - new Date(lead.createdAtSource).getTime()) / (1000 * 60 * 60 * 24)) : 0;
+  const diffDays = lead.created_at ? Math.round((Date.now() - new Date(lead.created_at).getTime()) / (1000 * 60 * 60 * 24)) : 0;
   const timeStr = new Intl.RelativeTimeFormat(locale === 'ru' ? 'ru-RU' : 'en-US', { numeric: 'always' }).format(-diffDays, 'day');
   const passedText = locale === 'ru' ? `Передан ${timeStr.replace('назад', '').trim()} назад` : `Passed ${timeStr}`;
 
@@ -144,7 +144,7 @@ export function DealDetailClient({ id, locale, dict }: { id: string; locale: str
 
           <div className={styles.metaRow}>
             <span style={{ fontWeight: 500 }}>{passedText}</span>
-            <span style={{ color: '#71717a' }}> · ID-{lead.externalLeadId || lead.id}</span>
+            <span style={{ color: '#71717a' }}> · ID-{lead.id}</span>
           </div>
 
           <div className={styles.infoCardsGrid}>
