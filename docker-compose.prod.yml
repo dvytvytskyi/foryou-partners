@@ -38,6 +38,7 @@ services:
         condition: service_healthy
     env_file: .env
     environment:
+      PORT: 3001
       DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-foryou_partners}?schema=public
       REDIS_HOST: redis
       REDIS_PORT: 6379
