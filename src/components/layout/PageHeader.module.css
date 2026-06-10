@@ -7,6 +7,11 @@
   border-bottom: 1px solid #e5e7eb;
 }
 
+.titleContainer {
+  min-width: 0; /* Allow text-overflow to work */
+  flex: 1;
+}
+
 .title {
   font-size: 32px;
   font-weight: 600;
@@ -61,4 +66,39 @@
 
 .secondaryButton:hover {
   background-color: #f8fafc;
+}
+
+@media (max-width: 768px) {
+  .pageHeader {
+    padding: 1rem 1rem;
+    gap: 8px;
+    flex-wrap: nowrap; /* Keep them on the same line */
+  }
+
+  .title {
+    font-size: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .actions {
+    flex-shrink: 0;
+  }
+
+  .secondaryButton {
+    display: none;
+  }
+
+  .primaryButton {
+    padding: 0 10px;
+    height: 36px;
+    font-size: 13px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .hideOnMobile {
+    display: none !important;
+  }
 }

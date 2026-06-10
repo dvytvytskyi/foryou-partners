@@ -14,27 +14,38 @@
   gap: 8px;
 }
 
-.headerTop {
+.referralHeroCard {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #e5e7eb;
-  padding: 0 2rem 24px 2rem;
-  margin: 0 -2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 0.5rem;
 }
 
-.title {
-  font-size: 32px;
+.referralHeroContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 60%;
+  text-align: left;
+}
+
+.heroTitle {
+  font-size: 18px;
   font-weight: 600;
-  color: #003077;
   margin: 0;
+  color: #18181b;
+  line-height: 1.4;
 }
 
-.subtitle {
+.heroSubtitle {
   font-size: 14px;
   color: #71717a;
-  line-height: 1.5;
   margin: 0;
+  line-height: 1.5;
 }
 
 .btnPrimary {
@@ -334,4 +345,89 @@
 .copyBtn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .pageContainer {
+    padding: 1rem;
+    gap: 16px;
+  }
+  
+  .referralHeroCard {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .referralHeroContent {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .heroTitle {
+    font-size: 16px;
+  }
+  
+  .referralLinkContainer {
+    width: 100%;
+  }
+  
+  .cardsGrid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "earned earned"
+      "partners deals";
+  }
+  
+  .cardPrimary {
+    grid-area: earned;
+  }
+  
+  .card:nth-child(2) {
+    grid-area: partners;
+  }
+  
+  .card:nth-child(3) {
+    grid-area: deals;
+  }
+  
+  .mainGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .boxSpan2 {
+    grid-column: span 1;
+  }
+  
+  .tableHeaderRow {
+    display: none;
+  }
+  
+  .tableList {
+    border: none;
+    overflow: visible;
+    gap: 12px;
+  }
+  
+  .tableRow {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    border: 1px solid #0030771F;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .tableCell {
+    padding: 0;
+    border: none !important;
+  }
+  
+  .tableCell:nth-child(1) { font-weight: 500; color: #18181b; }
+  .tableCell:nth-child(2) { align-self: flex-start; }
+  .tableCell:nth-child(3) { font-size: 13px; color: #71717a; }
+  .tableCell:nth-child(4) { align-self: flex-start; font-size: 16px; margin-top: 4px; }
 }

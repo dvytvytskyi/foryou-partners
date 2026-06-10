@@ -415,3 +415,51 @@
 .badgeGreen .badgeDot {
   background: #10b981;
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    gap: 16px;
+  }
+  
+  .controls {
+    width: 100%;
+  }
+
+  .searchBox {
+    width: 100%;
+  }
+  
+  .searchBox input {
+    width: 100%;
+  }
+  
+  .headerRow {
+    display: none;
+  }
+  
+  .list {
+    border: none;
+    overflow: visible;
+    gap: 12px;
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid #0030771F;
+    border-radius: 8px;
+    margin-bottom: 0;
+  }
+  
+  .cell {
+    padding: 0;
+    border: none !important;
+  }
+  
+  .cell:nth-child(1) { align-self: flex-start; }
+  .cell:nth-child(2) { align-self: flex-start; }
+  .cell:nth-child(3) { font-size: 13px; color: #71717a; align-self: flex-start; }
+}

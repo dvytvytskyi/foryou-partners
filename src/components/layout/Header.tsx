@@ -25,7 +25,22 @@ const ChevronDownIcon = () => (
 
 import { usePathname } from 'next/navigation';
 
-export function Header({ dict }: { dict: any }) {
+const HamburgerIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#003077" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="3" y1="12" x2="21" y2="12"></line>
+    <line x1="3" y1="6" x2="21" y2="6"></line>
+    <line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+);
+
+const CloseIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#003077" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18"></line>
+    <line x1="6" y1="6" x2="18" y2="18"></line>
+  </svg>
+);
+
+export function Header({ dict, onMenuClick, isSidebarOpen }: { dict: any; onMenuClick?: () => void; isSidebarOpen?: boolean }) {
   const router = useRouter();
   const pathname = usePathname();
   const currentLocale = pathname.split('/')[1] === 'en' ? 'en' : 'ru';
@@ -60,7 +75,17 @@ export function Header({ dict }: { dict: any }) {
     <header className={styles.header}>
       <SpotlightSearch isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
       
-      {/* Left: Search Bar */}
+      {/* Mobile: Hamburger/Close Menu */}
+      <button className={styles.hamburgerBtn} onClick={onMenuClick}>
+        {isSidebarOpen ? <CloseIcon /> : <HamburgerIcon />}
+      </button>
+
+      {/* Mobile: Logo */}
+      <div className={styles.mobileLogoContainer}>
+        <img src="/new-side.png" alt="For You" className={styles.mobileLogo} />
+      </div>
+
+      {/* Left: Search Bar (Desktop) */}
       <div className={styles.leftSection}>
         <div className={styles.searchBar} onClick={() => setIsSearchOpen(true)}>
           <SearchIcon />
@@ -86,14 +111,15 @@ export function Header({ dict }: { dict: any }) {
           </span>
         </div>
 
-        <NotificationDropdown dict={dict} currentLocale={currentLocale} />
+        <div className={styles.notificationWrapper}>
+          <NotificationDropdown dict={dict} currentLocale={currentLocale} />
+        </div>
 
         <div className={styles.profileSection} onClick={() => setMenuOpen(!menuOpen)}>
           <div className={styles.avatar}>
             {user?.email ? user.email.charAt(0).toUpperCase() : 'И'}
           </div>
           <span className={styles.profileName}>{user?.email ? user.email.split('@')[0] : 'Ирина К.'}</span>
-          <ChevronDownIcon />
 
           {menuOpen && (
             <div className={styles.menuDropdown}>

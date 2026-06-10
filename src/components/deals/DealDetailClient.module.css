@@ -1,0 +1,197 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem 32px 2rem;
+  background: linear-gradient(0deg, #f8fafc 0px, #ffffff 16px);
+  border-bottom: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.headerContent {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #003077;
+  margin: 0;
+  line-height: 1.1;
+  font-family: var(--font-inter);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.btnAsk {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f8fafc;
+  color: #003077;
+  border: 1px solid #e2e8f0;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: var(--font-inter);
+  cursor: pointer;
+}
+
+.btnBrief {
+  display: none; /* Only show on mobile */
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  color: #003077;
+  border: 1px solid #cbd5e1;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: var(--font-inter);
+  cursor: pointer;
+}
+
+.metaRow {
+  font-size: 14px;
+  color: #18181b;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.infoCardsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.infoCard {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: #ffffff;
+}
+
+.infoCardLabel {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.infoCardValue {
+  font-size: 18px;
+  color: #003077;
+  font-weight: 500;
+}
+
+.btnFinance {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  background: linear-gradient(90deg, #1B4FA6 0%, #003077 100%);
+  color: #ffffff;
+  border: none;
+  padding: 20px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 15px;
+  margin-top: 0;
+  cursor: pointer;
+}
+
+.actionsDesktopOnly {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  flex: 1;
+  min-height: 0;
+}
+
+.sidebarWrapper {
+  overflow-y: auto;
+  padding-right: 4px;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 16px;
+  }
+
+  .headerContent {
+    gap: 12px;
+    width: 100%;
+  }
+
+  .titleRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .actionsDesktopOnly {
+    display: none;
+  }
+
+  .btnBrief {
+    display: flex;
+    flex: none;
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 14px;
+    justify-content: center;
+  }
+
+  .contentGrid {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .sidebarWrapper {
+    display: none; /* Hide sidebar on mobile, show in modal instead */
+  }
+}

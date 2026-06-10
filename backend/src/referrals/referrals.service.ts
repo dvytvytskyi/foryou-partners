@@ -25,7 +25,7 @@ export class ReferralsService {
     });
 
     // Get all referral commissions
-    const commissionsWhere = user.role === 'admin' ? { type: 'REFERRAL' } : { partnerId: partnerId, type: 'REFERRAL' };
+    const commissionsWhere: any = user.role === 'admin' ? { type: 'REFERRAL' } : { partnerId: partnerId, type: 'REFERRAL' };
     const referralCommissions = await this.prisma.commission.findMany({
       where: commissionsWhere,
       include: {
@@ -48,7 +48,7 @@ export class ReferralsService {
 
     // Mock recent deals for now since we don't have direct linkage between Commission and who generated it yet
     const recentDeals = referralCommissions.map(c => ({
-      partner: 'Партнер', // In a full implementation, add `generatedById` to Commission
+      partner: c.description ? c.description.replace('Referral bonus from ', '') : 'Партнер',
       status: c.status === 'PAID' ? 'Закрыта' : 'Переговоры',
       date: c.createdAt.toISOString(),
       amount: `+ ${Number(c.amount)} ${c.currency}`,

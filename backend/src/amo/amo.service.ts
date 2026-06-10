@@ -1389,13 +1389,14 @@ export class AmoService {
     if (!accessToken) throw new Error('No amoCRM access token available.');
 
     const payload = {
+      entity_id: leadId,
       note_type: 'common',
       params: {
         text: `[От партнера ${authorName}]:\n${text}`
       }
     };
 
-    const url = `https://${domain}/api/v4/leads/${leadId}/notes`;
+    const url = `https://${domain}/api/v4/leads/notes`;
     const response = await fetch(url, {
       method: 'POST',
       headers: {

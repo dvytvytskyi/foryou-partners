@@ -144,3 +144,27 @@
   color: rgba(255, 255, 255, 0.8);
   font-weight: 500;
 }
+
+@media (max-width: 768px) {
+  .cardsGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .cardValue {
+    font-size: 32px;
+  }
+
+  .cardLabel {
+    font-size: 12px;
+    margin-bottom: 1rem;
+  }
+
+  .periodSelector {
+    width: 100%;
+  }
+}

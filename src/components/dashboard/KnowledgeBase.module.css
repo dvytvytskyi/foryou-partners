@@ -126,3 +126,27 @@
   font-size: 12px;
   color: #71717a;
 }
+
+@media (max-width: 768px) {
+  .cardsGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .title {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .container {
+    gap: 16px;
+  }
+
+  .cardContent {
+    padding: 1rem;
+  }
+
+  .cardFooter {
+    padding: 1rem;
+  }
+}

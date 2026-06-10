@@ -44,11 +44,9 @@ export function PageHeader({ dict }: { dict: any }) {
     }
   }
 
-  if (pathname.includes('/referrals') || pathname.includes('/knowledge')) {
-    return null;
-  }
-
   const isTransferPage = pathname.includes('/transfer');
+  const isReferralsPage = pathname.includes('/referrals');
+  const isKnowledgePage = pathname.includes('/knowledge');
   const isPayoutsPage = pathname.includes('/payouts') || pathname.includes('/payments');
   const isAdmin = user?.role === 'admin';
 
@@ -59,7 +57,7 @@ export function PageHeader({ dict }: { dict: any }) {
 
   return (
     <div className={styles.pageHeader}>
-      <div>
+      <div className={styles.titleContainer}>
         <h1 className={styles.title}>{formattedPage}</h1>
         {isTransferPage && (
           <p style={{ color: '#71717a', fontSize: '14px', margin: '4px 0 0 0', fontFamily: 'var(--font-inter)' }}>
@@ -68,9 +66,9 @@ export function PageHeader({ dict }: { dict: any }) {
         )}
       </div>
       <div className={styles.actions}>
-        {!isTransferPage && !isAdmin && (
+        {!isTransferPage && !isReferralsPage && !isKnowledgePage && (
           <button 
-            className={styles.primaryButton}
+            className={`${styles.primaryButton} ${!isPayoutsPage ? styles.hideOnMobile : ''}`}
             onClick={() => {
               if (!isPayoutsPage) {
                 router.push(`/${currentLocale}/transfer`);

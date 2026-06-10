@@ -23,3 +23,12 @@
   overflow-y: auto; /* Only body scrolls */
   padding: 0;
 }
+
+@media (max-width: 768px) {
+  .mainContent {
+    overflow-y: auto;
+  }
+  .pageBody {
+    overflow-y: visible;
+  }
+}

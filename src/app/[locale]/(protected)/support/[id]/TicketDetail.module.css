@@ -212,3 +212,57 @@
 .closeBtn:hover {
   background-color: #dc2626;
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 0 0 0;
+    height: calc(100vh - 70px);
+  }
+  
+  .header {
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .chatContainer {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+  }
+  
+  .messagesList {
+    padding: 1rem 1rem 0 1rem;
+  }
+  
+  .messageWrapper {
+    max-width: 90%;
+  }
+  
+  .replyContainer {
+    padding: 0.75rem 1rem;
+  }
+  
+  .messageBubble {
+    font-size: 15px;
+  }
+  
+  .replyInput {
+    font-size: 16px !important;
+    padding-right: 56px;
+    min-height: 60px;
+    height: auto;
+    overflow: auto;
+  }
+
+  .sendBtn {
+    padding: 10px;
+    border-radius: 50%;
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .sendBtn span {
+    display: none;
+  }
+}

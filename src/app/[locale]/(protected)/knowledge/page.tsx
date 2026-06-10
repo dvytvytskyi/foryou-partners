@@ -49,9 +49,6 @@ export default async function KnowledgePage({ params }: { params: Promise<{ loca
 
   return (
     <div className={styles.pageContainer}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>{dict.knowledge_page.title}</h1>
-      </div>
 
       <div className={styles.grid}>
         {articles.map((item, idx) => (

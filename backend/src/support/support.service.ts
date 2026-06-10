@@ -134,7 +134,7 @@ export class SupportService {
     // If admin replies, we could leave it as is or change it
     // For now, if a partner replies and it was RESOLVED/CLOSED, reopen it.
     let updateStatus = {};
-    if (partnerId && (ticket.status === 'RESOLVED' || ticket.status === 'CLOSED')) {
+    if (partnerId && ticket.status === 'RESOLVED') {
       updateStatus = { status: 'OPEN' };
     }
 

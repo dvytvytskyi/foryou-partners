@@ -112,17 +112,17 @@ export function UsersTable({ dict }: { dict: any }) {
                   onClick={() => setSelectedUser(user)}
                   className={`${styles.clickableRow} ${!user.isActive && !user.lastLogin ? styles.newRow : ''}`}
                 >
-                  <td>{formatDate(user.createdAt)}</td>
-                  <td>{user.name || '—'}</td>
-                  <td>{user.email}</td>
-                  <td>{user.phone || '—'}</td>
-                  <td>
+                  <td data-label={dict.table.reg_date}>{formatDate(user.createdAt)}</td>
+                  <td data-label={dict.table.name} className={styles.primaryCell}>{user.name || '—'}</td>
+                  <td data-label={dict.table.email}>{user.email}</td>
+                  <td data-label={dict.table.phone}>{user.phone || '—'}</td>
+                  <td data-label={dict.table.status}>
                     <span className={`${styles.statusBadge} ${!user.isActive && !user.lastLogin ? styles.statusBlocked : user.isActive ? styles.statusActive : styles.statusBlocked}`}>
                       {!user.isActive && !user.lastLogin ? dict.status.new : user.isActive ? dict.status.active : dict.status.blocked}
                     </span>
                   </td>
-                  {activeTab === 'partner_user' && <td>{user.referralsCount}</td>}
-                  <td>{formatDate(user.lastLogin)}</td>
+                  {activeTab === 'partner_user' && <td data-label={dict.table.referrals}>{user.referralsCount}</td>}
+                  <td data-label={dict.table.last_login}>{formatDate(user.lastLogin)}</td>
                 </tr>
               ))
             )}

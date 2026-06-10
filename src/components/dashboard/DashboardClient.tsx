@@ -15,7 +15,7 @@ import { RecentEvents } from '@/components/dashboard/RecentEvents';
 import { ReferralSystem } from '@/components/dashboard/ReferralSystem';
 import { KnowledgeBase } from '@/components/dashboard/KnowledgeBase';
 
-import styles from './Dashboard.module.css';
+import styles from './DashboardClient.module.css';
 
 import { api } from '@/lib/api';
 
@@ -57,7 +57,7 @@ export function DashboardClient({ dict }: { dict: any }) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', padding: '1.5rem 2rem 2rem 2rem' }}>
+    <div className={styles.container}>
       {/* Dashboard Stats */}
       <DashboardStats 
         stats={data?.stats} 

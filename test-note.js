@@ -1,38 +1,26 @@
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
-const dotenv = require('dotenv');
+const axios = require('axios');
 
 async function run() {
-  dotenv.config({ path: 'backend/.env' });
-  const Redis = require('ioredis');
-  const redis = new Redis();
-  
-  const token = await redis.get('amo:access_token');
-  console.log('Token exists:', !!token);
-  
-  const domain = process.env.AMO_DOMAIN;
-  
-  const payload = {
-    note_type: 'common',
-    params: {
-      text: `[Від партнера Test]:\nTest message`
-    }
-  };
+  try {
+    // First login
+    const loginRes = await axios.post('http://localhost:3001/api/v1/auth/login', {
+      email: 'alex.klykov@foryou-realestate.com',
+      password: 'password'
+    });
+    const token = loginRes.data.accessToken;
 
-  // Replace with a valid lead id
-  const leadId = 32800615; // I need a valid lead ID to test
+    console.log("Logged in!");
 
-  const response = await fetch(`https://${domain}/api/v4/leads/${leadId}/notes`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify([payload]),
-  });
+    // Now try to post note
+    const res = await axios.post('http://localhost:3001/api/v1/leads/47602938/notes', {
+      text: "Test script message"
+    }, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
 
-  const text = await response.text();
-  console.log('Status:', response.status);
-  console.log('Response:', text);
+    console.log(res.data);
+  } catch(e) {
+    console.error(e.response ? e.response.data : e.message);
+  }
 }
 run();

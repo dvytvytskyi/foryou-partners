@@ -5,12 +5,34 @@
   height: 100%;
 }
 
+.sidebarModal {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  height: auto;
+}
+
 .card {
   background: #fdfdfd;
   border: 1px solid #0030771F;
   border-radius: 8px;
   padding: 1.5rem;
   font-family: var(--font-inter);
+}
+
+.cardModal {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 24px;
+  font-family: var(--font-inter);
+}
+
+.divider {
+  height: 1px;
+  background-color: #e2e8f0;
+  margin: 0;
+  width: 100%;
 }
 
 .card:last-child {

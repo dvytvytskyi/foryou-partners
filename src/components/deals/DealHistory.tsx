@@ -77,6 +77,11 @@ export function DealHistory({ lead, dict }: { lead?: LeadDetail; dict?: any }) {
     onSuccess: () => {
       setCommentText('');
       queryClient.invalidateQueries({ queryKey: ['lead-notes', lead?.id] });
+    },
+    onError: (err: any) => {
+      console.error('Failed to send message:', err);
+      const msg = err?.response?.data?.error?.message || err?.response?.data?.message || err.message;
+      alert(`Ошибка при отправке: ${msg}`);
     }
   });
 
@@ -115,36 +120,6 @@ export function DealHistory({ lead, dict }: { lead?: LeadDetail; dict?: any }) {
 
   return (
     <div className={styles.mainContent} style={{ height: '100%', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-      <div style={{ flexShrink: 0 }}>
-        <div className={styles.meta} style={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          gap: '6px', 
-          fontFamily: 'var(--font-inter)', 
-          fontWeight: 500, 
-          fontSize: '16px', 
-          lineHeight: '100%', 
-          letterSpacing: '0%' 
-        }}>
-          <span style={{ color: '#003077' }}>ID-{lead.id}</span>
-          <span style={{ color: '#727272' }}>· {dict?.created || 'Создано'} {new Date(lead.created_at).toLocaleDateString(currentLocale)}</span>
-        </div>
-
-        <div className={styles.infoRow}>
-          <div className={styles.infoCard}>
-            <div className={styles.infoLabel}>{dict?.source || 'Источник'}</div>
-            <div className={styles.infoValue}>{lead.source || dict?.not_specified || 'Не указано'}</div>
-          </div>
-          <div className={styles.infoCard}>
-            <div className={styles.infoLabel}>{dict?.budget || 'Бюджет'}</div>
-            <div className={styles.infoValue}>{lead.budget ? `$${lead.budget.toLocaleString()}` : '—'}</div>
-          </div>
-          <div className={styles.infoCardBlue}>
-            <LockIcon />
-            <span dangerouslySetInnerHTML={{ __html: dict?.finances_locked || 'Финансы появятся<br/>после закрытия' }} />
-          </div>
-        </div>
-      </div>
 
       <div style={{ 
         flex: 1, 
@@ -154,8 +129,7 @@ export function DealHistory({ lead, dict }: { lead?: LeadDetail; dict?: any }) {
         border: '1px solid #e2e8f0', 
         borderRadius: '8px', 
         overflow: 'hidden', 
-        background: '#f9fafb',
-        marginTop: '20px'
+        background: '#f9fafb'
       }}>
         <div className={styles.feed} style={{ flex: 1, overflowY: 'auto', padding: '16px', display: 'flex', flexDirection: 'column' }}>
           

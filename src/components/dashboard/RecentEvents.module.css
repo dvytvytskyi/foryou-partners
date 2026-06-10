@@ -238,3 +238,89 @@
   cursor: pointer;
   color: #71717a;
 }
+
+@media (max-width: 768px) {
+  .searchWrapper {
+    display: none;
+  }
+
+  .title {
+    white-space: nowrap;
+  }
+
+  .container {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .listHeader {
+    display: none;
+  }
+
+  .list {
+    border: none;
+    border-radius: 0;
+  }
+
+  .itemsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 16px;
+    border: 1px solid #00307733;
+    border-radius: 8px;
+    background-color: #ffffff;
+    gap: 12px;
+  }
+
+  .row:nth-child(n+6) {
+    display: none !important;
+  }
+
+  .row > div {
+    padding: 0;
+    border: none !important;
+  }
+
+  .cellDate {
+    grid-column: 1 / -1;
+    font-size: 12px;
+    color: #71717a;
+  }
+
+  .cellUser {
+    grid-column: 1 / 2;
+    font-weight: 500;
+  }
+
+  .cellTag {
+    grid-column: 2 / 3;
+    justify-content: flex-end;
+  }
+
+  .cellText {
+    grid-column: 1 / -1;
+    font-size: 14px;
+    color: #18181b;
+  }
+
+  .cellTarget {
+    grid-column: 1 / 2;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .cellActions {
+    grid-column: 2 / 3;
+    justify-content: flex-end;
+  }
+
+  .dotsBtn {
+    display: none;
+  }
+}

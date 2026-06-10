@@ -44,6 +44,13 @@ export default function AuthLayout({ children, title, subtitle }: AuthLayoutProp
 
       {/* Right Side: Auth Form */}
       <div className={styles.formSide}>
+        <div className={styles.mobileLogoWrapper}>
+          <img 
+            src="/new-side.png" 
+            alt="For You Real Estate" 
+            className={styles.mobileLogo}
+          />
+        </div>
         <div className={`${styles.formContent} animate-fade-slide-up`}>
           <div className={styles.header}>
             {title && <h1>{title}</h1>}

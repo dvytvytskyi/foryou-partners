@@ -20,6 +20,7 @@ export function DashboardLayout({ children, dict }: DashboardLayoutProps) {
 
   const [isTicketModalOpen, setIsTicketModalOpen] = useState(false);
   const [ticketSubject, setTicketSubject] = useState('');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     const handleOpenTicketModal = (e: Event) => {
@@ -34,11 +35,19 @@ export function DashboardLayout({ children, dict }: DashboardLayoutProps) {
 
   return (
     <div className={styles.layoutWrapper}>
-      <Sidebar dict={dict.sidebar} />
-      <div className={styles.mainContent}>
-        <Header dict={dict.header} />
+      <Sidebar 
+        dict={dict.sidebar} 
+        isOpen={isSidebarOpen} 
+        onClose={() => setIsSidebarOpen(false)} 
+      />
+      <div className={styles.mainContent} id="main-scroll-container">
+        <Header 
+          dict={dict.header} 
+          isSidebarOpen={isSidebarOpen}
+          onMenuClick={() => setIsSidebarOpen(!isSidebarOpen)} 
+        />
         <PageHeader dict={dict.page_header} />
-        <main className={styles.pageBody}>
+        <main className={styles.pageBody} id="page-body-scroll">
           {children}
         </main>
       </div>

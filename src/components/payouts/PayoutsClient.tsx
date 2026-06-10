@@ -125,24 +125,28 @@ export function PayoutsClient({ dict }: { dict: any }) {
           maxAmount={data.stats.availableToRequest}
         />
       )}
+
+
       <div className={styles.cardsGrid}>
         <div className={styles.card}>
-          <div className={styles.cardLabel}>{dict.total_earned}</div>
+          <div className={styles.cardLabel}>{dict.total_earned} (AED)</div>
           <div className={styles.cardValueBlue}>{data.stats.totalEarned.toLocaleString()}</div>
           <div className={styles.cardSub}>
             <span>AED</span>
           </div>
         </div>
         <div className={`${styles.card} ${styles.cardPrimary}`}>
-          <div className={styles.cardLabelLight}>{dict.available}</div>
+          <div className={styles.cardLabelLight}>{dict.available} (AED)</div>
           <div className={styles.cardValueWhite}>{data.stats.availableToRequest.toLocaleString()}</div>
           <div className={styles.cardSubLight}>
             <span>AED</span>
           </div>
-          <button className={styles.btnWhite} onClick={() => setIsModalOpen(true)}>{dict.request_btn}</button>
+          <button className={styles.btnWhite} onClick={() => setIsModalOpen(true)}>
+            {dict.request_btn || 'Запросить выплату'}
+          </button>
         </div>
         <div className={styles.card}>
-          <div className={styles.cardLabel}>{dict.total_paid}</div>
+          <div className={styles.cardLabel}>{dict.total_paid} (AED)</div>
           <div className={styles.cardValueBlue}>{data.stats.totalPaid.toLocaleString()}</div>
           <div className={styles.cardSub}>
             <span>AED</span>
@@ -154,10 +158,6 @@ export function PayoutsClient({ dict }: { dict: any }) {
         <div className={styles.tableHeader}>
           <h2 className={styles.tableTitle}>{dict.history}</h2>
           <div className={styles.tableControls}>
-            <div className={styles.searchBox}>
-              <SearchIcon />
-              <input type="text" placeholder={dict.search} />
-            </div>
           </div>
         </div>
 

@@ -1,5 +1,5 @@
 .header {
-  height: 64px;
+  height: 74px;
   background-color: #ffffff;
   display: flex;
   align-items: center;
@@ -7,6 +7,21 @@
   padding: 0 2rem;
   border-bottom: 1px solid #e5e7eb;
   box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.hamburgerBtn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.mobileLogoContainer {
+  display: none;
 }
 
 .leftSection {
@@ -184,4 +199,45 @@
 .menuItemDanger:hover {
   background-color: #fef2f2;
   color: #dc2626;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .header {
+    padding: 5px 1rem;
+    border-bottom: none;
+  }
+
+  .leftSection {
+    display: none;
+  }
+
+  .hamburgerBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobileLogoContainer {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .mobileLogo {
+    height: 20px;
+    width: auto;
+  }
+
+  .languageSwitch,
+  .profileName,
+  .notificationWrapper {
+    display: none;
+  }
+
+  /* Make sure avatar is the only thing shown in rightSection */
+  .rightSection {
+    gap: 12px;
+  }
 }

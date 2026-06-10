@@ -7,7 +7,7 @@ import { leadsApi } from '@/lib/api-leads';
 import styles from './DealsTable.module.css';
 
 const SearchIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" strokeWidth="1.5">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" strokeWidth="1.5" style={{ flexShrink: 0 }}>
     <circle cx="11" cy="11" r="8"></circle>
     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
   </svg>
@@ -46,9 +46,29 @@ export function DealsTable({ dict }: { dict: any }) {
   const pathname = usePathname();
   const currentLocale = pathname.split('/')[1] === 'en' ? 'en-GB' : 'ru-RU';
   
-  const [page, setPage] = useState(1);
-  const [search, setSearch] = useState('');
-  const [debouncedSearch, setDebouncedSearch] = useState('');
+  const [page, setPage] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return parseInt(sessionStorage.getItem('deals_table_page') || '1', 10);
+    }
+    return 1;
+  });
+  
+  const [search, setSearch] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return sessionStorage.getItem('deals_table_search') || '';
+    }
+    return '';
+  });
+  
+  const [debouncedSearch, setDebouncedSearch] = useState(search);
+
+  React.useEffect(() => {
+    sessionStorage.setItem('deals_table_page', page.toString());
+  }, [page]);
+
+  React.useEffect(() => {
+    sessionStorage.setItem('deals_table_search', search);
+  }, [search]);
   const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc');
 
   // Basic debounce for search
@@ -59,6 +79,15 @@ export function DealsTable({ dict }: { dict: any }) {
     }, 500);
     return () => clearTimeout(handler);
   }, [search]);
+
+  const scrollToTop = () => {
+    // Scroll both potential containers instantly
+    const mainContainer = document.getElementById('main-scroll-container');
+    const pageBody = document.getElementById('page-body-scroll');
+    if (mainContainer) mainContainer.scrollTop = 0;
+    if (pageBody) pageBody.scrollTop = 0;
+    window.scrollTo(0, 0);
+  };
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['leads', { page, search: debouncedSearch, sortDir }],
@@ -86,20 +115,39 @@ export function DealsTable({ dict }: { dict: any }) {
   // Helper to resolve status name from pipelines
   const resolveStatusName = (rawStatus: string) => {
     if (!rawStatus) return dict.unknown;
+    
     if (!rawStatus.includes(':')) {
       for (const p of pipelines) {
         const status = p.statuses?.find((s: any) => s.id.toString() === rawStatus);
         if (status) return status.name;
       }
-      return rawStatus;
+    } else {
+      const [pipelineId, statusId] = rawStatus.split(':');
+      const pipeline = pipelines.find((p: any) => p.id.toString() === pipelineId);
+      if (pipeline) {
+        const status = pipeline.statuses?.find((s: any) => s.id.toString() === statusId);
+        if (status) return status.name;
+      }
     }
-    const [pipelineId, statusId] = rawStatus.split(':');
-    const pipeline = pipelines.find((p: any) => p.id.toString() === pipelineId);
-    if (pipeline) {
-      const status = pipeline.statuses?.find((s: any) => s.id.toString() === statusId);
-      if (status) return status.name;
+
+    // Hardcoded fallbacks if pipelines are missing or failed to fetch
+    const statusId = rawStatus.includes(':') ? rawStatus.split(':')[1] : rawStatus;
+    const fallbacks: Record<string, string> = {
+      '142': 'Успешно реализовано',
+      '143': 'Закрыто и не реализовано',
+      '74717798': 'Первичный контакт',
+      '74717802': 'Переговоры',
+      '74717806': 'Принимают решение',
+      '74717810': 'Согласование договора',
+      '84853590': 'Квалификация',
+      '84853926': 'Встреча назначена'
+    };
+
+    if (fallbacks[statusId]) {
+      return fallbacks[statusId];
     }
-    return `${dict.table.status} ${statusId}`;
+
+    return rawStatus.includes(':') ? `${dict.table.status} ${statusId}` : rawStatus;
   };
 
   const leads = data?.items || [];
@@ -186,7 +234,10 @@ export function DealsTable({ dict }: { dict: any }) {
         <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '1.5rem', padding: '1rem' }}>
           <button 
             disabled={page === 1}
-            onClick={() => setPage(p => p - 1)}
+            onClick={() => {
+              setPage(p => p - 1);
+              scrollToTop();
+            }}
             style={{ padding: '0.5rem 1rem', borderRadius: 4, border: '1px solid #e2e8f0', background: page === 1 ? '#f8fafc' : 'white', cursor: page === 1 ? 'not-allowed' : 'pointer' }}
           >
             {dict.pagination.prev}
@@ -196,7 +247,10 @@ export function DealsTable({ dict }: { dict: any }) {
           </span>
           <button 
             disabled={page >= Math.ceil(pagination.total / pagination.page_size)}
-            onClick={() => setPage(p => p + 1)}
+            onClick={() => {
+              setPage(p => p + 1);
+              scrollToTop();
+            }}
             style={{ padding: '0.5rem 1rem', borderRadius: 4, border: '1px solid #e2e8f0', background: page >= Math.ceil(pagination.total / pagination.page_size) ? '#f8fafc' : 'white', cursor: page >= Math.ceil(pagination.total / pagination.page_size) ? 'not-allowed' : 'pointer' }}
           >
             {dict.pagination.next}

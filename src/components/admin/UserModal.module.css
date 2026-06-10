@@ -257,3 +257,67 @@
   from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+
+@media (max-width: 768px) {
+  .overlay {
+    padding: 16px;
+    align-items: center;
+  }
+  
+  .modal {
+    position: relative;
+    width: 100%;
+    max-height: 90vh;
+    min-height: auto;
+  }
+  
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 2.5rem 1rem 1rem 1rem; /* Extra top padding for the absolute close button */
+    gap: 1rem;
+  }
+  
+  .userInfo {
+    gap: 1rem;
+  }
+  
+  .avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  
+  .details h2 {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+  
+  .actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 8px 16px;
+  }
+  
+  .closeBtn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    margin-left: 0;
+  }
+  
+  .body {
+    padding: 1rem;
+  }
+  
+  .tabs {
+    margin: -1rem -1rem 1rem -1rem;
+    padding: 0 1rem;
+  }
+}

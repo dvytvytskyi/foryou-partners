@@ -155,58 +155,7 @@ export function ProfileClient({ dict }: { dict: any }) {
         {/* Right Column: Settings */}
         <div className={styles.rightCol}>
           <div className={styles.settingsSection}>
-            {/* Notifications Card */}
-            <div className={styles.card}>
-              <h3 className={styles.cardTitle}>
-                <Bell size={18} color="#003077" />
-                {dict.notifications}
-              </h3>
-              
-              <div className={styles.settingItem}>
-                <div className={styles.settingText}>
-                  <span className={styles.settingLabel}>{dict.settings?.status_change || 'Изменение статуса сделки'}</span>
-                  <span className={styles.settingDesc}>{dict.settings?.status_change_desc || 'Получайте уведомления, когда сделка переходит на новый этап.'}</span>
-                </div>
-                <label className={styles.toggle}>
-                  <input 
-                    type="checkbox" 
-                    checked={profile.notifications.statusChange} 
-                    onChange={() => handleToggle('statusChange')}
-                  />
-                  <span className={styles.slider}></span>
-                </label>
-              </div>
 
-              <div className={styles.settingItem}>
-                <div className={styles.settingText}>
-                  <span className={styles.settingLabel}>{dict.settings?.broker_change || 'Назначение брокера'}</span>
-                  <span className={styles.settingDesc}>{dict.settings?.broker_change_desc || 'Получайте оповещения, когда за вашей сделкой закрепляется новый брокер.'}</span>
-                </div>
-                <label className={styles.toggle}>
-                  <input 
-                    type="checkbox" 
-                    checked={profile.notifications.brokerChange} 
-                    onChange={() => handleToggle('brokerChange')}
-                  />
-                  <span className={styles.slider}></span>
-                </label>
-              </div>
-
-              <div className={styles.settingItem}>
-                <div className={styles.settingText}>
-                  <span className={styles.settingLabel}>{dict.settings?.weekly_report || 'Еженедельный отчет'}</span>
-                  <span className={styles.settingDesc}>{dict.settings?.weekly_report_desc || 'Еженедельная сводка по вашим сделкам и статистике конверсии.'}</span>
-                </div>
-                <label className={styles.toggle}>
-                  <input 
-                    type="checkbox" 
-                    checked={profile.notifications.weeklySummary} 
-                    onChange={() => handleToggle('weeklySummary')}
-                  />
-                  <span className={styles.slider}></span>
-                </label>
-              </div>
-            </div>
 
             {/* Security Card */}
             <div className={styles.card}>
@@ -235,7 +184,7 @@ export function ProfileClient({ dict }: { dict: any }) {
                 />
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div className={styles.passwordGrid}>
                 <div className={styles.formGroup}>
                   <label className={styles.inputLabel}>{dict.settings?.new_password || 'Новый пароль'}</label>
                   <input 

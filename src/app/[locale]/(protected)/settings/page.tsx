@@ -7,7 +7,7 @@ export default async function SettingsPage({ params }: { params: Promise<{ local
   const dict = await getDictionary(locale);
 
   return (
-    <div style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
+    <div className="settings-page" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
       <div style={{ width: '100%', margin: '0 auto', flex: 1, display: 'flex', flexDirection: 'column' }}>
         <UsersTable dict={dict.settings_page} />
       </div>

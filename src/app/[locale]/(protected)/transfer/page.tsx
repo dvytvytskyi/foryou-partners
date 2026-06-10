@@ -7,7 +7,7 @@ export default async function TransferPage({ params }: { params: Promise<{ local
   const dict = await getDictionary(locale);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', padding: '1.5rem 2rem 2rem 2rem', gap: '32px', height: '100%', minHeight: 0 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', height: '100%', minHeight: 0 }} className="transfer-page-wrapper">
       <TransferForm dict={dict.transfer_page} />
     </div>
   );

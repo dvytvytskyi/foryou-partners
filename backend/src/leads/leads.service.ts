@@ -559,8 +559,13 @@ export class LeadsService {
     }
 
     const authorName = partner?.name || (user.role === 'admin' ? 'Admin' : 'Unknown Partner');
-    await this.amoService.addLeadNote(Number(externalLeadId), text.trim(), authorName);
-    return { success: true };
+    try {
+      await this.amoService.addLeadNote(Number(externalLeadId), text.trim(), authorName);
+      return { success: true };
+    } catch (e: any) {
+      this.logger.error(`Failed to add note to AmoCRM for lead ${externalLeadId}:`, e);
+      throw new AppException('AMO_ERROR', 'Не удалось отправить сообщение в AmoCRM. Возможно, сделка была удалена или ID недействителен.', HttpStatus.BAD_REQUEST);
+    }
   }
 
   private resolvePartnerId(user: AuthenticatedUser, partnerIdQuery?: string): string | undefined {

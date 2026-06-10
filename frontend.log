@@ -2431,3 +2431,4 @@ https://nextjs.org/docs/messages/module-not-found
  GET /ru/support/4f5b6ab6-57a0-4828-9463-9a899be0c031 200 in 76ms (next.js: 34ms, proxy.ts: 13ms, application-code: 28ms)
 [browser] Failed to close ticket AxiosError: Request failed with status code 404 (src/app/[locale]/(protected)
 ✓ Compiled in 172ms
+[?25h

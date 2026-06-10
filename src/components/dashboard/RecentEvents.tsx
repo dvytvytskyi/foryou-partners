@@ -48,6 +48,25 @@ export function RecentEvents({ events = [], dict }: { events?: any[], dict: any 
     if (lower === 'клиент') return 'Client';
     if (lower === 'успешно') return 'Success';
     if (lower === 'сделка закрыта успешно') return 'Deal closed successfully';
+    
+    // Status fallbacks
+    const fallbacks: Record<string, string> = {
+      '142': isEn ? 'Successfully realized' : 'Успешно реализовано',
+      '143': isEn ? 'Closed and not realized' : 'Закрыто и не реализовано',
+      '74717798': isEn ? 'Initial contact' : 'Первичный контакт',
+      '74717802': isEn ? 'Negotiations' : 'Переговоры',
+      '74717806': isEn ? 'Making decision' : 'Принимают решение',
+      '74717810': isEn ? 'Contract approval' : 'Согласование договора',
+      '84853590': isEn ? 'Qualification' : 'Квалификация',
+      '84853926': isEn ? 'Meeting scheduled' : 'Встреча назначена'
+    };
+    
+    // Check if the text matches a raw status ID or "Статус ID"
+    const match = text.match(/(?:Статус\s*)?(\d{3,})/i);
+    if (match && fallbacks[match[1]]) {
+      return fallbacks[match[1]];
+    }
+
     return text;
   };
 

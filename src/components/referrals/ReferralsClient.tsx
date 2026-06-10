@@ -109,12 +109,10 @@ export function ReferralsClient({ dict }: { dict: any }) {
 
   return (
     <div className={styles.pageContainer}>
-      <div className={styles.headerTop}>
-        <div className={styles.header}>
-          <h1 className={styles.title}>{dict.title}</h1>
-          <p className={styles.subtitle}>
-            {dict.subtitle_1}<br/>{dict.subtitle_2}
-          </p>
+      <div className={styles.referralHeroCard}>
+        <div className={styles.referralHeroContent}>
+          <h2 className={styles.heroTitle}>{dict.subtitle_1}</h2>
+          <p className={styles.heroSubtitle}>{dict.subtitle_2}</p>
         </div>
         <div className={styles.referralLinkContainer}>
           <input 
