@@ -87,8 +87,8 @@ export function DealDetailClient({ id, locale, dict }: { id: string; locale: str
 
   // Extract type
   const getCustomField = (name: string) => {
-    if (!lead.customFields || !Array.isArray(lead.customFields)) return null;
-    const field = lead.customFields.find((f: any) => 
+    if (!lead.custom_fields || !Array.isArray(lead.custom_fields)) return null;
+    const field = lead.custom_fields.find((f: any) => 
       f.field_name?.toLowerCase() === name.toLowerCase() || 
       f.name?.toLowerCase() === name.toLowerCase()
     );
