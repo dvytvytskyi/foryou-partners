@@ -40,12 +40,24 @@ export class AuthService {
     }
 
     const passwordHash = await bcrypt.hash(dto.password, 10);
+    const partner = await this.prisma.partner.create({
+      data: {
+        name: `${dto.firstName || ''} ${dto.lastName || ''}`.trim() || dto.email.split('@')[0],
+        country: dto.country,
+        direction: dto.direction,
+        partnerType: dto.partnerType,
+        referredById: dto.referredById || null,
+        isActive: false, // Must be approved by admin!
+      }
+    });
+
     const user = await this.prisma.user.create({
       data: {
         email: dto.email.toLowerCase(),
         passwordHash,
         role: 'partner_user' as const,
         isActive: false,
+        partnerId: partner.id,
       },
     });
 
@@ -58,6 +70,7 @@ export class AuthService {
         country: dto.country,
         direction: dto.direction,
         partnerType: dto.partnerType,
+        referredById: dto.referredById,
       });
     } catch (e) {
       // Don't fail the registration if AmoCRM integration fails

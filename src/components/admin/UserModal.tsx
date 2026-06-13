@@ -20,6 +20,7 @@ interface UserModalProps {
   user: UserItem;
   onClose: () => void;
   onStatusChange: () => void;
+  dict?: any;
 }
 
 interface Lead {
@@ -66,7 +67,7 @@ const ChatIcon = () => (
   </svg>
 );
 
-export function UserModal({ user, onClose, onStatusChange }: UserModalProps) {
+export function UserModal({ user, onClose, onStatusChange, dict }: UserModalProps & { dict?: any }) {
   const [activeTab, setActiveTab] = useState<'deals' | 'tickets'>('deals');
   const [leads, setLeads] = useState<Lead[]>([]);
   const [tickets, setTickets] = useState<Ticket[]>([]);
@@ -121,7 +122,7 @@ export function UserModal({ user, onClose, onStatusChange }: UserModalProps) {
   };
 
   const handleReject = async () => {
-    if (!confirm('Вы уверены, что хотите удалить эту заявку?')) return;
+    if (!confirm(dict.hardcoded.are_you_sure_you_want_to_delet)) return;
     setIsToggling(true);
     try {
       await api.delete(`/admin/partners/users/${user.id}`);
@@ -167,12 +168,12 @@ export function UserModal({ user, onClose, onStatusChange }: UserModalProps) {
     const s = status.toLowerCase();
     
     // 1. Success -> Green
-    if (s.includes('успешно') || (s.includes('реализовано') && !s.includes('не реализовано')) || s === 'resolved') {
+    if (s.includes(dict.hardcoded.hc_51) || (s.includes(dict.hardcoded.realized) && !s.includes(dict.hardcoded.not_realized)) || s === 'resolved') {
       return { background: '#dcfce7', color: '#166534' };
     }
     
     // 2. Failed / Closed -> Red
-    if (s.includes('закрыт') || s.includes('отказ') || s.includes('отмен') || s.includes('не реализовано') || s.includes('архив') || s === 'closed') {
+    if (s.includes(dict.hardcoded.hc_37) || s.includes(dict.hardcoded.hc_45) || s.includes(dict.hardcoded.hc_46) || s.includes(dict.hardcoded.not_realized) || s.includes(dict.hardcoded.hc_33) || s === 'closed') {
       return { background: '#fee2e2', color: '#991b1b' };
     }
     
@@ -190,10 +191,10 @@ export function UserModal({ user, onClose, onStatusChange }: UserModalProps) {
                 {getInitials(user.name || user.email)}
               </div>
               <div className={styles.details}>
-                <h2>{user.name || 'Пользователь'}</h2>
+                <h2>{user.name || dict.hardcoded.user}</h2>
                 <p><EmailIcon /> {user.email}</p>
-                <p><PhoneIcon /> {user.phone || 'Не указано'}</p>
-                <p><CalendarIcon /> Дата регистрации: {formatDate(user.createdAt)}</p>
+                <p><PhoneIcon /> {user.phone || dict.hardcoded.hc_18}</p>
+                <p><CalendarIcon /> {dict.hardcoded.registration_date} {formatDate(user.createdAt)}</p>
               </div>
             </div>
             
@@ -205,15 +206,15 @@ export function UserModal({ user, onClose, onStatusChange }: UserModalProps) {
                     onClick={handleAccept}
                     disabled={isToggling}
                   >
-                    Одобрить
-                  </button>
+                    {dict.hardcoded.approve}
+                                                        </button>
                   <button 
                     className={`${styles.btn} ${styles.btnDanger}`}
                     onClick={handleReject}
                     disabled={isToggling}
                   >
-                    Отклонить
-                  </button>
+                    {dict.hardcoded.reject}
+                                                        </button>
                 </>
               ) : (
                 <button 
@@ -221,15 +222,15 @@ export function UserModal({ user, onClose, onStatusChange }: UserModalProps) {
                   onClick={handleToggleStatus}
                   disabled={isToggling}
                 >
-                  {user.isActive ? 'Прекратить доступ' : 'Восстановить доступ'}
+                  {user.isActive ? dict.hardcoded.revoke_access : dict.hardcoded.restore_access}
                 </button>
               )}
               <button 
                 className={`${styles.btn} ${styles.btnSecondary}`}
-                onClick={() => alert('Статистика в разработке')}
+                onClick={() => alert(dict.hardcoded.statistics_in_development)}
               >
-                Статистика
-              </button>
+                {dict.hardcoded.statistics}
+                                            </button>
               <button className={styles.closeBtn} onClick={onClose}>&times;</button>
             </div>
           </div>
@@ -240,31 +241,31 @@ export function UserModal({ user, onClose, onStatusChange }: UserModalProps) {
                 className={`${styles.tab} ${activeTab === 'deals' ? styles.activeTab : ''}`}
                 onClick={() => setActiveTab('deals')}
               >
-                Сделки
-              </button>
+                {dict.hardcoded.deals}
+                                            </button>
               <button 
                 className={`${styles.tab} ${activeTab === 'tickets' ? styles.activeTab : ''}`}
                 onClick={() => setActiveTab('tickets')}
               >
-                Тикеты
-              </button>
+                {dict.hardcoded.tickets}
+                                            </button>
             </div>
 
             {loading ? (
-              <div className={styles.loading}>Загрузка...</div>
+              <div className={styles.loading}>{dict.hardcoded.loading}</div>
             ) : !user.partnerId ? (
-              <div className={styles.empty}>Пользователь не является партнером</div>
+              <div className={styles.empty}>{dict.hardcoded.user_is_not_a_partner}</div>
             ) : activeTab === 'deals' ? (
               leads.length === 0 ? (
-                <div className={styles.empty}>Нет сделок для отображения</div>
+                <div className={styles.empty}>{dict.hardcoded.no_deals_to_display}</div>
               ) : (
                 <table className={styles.table}>
                   <thead>
                     <tr>
-                      <th>Название</th>
-                      <th>Статус</th>
-                      <th>Бюджет</th>
-                      <th>Дата создания</th>
+                      <th>{dict.hardcoded.hc_15}</th>
+                      <th>{dict.hardcoded.status}</th>
+                      <th>{dict.hardcoded.budget}</th>
+                      <th>{dict.hardcoded.creation_date}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -289,14 +290,14 @@ export function UserModal({ user, onClose, onStatusChange }: UserModalProps) {
               )
             ) : (
               tickets.length === 0 ? (
-                <div className={styles.empty}>У этого пользователя еще нет тикетов</div>
+                <div className={styles.empty}>{dict.hardcoded.this_user_has_no_tickets_yet}</div>
               ) : (
                 <table className={styles.table}>
                   <thead>
                     <tr>
-                      <th>Тема</th>
-                      <th>Статус</th>
-                      <th>Последнее обновление</th>
+                      <th>{dict.hardcoded.subject}</th>
+                      <th>{dict.hardcoded.status}</th>
+                      <th>{dict.hardcoded.last_update}</th>
                     </tr>
                   </thead>
                   <tbody>

@@ -20,6 +20,10 @@ const SendIcon = () => (
 
 import { usePathname } from 'next/navigation';
 
+import dictRu from '@/i18n/dictionaries/ru.json';
+import dictEn from '@/i18n/dictionaries/en.json';
+const dict = typeof window !== 'undefined' && window.location.pathname.startsWith('/en') ? dictEn : dictRu;
+
 export function LeadChat({ leadId, isOpen, onClose }: { leadId: string, isOpen: boolean, onClose: () => void }) {
   const pathname = usePathname();
   const currentLocale = pathname.split('/')[1] === 'en' ? 'en-GB' : 'ru-RU';
@@ -80,7 +84,7 @@ export function LeadChat({ leadId, isOpen, onClose }: { leadId: string, isOpen: 
         }}
       >
         <div style={{ padding: '20px', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h2 style={{ fontSize: '18px', fontWeight: 600, color: '#0f172a', margin: 0 }}>Комментарийі / Чат</h2>
+          <h2 style={{ fontSize: '18px', fontWeight: 600, color: '#0f172a', margin: 0 }}>{dict.hardcoded.comments_chat}</h2>
           <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#64748b' }}>
             <CloseIcon />
           </button>
@@ -88,12 +92,12 @@ export function LeadChat({ leadId, isOpen, onClose }: { leadId: string, isOpen: 
 
         <div style={{ flex: 1, overflowY: 'auto', padding: '20px', display: 'flex', flexDirection: 'column', gap: '16px', background: '#f8fafc' }}>
           {isLoading ? (
-            <div style={{ textAlign: 'center', color: '#64748b' }}>Загрузка...</div>
+            <div style={{ textAlign: 'center', color: '#64748b' }}>{dict.hardcoded.loading}</div>
           ) : notes?.length === 0 ? (
-            <div style={{ textAlign: 'center', color: '#64748b', fontSize: '14px', marginTop: '2rem' }}>Нет сообщений. Напишите брокеру.</div>
+            <div style={{ textAlign: 'center', color: '#64748b', fontSize: '14px', marginTop: '2rem' }}>{dict.hardcoded.no_messages_write_to_the_broke}</div>
           ) : (
             notes?.map((n: any) => {
-              const isPartner = n.text.includes('[От партнера');
+              const isPartner = n.text.includes(dict.hardcoded.hc_3);
               const text = isPartner ? n.text.split(']:\n')[1] : n.text;
               return (
                 <div key={n.id} style={{ 
@@ -122,7 +126,7 @@ export function LeadChat({ leadId, isOpen, onClose }: { leadId: string, isOpen: 
           <textarea 
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            placeholder="Напишите комментарий..."
+            placeholder="Write a comment..."
             onKeyDown={(e) => {
               if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();

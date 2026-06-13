@@ -9,7 +9,7 @@ interface AddLeadModalProps {
   onSuccess: () => void;
 }
 
-export function AddLeadModal({ isOpen, onClose, onSuccess }: AddLeadModalProps) {
+export function AddLeadModal({ isOpen, onClose, onSuccess, dict }: AddLeadModalProps & { dict: any }) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -25,7 +25,7 @@ export function AddLeadModal({ isOpen, onClose, onSuccess }: AddLeadModalProps) 
 
   const handleSubmit = async () => {
     if (!formData.name) {
-      setError('Ім\'я клієнта є обов\'язковим');
+      setError(dict.hardcoded.client_name_is_required);
       return;
     }
 
@@ -45,7 +45,7 @@ export function AddLeadModal({ isOpen, onClose, onSuccess }: AddLeadModalProps) 
       setFormData({ name: '', phone: '', email: '', budget: '', city: '', comment: '' });
     } catch (err: any) {
       console.error(err);
-      setError(err.response?.data?.message || 'Ошибка при создании лида. Попробуйте позже.');
+      setError(err.response?.data?.message || dict.hardcoded.error_creating_lead_try_again);
     } finally {
       setLoading(false);
     }
@@ -57,7 +57,7 @@ export function AddLeadModal({ isOpen, onClose, onSuccess }: AddLeadModalProps) 
         <div className={styles.header}>
           <div className={styles.titleWrapper}>
             <UserPlus size={20} className={styles.titleIcon} />
-            <h2 className={styles.title}>Передать клиента</h2>
+            <h2 className={styles.title}>{dict.hardcoded.transfer_client}</h2>
           </div>
           <button className={styles.closeBtn} onClick={onClose}>
             <X size={20} />
@@ -66,18 +66,18 @@ export function AddLeadModal({ isOpen, onClose, onSuccess }: AddLeadModalProps) 
 
         <div className={styles.content}>
           <p className={styles.description}>
-            Введите данные вашего клиента. Мы автоматически создадим сделку в CRM системе, и она появится в вашем списке.
-          </p>
+            {dict.hardcoded.enter_your_client_s_data_we_wi}
+                                </p>
 
           {error && <div className={styles.error}>{error}</div>}
 
           <div className={styles.formGroup}>
             <label className={styles.label}>
-              <UserPlus size={14} /> ФИО клиента *
-            </label>
+              <UserPlus size={14} /> {dict.hardcoded.client_s_full_name}
+                                      </label>
             <input 
               type="text" 
-              placeholder="Иван Иванов" 
+              placeholder={dict.hardcoded.john_doe} 
               className={styles.input}
               value={formData.name}
               onChange={e => setFormData(prev => ({ ...prev, name: e.target.value }))}
@@ -87,8 +87,8 @@ export function AddLeadModal({ isOpen, onClose, onSuccess }: AddLeadModalProps) 
           <div className={styles.formRow}>
             <div className={styles.formGroup}>
               <label className={styles.label}>
-                <Phone size={14} /> Телефон
-              </label>
+                <Phone size={14} /> {dict.hardcoded.phone}
+                                            </label>
               <input 
                 type="tel" 
                 placeholder="+380..." 
@@ -114,11 +114,11 @@ export function AddLeadModal({ isOpen, onClose, onSuccess }: AddLeadModalProps) 
           <div className={styles.formRow}>
             <div className={styles.formGroup}>
               <label className={styles.label}>
-                <MapPin size={14} /> Город
-              </label>
+                <MapPin size={14} /> {dict.hardcoded.city}
+                                            </label>
               <input 
                 type="text" 
-                placeholder="Киев, Дубай..." 
+                placeholder={dict.hardcoded.kyiv_dubai} 
                 className={styles.input}
                 value={formData.city}
                 onChange={e => setFormData(prev => ({ ...prev, city: e.target.value }))}
@@ -126,11 +126,11 @@ export function AddLeadModal({ isOpen, onClose, onSuccess }: AddLeadModalProps) 
             </div>
             <div className={styles.formGroup}>
               <label className={styles.label}>
-                <DollarSign size={14} /> Бюджет ($)
-              </label>
+                <DollarSign size={14} /> {dict.hardcoded.hc_6}
+                                            </label>
               <input 
                 type="number" 
-                placeholder="Напр. 150000" 
+                placeholder={dict.hardcoded.e_g_150000} 
                 className={styles.input}
                 value={formData.budget}
                 onChange={e => setFormData(prev => ({ ...prev, budget: e.target.value }))}
@@ -140,10 +140,10 @@ export function AddLeadModal({ isOpen, onClose, onSuccess }: AddLeadModalProps) 
 
           <div className={styles.formGroup}>
             <label className={styles.label}>
-              <FileText size={14} /> Комментарий (запит)
-            </label>
+              <FileText size={14} /> {dict.hardcoded.comment_request}
+                                      </label>
             <textarea 
-              placeholder="Что именно ищет клиент? Какие пожелания?" 
+              placeholder={dict.hardcoded.what_exactly_is_the_client_loo} 
               className={styles.textarea}
               value={formData.comment}
               onChange={e => setFormData(prev => ({ ...prev, comment: e.target.value }))}
@@ -153,9 +153,9 @@ export function AddLeadModal({ isOpen, onClose, onSuccess }: AddLeadModalProps) 
         </div>
 
         <div className={styles.footer}>
-          <button className={styles.cancelBtn} onClick={onClose} disabled={loading}>Отменить</button>
+          <button className={styles.cancelBtn} onClick={onClose} disabled={loading}>{dict.hardcoded.hc_20}</button>
           <button className={styles.submitBtn} onClick={handleSubmit} disabled={loading}>
-            {loading ? 'Отправка...' : 'Передать клиента'}
+            {loading ? dict.hardcoded.sending : dict.hardcoded.transfer_client}
           </button>
         </div>
       </div>

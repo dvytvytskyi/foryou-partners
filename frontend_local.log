@@ -1103,3 +1103,38 @@ Import traces:
  GET /ru/dashboard 200 in 518ms (next.js: 352ms, proxy.ts: 14ms, application-code: 152ms)
  GET /ru/support 200 in 307ms (next.js: 192ms, proxy.ts: 55ms, application-code: 60ms)
 ✓ Compiled in 636ms
+ GET /ru/dashboard 200 in 2.9s (next.js: 1230ms, proxy.ts: 1394ms, application-code: 273ms)
+ GET /en/projects-new/samana-ocean-pearl 404 in 1356ms (next.js: 310ms, proxy.ts: 386ms, application-code: 660ms)
+ GET /en/projects-new 404 in 198ms (next.js: 44ms, proxy.ts: 50ms, application-code: 105ms)
+ GET /en 307 in 1146ms (next.js: 243ms, proxy.ts: 10ms, application-code: 893ms)
+ GET /en/login 200 in 54ms (next.js: 13ms, proxy.ts: 6ms, application-code: 34ms)
+ GET /en/projects 404 in 202ms (next.js: 101ms, proxy.ts: 33ms, application-code: 67ms)
+⚠ Blocked cross-origin request to Next.js dev resource /_next/webpack-hmr from "127.0.0.1".
+Cross-origin access to Next.js dev resources is blocked by default for safety.
+
+To allow this host in development, add it to "allowedDevOrigins" in next.config.js and restart the dev server:
+
+// next.config.js
+module.exports = {
+  allowedDevOrigins: ['127.0.0.1'],
+}
+
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ GET /en/projects-new/samana-ocean-pearl 404 in 95ms (next.js: 29ms, proxy.ts: 27ms, application-code: 39ms)
+ GET /en/projects 404 in 180ms (next.js: 62ms, proxy.ts: 26ms, application-code: 91ms)
+ GET /en/projects-new/samana-ocean-pearl 404 in 113ms (next.js: 36ms, proxy.ts: 5ms, application-code: 72ms)
+ GET /en/projects 404 in 700ms (next.js: 102ms, proxy.ts: 171ms, application-code: 427ms)
+ GET /en/projects 404 in 184ms (next.js: 64ms, proxy.ts: 66ms, application-code: 54ms)
+ GET /en/projects-new/samana-ocean-pearl 404 in 115ms (next.js: 16ms, proxy.ts: 32ms, application-code: 67ms)
+ HEAD /en/projects 404 in 171ms (next.js: 50ms, proxy.ts: 38ms, application-code: 83ms)
+ GET /en/projects 404 in 104ms (next.js: 17ms, proxy.ts: 11ms, application-code: 77ms)
+ GET /en/projects 404 in 196ms (next.js: 37ms, proxy.ts: 21ms, application-code: 138ms)
+ GET /en/projects-new/samana-ocean-pearl 404 in 118ms (next.js: 19ms, proxy.ts: 28ms, application-code: 70ms)
+ HEAD /ru 307 in 136ms (next.js: 49ms, proxy.ts: 26ms, application-code: 62ms)
+✓ Finished writing to filesystem cache in 10.6s
+ GET /en/billboards 404 in 2.3s (next.js: 432ms, proxy.ts: 1053ms, application-code: 789ms)
+✓ Compiled in 887ms
+✓ Compiled in 1717ms
+✓ Compiled in 505ms
+✓ Compiled in 228ms
+✓ Compiled in 96ms

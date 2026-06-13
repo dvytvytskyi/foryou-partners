@@ -99,21 +99,21 @@ export function NotificationDropdown({ dict, currentLocale }: { dict: any, curre
       {isOpen && (
         <div className={styles.dropdown}>
           <div className={styles.header}>
-            <span className={styles.title}>{dict.notification_dropdown?.notifications || 'Уведомления'}</span>
+            <span className={styles.title}>{dict.notification_dropdown?.notifications || dict.hardcoded.notifications}</span>
             {data?.unreadCount && data.unreadCount > 0 ? (
               <button 
                 className={styles.markAllBtn} 
                 onClick={() => markAllAsReadMutation.mutate()}
                 disabled={markAllAsReadMutation.isPending}
               >
-                {dict.notification_dropdown?.mark_all_read || 'Пометить всё как прочитанное'}
+                {dict.notification_dropdown?.mark_all_read || dict.hardcoded.mark_all_as_read}
               </button>
             ) : null}
           </div>
 
           <div className={styles.list}>
             {isLoading ? (
-              <div className={styles.empty}>{dict.notification_dropdown?.loading || 'Загрузка...'}</div>
+              <div className={styles.empty}>{dict.notification_dropdown?.loading || dict.hardcoded.loading}</div>
             ) : data?.data && data.data.length > 0 ? (
               data.data.map((notification) => {
                 const titleStr = dict.notification_dropdown?.types?.[notification.type] || notification.title || dict.notification_dropdown?.types?.DEFAULT_TITLE;
@@ -133,7 +133,7 @@ export function NotificationDropdown({ dict, currentLocale }: { dict: any, curre
                 );
               })
             ) : (
-              <div className={styles.empty}>{dict.notification_dropdown?.no_notifications || 'Нет новых уведомлений'}</div>
+              <div className={styles.empty}>{dict.notification_dropdown?.no_notifications || dict.hardcoded.no_new_notifications}</div>
             )}
           </div>
         </div>

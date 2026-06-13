@@ -31,4 +31,8 @@ export class RegisterDto {
   @IsString()
   @IsOptional()
   direction?: string;
+
+  @IsString()
+  @IsOptional()
+  referredById?: string;
 }

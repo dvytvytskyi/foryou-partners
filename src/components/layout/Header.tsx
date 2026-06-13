@@ -117,9 +117,9 @@ export function Header({ dict, onMenuClick, isSidebarOpen }: { dict: any; onMenu
 
         <div className={styles.profileSection} onClick={() => setMenuOpen(!menuOpen)}>
           <div className={styles.avatar}>
-            {user?.email ? user.email.charAt(0).toUpperCase() : 'И'}
+            {user?.email ? user.email.charAt(0).toUpperCase() : dict.hardcoded.and}
           </div>
-          <span className={styles.profileName}>{user?.email ? user.email.split('@')[0] : 'Ирина К.'}</span>
+          <span className={styles.profileName}>{user?.email ? user.email.split('@')[0] : dict.hardcoded.irina_k}</span>
 
           {menuOpen && (
             <div className={styles.menuDropdown}>

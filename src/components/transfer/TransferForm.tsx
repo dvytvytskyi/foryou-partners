@@ -12,9 +12,9 @@ export function TransferForm({ dict }: { dict: any }) {
   const currentLocale = pathname.split('/')[1] || 'ru';
   const queryClient = useQueryClient();
 
-  const [lang, setLang] = useState('Русский');
-  const [purpose, setPurpose] = useState('Инвестиция');
-  const [readiness, setReadiness] = useState('1-3 мес.');
+  const [lang, setLang] = useState(dict.hardcoded.russian);
+  const [purpose, setPurpose] = useState(dict.hardcoded.investment);
+  const [readiness, setReadiness] = useState(dict.hardcoded['1_3_months']);
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -23,8 +23,8 @@ export function TransferForm({ dict }: { dict: any }) {
   const [budget, setBudget] = useState('');
   const [propertyType, setPropertyType] = useState('');
   const [city, setCity] = useState('');
-  const [direction, setDirection] = useState('Дубай');
-  const [contactMethod, setContactMethod] = useState('Напрямую');
+  const [direction, setDirection] = useState(dict.hardcoded.dubai);
+  const [contactMethod, setContactMethod] = useState(dict.hardcoded.directly);
   const [comment, setComment] = useState('');
   const [agreement, setAgreement] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -39,7 +39,7 @@ export function TransferForm({ dict }: { dict: any }) {
       setSuccessLeadId(data.externalLeadId);
     },
     onError: (err: any) => {
-      setError(err.response?.data?.message || 'Не удалось передать клиента. Проверьте данные.');
+      setError(err.response?.data?.message || dict.hardcoded.failed_to_transfer_client_chec);
     }
   });
 
@@ -51,8 +51,8 @@ export function TransferForm({ dict }: { dict: any }) {
     setBudget('');
     setPropertyType('');
     setCity('');
-    setDirection('Дубай');
-    setContactMethod('Напрямую');
+    setDirection(dict.hardcoded.dubai);
+    setContactMethod(dict.hardcoded.directly);
     setComment('');
     setAgreement(false);
     setSuccessLeadId(null);
@@ -63,7 +63,7 @@ export function TransferForm({ dict }: { dict: any }) {
     setError(null);
 
     if (!firstName || !phone || !agreement) {
-      setError('Заполните обязательные поля и подтвердите согласие');
+      setError(dict.hardcoded.fill_out_the_required_fields_a);
       return;
     }
 
@@ -103,18 +103,18 @@ ${comment ? `\nДополнительно:\n${comment}` : ''}
           
           <div className={styles.row}>
             <div className={styles.field}>
-              <label className={styles.label}>Имя*</label>
+              <label className={styles.label}>{dict.hardcoded.name}</label>
               <input type="text" className={styles.input} placeholder="Ahmed" value={firstName} onChange={e => setFirstName(e.target.value)} required />
             </div>
             <div className={styles.field}>
-              <label className={styles.label}>Фамилия</label>
+              <label className={styles.label}>{dict.hardcoded.last_name}</label>
               <input type="text" className={styles.input} placeholder="Khalifa" value={lastName} onChange={e => setLastName(e.target.value)} />
             </div>
           </div>
 
           <div className={styles.row}>
             <div className={styles.field}>
-              <label className={styles.label}>Телефон*</label>
+              <label className={styles.label}>{dict.hardcoded.hc_25}</label>
               <input type="tel" className={styles.input} placeholder="+971 50 123 4567" value={phone} onChange={e => setPhone(e.target.value)} required />
             </div>
             <div className={styles.field}>
@@ -124,9 +124,9 @@ ${comment ? `\nДополнительно:\n${comment}` : ''}
           </div>
 
           <div className={styles.field} style={{ marginBottom: '48px' }}>
-            <label className={styles.label}>Предпочитаемый язык общения</label>
+            <label className={styles.label}>{dict.hardcoded.preferred_communication_langua}</label>
             <div className={styles.toggleGroup}>
-              {['Русский', 'English', 'العربية'].map(l => (
+              {[dict.hardcoded.russian, 'English', 'العربية'].map(l => (
                 <button 
                   key={l}
                   type="button"
@@ -141,48 +141,48 @@ ${comment ? `\nДополнительно:\n${comment}` : ''}
 
           {/* Step 02 */}
           <div className={styles.stepTitle}>02</div>
-          <h3 className={styles.sectionTitle}>Параметры запроса</h3>
+          <h3 className={styles.sectionTitle}>{dict.hardcoded.request_parameters}</h3>
 
           <div className={styles.row}>
             <div className={styles.field}>
-              <label className={styles.label}>Бюджет, AED</label>
+              <label className={styles.label}>{dict.hardcoded.budget_aed}</label>
               <input type="text" className={styles.input} placeholder="3,500,000" value={budget} onChange={e => setBudget(e.target.value)} />
             </div>
             <div className={styles.field}>
-              <label className={styles.label}>Направление</label>
+              <label className={styles.label}>{dict.hardcoded.direction}</label>
               <select className={styles.input} value={direction} onChange={e => setDirection(e.target.value)} style={{ paddingRight: '32px' }}>
-                <option value="Дубай">Дубай</option>
-                <option value="Абу-Даби">Абу-Даби</option>
-                <option value="РАК">РАК</option>
-                <option value="Оман">Оман</option>
+                <option value={dict.hardcoded.dubai}>{dict.hardcoded.dubai}</option>
+                <option value={dict.hardcoded.abu_dhabi}>{dict.hardcoded.abu_dhabi}</option>
+                <option value={dict.hardcoded.rak}>{dict.hardcoded.rak}</option>
+                <option value={dict.hardcoded.oman}>{dict.hardcoded.oman}</option>
               </select>
             </div>
           </div>
 
           <div className={styles.row}>
             <div className={styles.field}>
-              <label className={styles.label}>Как связаться</label>
+              <label className={styles.label}>{dict.hardcoded.how_to_contact}</label>
               <select className={styles.input} value={contactMethod} onChange={e => setContactMethod(e.target.value)} style={{ paddingRight: '32px' }}>
-                <option value="Напрямую">Напрямую</option>
-                <option value="Только через меня">Только через меня</option>
+                <option value={dict.hardcoded.directly}>{dict.hardcoded.directly}</option>
+                <option value={dict.hardcoded.only_through_me}>{dict.hardcoded.only_through_me}</option>
               </select>
             </div>
             <div className={styles.field}>
-              <label className={styles.label}>Тип объекта</label>
-              <input type="text" className={styles.input} placeholder="Квартира" value={propertyType} onChange={e => setPropertyType(e.target.value)} />
+              <label className={styles.label}>{dict.hardcoded.hc_28}</label>
+              <input type="text" className={styles.input} placeholder={dict.hardcoded.apartment} value={propertyType} onChange={e => setPropertyType(e.target.value)} />
             </div>
           </div>
 
           <div className={styles.field} style={{ marginBottom: '24px' }}>
-            <label className={styles.label}>Локация / район</label>
+            <label className={styles.label}>{dict.hardcoded.location_area}</label>
             <input type="text" className={styles.input} value={city} onChange={e => setCity(e.target.value)} />
           </div>
 
           <div className={styles.row} style={{ marginBottom: '48px' }}>
             <div className={styles.field}>
-              <label className={styles.label}>Цель</label>
+              <label className={styles.label}>{dict.hardcoded.goal}</label>
               <div className={styles.toggleGroup}>
-                {['Для жизни', 'Инвестиция', 'Перепродажа'].map(p => (
+                {[dict.hardcoded.for_living, dict.hardcoded.investment, dict.hardcoded.resale].map(p => (
                   <button 
                     key={p}
                     type="button"
@@ -195,9 +195,9 @@ ${comment ? `\nДополнительно:\n${comment}` : ''}
               </div>
             </div>
             <div className={styles.field}>
-              <label className={styles.label}>Готовность</label>
+              <label className={styles.label}>{dict.hardcoded.readiness}</label>
               <div className={styles.toggleGroup}>
-                {['Сейчас', '1-3 мес.', '3-6 мес.'].map(r => (
+                {[dict.hardcoded.now, dict.hardcoded['1_3_months'], dict.hardcoded['3_6_months']].map(r => (
                   <button 
                     key={r}
                     type="button"
@@ -213,10 +213,10 @@ ${comment ? `\nДополнительно:\n${comment}` : ''}
 
           {/* Step 03 */}
           <div className={styles.stepTitle}>03</div>
-          <h3 className={styles.sectionTitle}>Дополнительная информация</h3>
+          <h3 className={styles.sectionTitle}>{dict.hardcoded.additional_information}</h3>
 
           <div className={styles.field}>
-            <label className={styles.label}>Комментарий</label>
+            <label className={styles.label}>{dict.hardcoded.comment}</label>
             <textarea className={styles.textarea} placeholder="" value={comment} onChange={e => setComment(e.target.value)} maxLength={200}></textarea>
             <div style={{ textAlign: 'right', fontSize: '12px', color: '#a1a1aa', marginTop: '4px' }}>{comment.length}/200</div>
           </div>
@@ -224,12 +224,12 @@ ${comment ? `\nДополнительно:\n${comment}` : ''}
           <div className={styles.checkboxRow}>
             <input type="checkbox" id="agreement" checked={agreement} onChange={e => setAgreement(e.target.checked)} />
             <label htmlFor="agreement" className={styles.checkboxLabel}>
-              Я подтверждаю, что клиент дал согласие на передачу его контакта в FOR YOU REAL ESTATE.*
-            </label>
+              {dict.hardcoded.i_confirm_that_the_client_has}
+                                      </label>
           </div>
 
           <button type="submit" className={styles.submitBtn} disabled={mutation.isPending}>
-            {mutation.isPending ? 'Передача...' : 'Передать клиента'}
+            {mutation.isPending ? dict.hardcoded.transferring : dict.hardcoded.transfer_client}
           </button>
         </form>
       </div>
@@ -237,31 +237,31 @@ ${comment ? `\nДополнительно:\n${comment}` : ''}
       {/* Right Column - Info Sidebar */}
       <div className={styles.infoSidebar}>
         <div className={styles.infoCardMain}>
-          <div className={styles.infoCardStep}>Этапы</div>
-          <div className={styles.infoCardTitle}>Что произойдёт дальше</div>
+          <div className={styles.infoCardStep}>{dict.hardcoded.stages}</div>
+          <div className={styles.infoCardTitle}>{dict.hardcoded.what_will_happen_next}</div>
           <div className={styles.infoCardText}>
-            Брокер ведёт сделку через AmoCRM. Все его действия и комментарии транслируются в ваш кабинет.
-          </div>
+            {dict.hardcoded.hc_4}
+                                </div>
         </div>
 
         <div className={styles.infoCard} data-step="01">
           <div className={styles.infoCardStep}>01</div>
-          <div className={styles.infoCardTitle}>Проверка дубля по базе</div>
+          <div className={styles.infoCardTitle}>{dict.hardcoded.checking_duplicates_in_databas}</div>
         </div>
 
         <div className={styles.infoCard} data-step="02">
           <div className={styles.infoCardStep}>02</div>
-          <div className={styles.infoCardTitle}>Создание сделки в воронке «Партнёрские лиды»</div>
+          <div className={styles.infoCardTitle}>{dict.hardcoded.creating_a_deal_in_the_partner}</div>
         </div>
 
         <div className={styles.infoCard} data-step="03">
           <div className={styles.infoCardStep}>03</div>
-          <div className={styles.infoCardTitle}>Назначение брокера</div>
+          <div className={styles.infoCardTitle}>{dict.hardcoded.broker_assignment}</div>
         </div>
 
         <div className={styles.infoCard} data-step="04">
           <div className={styles.infoCardStep}>04</div>
-          <div className={styles.infoCardTitle}>Уведомление вам о начале работы</div>
+          <div className={styles.infoCardTitle}>{dict.hardcoded.notification_of_work_start}</div>
         </div>
       </div>
 
@@ -283,10 +283,10 @@ ${comment ? `\nДополнительно:\n${comment}` : ''}
                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
               </svg>
             </div>
-            <h2 style={{ fontSize: '24px', fontWeight: 600, color: '#0f172a', marginBottom: '12px' }}>Клиент успешно передан!</h2>
+            <h2 style={{ fontSize: '24px', fontWeight: 600, color: '#0f172a', marginBottom: '12px' }}>{dict.hardcoded.client_successfully_transferre}</h2>
             <p style={{ color: '#64748b', marginBottom: '24px', lineHeight: 1.5 }}>
-              Сделка создана в воронке и ожидает назначения брокера. Мы уведомим вас, как только брокер возьмет клиента в работу.
-            </p>
+              {dict.hardcoded.the_deal_has_been_created_in_t}
+                                      </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <button 
                 onClick={() => router.push(`/${currentLocale}/deals/${successLeadId}`)}
@@ -295,8 +295,8 @@ ${comment ? `\nДополнительно:\n${comment}` : ''}
                   border: 'none', borderRadius: '8px', fontWeight: 500, cursor: 'pointer'
                 }}
               >
-                Перейти к сделке
-              </button>
+                {dict.hardcoded.go_to_deal}
+                                            </button>
               <button 
                 onClick={resetForm}
                 style={{
@@ -304,8 +304,8 @@ ${comment ? `\nДополнительно:\n${comment}` : ''}
                   border: 'none', borderRadius: '8px', fontWeight: 500, cursor: 'pointer'
                 }}
               >
-                Передать еще одного
-              </button>
+                {dict.hardcoded.transfer_another_one}
+                                            </button>
             </div>
           </div>
         </div>

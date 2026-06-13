@@ -42,23 +42,23 @@ export function RecentEvents({ events = [], dict }: { events?: any[], dict: any 
   const mapText = (text: string) => {
     if (!text || !isEn) return text;
     const lower = text.toLowerCase();
-    if (lower === 'менеджер') return 'Manager';
-    if (lower === 'изменение') return 'Change';
-    if (lower === 'сделка перешла в новый статус') return 'Deal moved to a new status';
-    if (lower === 'клиент') return 'Client';
-    if (lower === 'успешно') return 'Success';
-    if (lower === 'сделка закрыта успешно') return 'Deal closed successfully';
+    if (lower === dict.hardcoded.hc_41) return 'Manager';
+    if (lower === dict.hardcoded.hc_39) return 'Change';
+    if (lower === dict.hardcoded.hc_49) return 'Deal moved to a new status';
+    if (lower === dict.hardcoded.hc_40) return 'Client';
+    if (lower === dict.hardcoded.hc_51) return 'Success';
+    if (lower === dict.hardcoded.hc_48) return 'Deal closed successfully';
     
     // Status fallbacks
     const fallbacks: Record<string, string> = {
-      '142': isEn ? 'Successfully realized' : 'Успешно реализовано',
-      '143': isEn ? 'Closed and not realized' : 'Закрыто и не реализовано',
-      '74717798': isEn ? 'Initial contact' : 'Первичный контакт',
-      '74717802': isEn ? 'Negotiations' : 'Переговоры',
-      '74717806': isEn ? 'Making decision' : 'Принимают решение',
-      '74717810': isEn ? 'Contract approval' : 'Согласование договора',
-      '84853590': isEn ? 'Qualification' : 'Квалификация',
-      '84853926': isEn ? 'Meeting scheduled' : 'Встреча назначена'
+      '142': isEn ? 'Successfully realized' : dict.hardcoded.hc_30,
+      '143': isEn ? 'Closed and not realized' : dict.hardcoded.hc_11,
+      '74717798': isEn ? 'Initial contact' : dict.hardcoded.hc_21,
+      '74717802': isEn ? 'Negotiations' : dict.hardcoded.hc_22,
+      '74717806': isEn ? 'Making decision' : dict.hardcoded.hc_23,
+      '74717810': isEn ? 'Contract approval' : dict.hardcoded.contract_agreement,
+      '84853590': isEn ? 'Qualification' : dict.hardcoded.qualification,
+      '84853926': isEn ? 'Meeting scheduled' : dict.hardcoded.hc_8
     };
     
     // Check if the text matches a raw status ID or "Статус ID"

@@ -36,10 +36,10 @@ export function BrokerSidebar({ lead, dict, isModal = false }: { lead?: LeadDeta
     return field.values[0].value;
   };
 
-  const purpose = getCustomField('Цель') || getCustomField('Цель покупки');
-  const readiness = getCustomField('Готовность');
-  const location = getCustomField('Локация') || lead.city;
-  const language = getCustomField('Язык общения') || getCustomField('Язык');
+  const purpose = getCustomField(dict.hardcoded.goal) || getCustomField(dict.hardcoded.purpose_of_purchase);
+  const readiness = getCustomField(dict.hardcoded.readiness);
+  const location = getCustomField(dict.hardcoded.location) || lead.city;
+  const language = getCustomField(dict.hardcoded.communication_language) || getCustomField(dict.hardcoded.language);
 
   return (
     <div className={isModal ? styles.sidebarModal : styles.sidebar}>
@@ -50,15 +50,15 @@ export function BrokerSidebar({ lead, dict, isModal = false }: { lead?: LeadDeta
             {lead.broker?.name ? lead.broker.name.charAt(0).toUpperCase() : '?'}
           </div>
           <div className={styles.brokerInfo}>
-            <span className={styles.brokerName}>{lead.broker?.name || dict?.not_assigned || 'Не назначено'}</span>
-            <span className={styles.brokerRole}>{dict?.broker || 'Брокер'}</span>
+            <span className={styles.brokerName}>{lead.broker?.name || dict?.not_assigned || dict.hardcoded.not_assigned}</span>
+            <span className={styles.brokerRole}>{dict?.broker || dict.hardcoded.broker}</span>
           </div>
         </div>
 
-        {lead.broker?.name && <span className={styles.statusBadge}>{dict?.assigned || 'Назначен'}</span>}
+        {lead.broker?.name && <span className={styles.statusBadge}>{dict?.assigned || dict.hardcoded.assigned}</span>}
 
         <p className={styles.description}>
-          {dict?.broker_desc || 'Брокер ведет сделку через AmoCRM. Все его действия и комментарии транслируются в ваш кабинет.'}
+          {dict?.broker_desc || dict.hardcoded.the_broker_leads_the_deal_via}
         </p>
 
         <div className={styles.contacts}>
@@ -80,11 +80,11 @@ export function BrokerSidebar({ lead, dict, isModal = false }: { lead?: LeadDeta
           <div className={styles.actions}>
             {lead.broker?.phone && (
               <button className={styles.actionBtn}>
-                <PhoneIcon /> {dict?.call || 'Позвонить'}
+                <PhoneIcon /> {dict?.call || dict.hardcoded.call}
               </button>
             )}
             <button className={styles.actionBtn}>
-              <EnvelopeIcon /> {dict?.write || 'Написать'}
+              <EnvelopeIcon /> {dict?.write || dict.hardcoded.write}
             </button>
           </div>
         )}
@@ -94,31 +94,31 @@ export function BrokerSidebar({ lead, dict, isModal = false }: { lead?: LeadDeta
 
       {/* Brief Card */}
       <div className={isModal ? styles.cardModal : styles.card}>
-        <h3 className={styles.briefTitle}>{dict?.client_brief || 'Бриф клиента'}</h3>
+        <h3 className={styles.briefTitle}>{dict?.client_brief || dict.hardcoded.client_brief}</h3>
         
         <div className={styles.briefList}>
           {purpose && (
             <div className={styles.briefField}>
-              <div className={styles.briefLabel}>{'Цель'}</div>
+              <div className={styles.briefLabel}>{dict.hardcoded.goal}</div>
               <div className={styles.briefValue}>{purpose}</div>
             </div>
           )}
 
           {readiness && (
             <div className={styles.briefField}>
-              <div className={styles.briefLabel}>{'Готовность'}</div>
+              <div className={styles.briefLabel}>{dict.hardcoded.readiness}</div>
               <div className={styles.briefValue}>{readiness}</div>
             </div>
           )}
 
           <div className={styles.briefField}>
-            <div className={styles.briefLabel}>{dict?.city || 'Локация'}</div>
-            <div className={styles.briefValue}>{location || dict?.not_specified || 'Не указано'}</div>
+            <div className={styles.briefLabel}>{dict?.city || dict.hardcoded.location}</div>
+            <div className={styles.briefValue}>{location || dict?.not_specified || dict.hardcoded.hc_18}</div>
           </div>
 
           {language && (
             <div className={styles.briefField}>
-              <div className={styles.briefLabel}>{'Язык общения'}</div>
+              <div className={styles.briefLabel}>{dict.hardcoded.communication_language}</div>
               <div className={styles.briefValue}>{language}</div>
             </div>
           )}
@@ -126,25 +126,25 @@ export function BrokerSidebar({ lead, dict, isModal = false }: { lead?: LeadDeta
           {!purpose && !readiness && !language && (
             <>
               <div className={styles.briefField}>
-                <div className={styles.briefLabel}>{dict?.client_name || 'Имя клиента'}</div>
-                <div className={styles.briefValue}>{lead.contact?.name || dict?.not_specified || 'Не указано'}</div>
+                <div className={styles.briefLabel}>{dict?.client_name || dict.hardcoded.client_name}</div>
+                <div className={styles.briefValue}>{lead.contact?.name || dict?.not_specified || dict.hardcoded.hc_18}</div>
               </div>
               
               <div className={styles.briefField}>
-                <div className={styles.briefLabel}>{dict?.client_phone || 'Телефон клиента'}</div>
-                <div className={styles.briefValue}>{lead.contact?.phone || dict?.not_specified || 'Не указано'}</div>
+                <div className={styles.briefLabel}>{dict?.client_phone || dict.hardcoded.client_s_phone}</div>
+                <div className={styles.briefValue}>{lead.contact?.phone || dict?.not_specified || dict.hardcoded.hc_18}</div>
               </div>
 
               <div className={styles.briefField}>
-                <div className={styles.briefLabel}>{dict?.budget || 'Бюджет'}</div>
-                <div className={styles.briefValue}>{lead.budget ? `$${lead.budget.toLocaleString()}` : (dict?.not_specified || 'Не указано')}</div>
+                <div className={styles.briefLabel}>{dict?.budget || dict.hardcoded.budget}</div>
+                <div className={styles.briefValue}>{lead.budget ? `$${lead.budget.toLocaleString()}` : (dict?.not_specified || dict.hardcoded.hc_18)}</div>
               </div>
             </>
           )}
           
           <div className={styles.briefField}>
-            <div className={styles.briefLabel}>{dict?.comment || 'Комментарий'}</div>
-            <div className={styles.briefValue}>{lead.comment || dict?.no_comments || 'Нет комментариев'}</div>
+            <div className={styles.briefLabel}>{dict?.comment || dict.hardcoded.comment}</div>
+            <div className={styles.briefValue}>{lead.comment || dict?.no_comments || dict.hardcoded.no_comments}</div>
           </div>
         </div>
       </div>

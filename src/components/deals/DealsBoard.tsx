@@ -48,10 +48,6 @@ export function DealsBoard({ search = '', dict }: { search?: string, dict: any }
               <Link href={`/${pathname.split('/')[1]}/deals/${deal.id}`} key={deal.id} className={styles.card}>
                 <div className={styles.cardTitle}>{deal.title}</div>
                 
-                {deal.contact_name && (
-                  <div className={styles.cardContact}>{deal.contact_name}</div>
-                )}
-                
                 <div className={styles.cardFooter}>
                   <div className={styles.cardPrice}>
                     {deal.budget ? `$${deal.budget.toLocaleString()}` : ''}

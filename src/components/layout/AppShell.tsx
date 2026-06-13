@@ -4,16 +4,20 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuthStore } from '@/lib/stores/auth.store';
 
+import dictRu from '@/i18n/dictionaries/ru.json';
+import dictEn from '@/i18n/dictionaries/en.json';
+const dict = typeof window !== 'undefined' && window.location.pathname.startsWith('/en') ? dictEn : dictRu;
+
 const navItems = [
-  { href: '/leads', label: 'Ліди' },
-  { href: '/profile', label: 'Профіль' },
+  { href: '/leads', label: dict.hardcoded.leads },
+  { href: '/profile', label: dict.hardcoded.hc_24 },
 ];
 
 const adminNavItems = [
-  { href: '/admin/partners', label: 'Партнери' },
+  { href: '/admin/partners', label: dict.hardcoded.partners },
 ];
 
-export function AppShell({ children }: { children: React.ReactNode }) {
+export function AppShell({ children, dict }: { children: React.ReactNode, dict: any }) {
   const pathname = usePathname();
   const router = useRouter();
   const { user, clearAuth } = useAuthStore();
@@ -71,8 +75,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 onClick={handleLogout}
                 className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
               >
-                Вийти
-              </button>
+                {dict.hardcoded.logout}
+                                            </button>
             </div>
           </div>
         </div>

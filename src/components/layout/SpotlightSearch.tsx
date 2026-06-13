@@ -8,6 +8,10 @@ import { leadsApi } from '@/lib/api-leads';
 import { useDebounce } from '@/hooks/use-debounce';
 import styles from './SpotlightSearch.module.css';
 
+import dictRu from '@/i18n/dictionaries/ru.json';
+import dictEn from '@/i18n/dictionaries/en.json';
+const dict = typeof window !== 'undefined' && window.location.pathname.startsWith('/en') ? dictEn : dictRu;
+
 interface SpotlightSearchProps {
   isOpen: boolean;
   onClose: () => void;
@@ -31,18 +35,18 @@ export function SpotlightSearch({ isOpen, onClose }: SpotlightSearchProps) {
   });
 
   const CATEGORIES = [
-    { id: 'All', label: locale === 'en' ? 'All' : 'Все' },
-    { id: 'Deals', label: locale === 'en' ? 'Deals' : 'Сделки' },
-    { id: 'Navigation', label: locale === 'en' ? 'Navigation' : 'Навигация' }
+    { id: 'All', label: locale === 'en' ? 'All' : dict.hardcoded.all },
+    { id: 'Deals', label: locale === 'en' ? 'Deals' : dict.hardcoded.deals },
+    { id: 'Navigation', label: locale === 'en' ? 'Navigation' : dict.hardcoded.navigation }
   ] as const;
 
   const NAVIGATION_ITEMS = [
-    { id: 'nav-1', type: 'Navigation', title: locale === 'en' ? 'Dashboard' : 'Дашборд', subtitle: locale === 'en' ? 'Home page' : 'Главная страница', icon: Home, path: `/${locale}/` },
-    { id: 'nav-2', type: 'Navigation', title: locale === 'en' ? 'Deals' : 'Сделки', subtitle: locale === 'en' ? 'Manage your deals' : 'Управление сделками', icon: Briefcase, path: `/${locale}/deals` },
-    { id: 'nav-3', type: 'Navigation', title: locale === 'en' ? 'Payouts' : 'Выплаты', subtitle: locale === 'en' ? 'Finances and payouts' : 'Финансы и выплаты', icon: CreditCard, path: `/${locale}/payouts` },
-    { id: 'nav-4', type: 'Navigation', title: locale === 'en' ? 'Referrals' : 'Рефералы', subtitle: locale === 'en' ? 'Referral program' : 'Реферальная программа', icon: Users, path: `/${locale}/referrals` },
-    { id: 'nav-5', type: 'Navigation', title: locale === 'en' ? 'Support' : 'Служба поддержки', subtitle: locale === 'en' ? 'Help and tickets' : 'Помощь и тикеты', icon: HelpCircle, path: `/${locale}/support` },
-    { id: 'nav-6', type: 'Navigation', title: locale === 'en' ? 'Profile' : 'Профиль', subtitle: locale === 'en' ? 'Account settings' : 'Настройки аккаунта', icon: Settings, path: `/${locale}/profile` },
+    { id: 'nav-1', type: 'Navigation', title: locale === 'en' ? 'Dashboard' : dict.hardcoded.dashboard, subtitle: locale === 'en' ? 'Home page' : dict.hardcoded.home_page, icon: Home, path: `/${locale}/` },
+    { id: 'nav-2', type: 'Navigation', title: locale === 'en' ? 'Deals' : dict.hardcoded.deals, subtitle: locale === 'en' ? 'Manage your deals' : dict.hardcoded.deal_management, icon: Briefcase, path: `/${locale}/deals` },
+    { id: 'nav-3', type: 'Navigation', title: locale === 'en' ? 'Payouts' : dict.hardcoded.payouts, subtitle: locale === 'en' ? 'Finances and payouts' : dict.hardcoded.finance_payouts, icon: CreditCard, path: `/${locale}/payouts` },
+    { id: 'nav-4', type: 'Navigation', title: locale === 'en' ? 'Referrals' : dict.hardcoded.referrals, subtitle: locale === 'en' ? 'Referral program' : dict.hardcoded.referral_program, icon: Users, path: `/${locale}/referrals` },
+    { id: 'nav-5', type: 'Navigation', title: locale === 'en' ? 'Support' : dict.hardcoded.support_service, subtitle: locale === 'en' ? 'Help and tickets' : dict.hardcoded.help_tickets, icon: HelpCircle, path: `/${locale}/support` },
+    { id: 'nav-6', type: 'Navigation', title: locale === 'en' ? 'Profile' : dict.hardcoded.profile, subtitle: locale === 'en' ? 'Account settings' : dict.hardcoded.account_settings, icon: Settings, path: `/${locale}/profile` },
   ];
 
   useEffect(() => {
@@ -74,7 +78,7 @@ export function SpotlightSearch({ isOpen, onClose }: SpotlightSearchProps) {
           id: `deal-${deal.id}`,
           type: 'Deals',
           title: deal.title,
-          subtitle: `${deal.city || (locale === 'en' ? 'Unknown city' : 'Город не указан')} • ${deal.budget ? '$'+deal.budget.toLocaleString() : (locale === 'en' ? 'No budget' : 'Без бюджета')}`,
+          subtitle: `${deal.city || (locale === 'en' ? 'Unknown city' : dict.hardcoded.city_not_specified)} • ${deal.budget ? '$'+deal.budget.toLocaleString() : (locale === 'en' ? 'No budget' : dict.hardcoded.no_budget)}`,
           icon: User,
           path: `/${locale}/deals/${deal.id}`
         })));
@@ -125,7 +129,7 @@ export function SpotlightSearch({ isOpen, onClose }: SpotlightSearchProps) {
             ref={inputRef}
             type="text"
             className={styles.input}
-            placeholder={locale === 'en' ? "Search deals or pages..." : "Поиск сделок или страниц..."}
+            placeholder={locale === 'en' ? "Search deals or pages..." : dict.hardcoded.search_deals_or_pages}
             value={query}
             onChange={e => {
               setQuery(e.target.value);
@@ -151,7 +155,7 @@ export function SpotlightSearch({ isOpen, onClose }: SpotlightSearchProps) {
         <div className={styles.results}>
           {isLoadingDeals ? (
             <div className={styles.noResults}>
-              {locale === 'en' ? "Loading..." : "Загрузка..."}
+              {locale === 'en' ? "Loading..." : dict.hardcoded.loading}
             </div>
           ) : searchResults.length > 0 ? (
             <div className={styles.resultsList}>
@@ -194,11 +198,11 @@ export function SpotlightSearch({ isOpen, onClose }: SpotlightSearchProps) {
         <div className={styles.footer}>
           <div className={styles.footerLeft}>
             <div className={styles.key}>↑↓</div>
-            <span>{locale === 'en' ? "to navigate" : "навигация"}</span>
+            <span>{locale === 'en' ? "to navigate" : dict.hardcoded.hc_42}</span>
             <div className={styles.key} style={{ marginLeft: '12px' }}>Enter</div>
-            <span>{locale === 'en' ? "to select" : "выбрать"}</span>
+            <span>{locale === 'en' ? "to select" : dict.hardcoded.select}</span>
             <div className={styles.key} style={{ marginLeft: '12px' }}>Esc</div>
-            <span>{locale === 'en' ? "to close" : "закрыть"}</span>
+            <span>{locale === 'en' ? "to close" : dict.hardcoded.hc_38}</span>
           </div>
         </div>
       </div>

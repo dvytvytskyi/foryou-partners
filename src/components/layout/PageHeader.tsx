@@ -23,7 +23,7 @@ export function PageHeader({ dict }: { dict: any }) {
   const router = useRouter();
   const user = useAuthStore((state) => state.user);
   const currentLocale = pathname.split('/')[1] || 'ru';
-  const currentPage = pathname.split('/').filter(Boolean).pop() || 'Дашборд';
+  const currentPage = pathname.split('/').filter(Boolean).pop() || dict.hardcoded.dashboard;
   
   // Basic route translation for UI
   const formattedPage = currentPage === 'dashboard' ? dict.titles.dashboard : 
@@ -36,8 +36,8 @@ export function PageHeader({ dict }: { dict: any }) {
                         currentPage === 'settings' ? dict.titles.settings :
                         currentPage.charAt(0).toUpperCase() + currentPage.slice(1);
 
-  if (pathname.includes('/deals') || pathname.includes('/support')) {
-    if (pathname.endsWith('/deals') || pathname.endsWith('/support')) {
+  if (pathname.includes('/deals') || pathname.includes('/support') || pathname.includes('/knowledge')) {
+    if (pathname.endsWith('/deals') || pathname.endsWith('/support') || pathname.endsWith('/knowledge')) {
       // allow
     } else {
       return null;
@@ -48,6 +48,7 @@ export function PageHeader({ dict }: { dict: any }) {
   const isReferralsPage = pathname.includes('/referrals');
   const isKnowledgePage = pathname.includes('/knowledge');
   const isPayoutsPage = pathname.includes('/payouts') || pathname.includes('/payments');
+  const isSupportPage = pathname.includes('/support');
   const isAdmin = user?.role === 'admin';
 
   let primaryButtonText = dict.titles.transfer;
@@ -66,7 +67,7 @@ export function PageHeader({ dict }: { dict: any }) {
         )}
       </div>
       <div className={styles.actions}>
-        {!isTransferPage && !isReferralsPage && !isKnowledgePage && (
+        {!isTransferPage && !isReferralsPage && !isKnowledgePage && !isSupportPage && (
           <button 
             className={`${styles.primaryButton} ${!isPayoutsPage ? styles.hideOnMobile : ''}`}
             onClick={() => {

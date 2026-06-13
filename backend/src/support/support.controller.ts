@@ -44,4 +44,16 @@ export class SupportController {
     }
     return this.supportService.closeTicket(id);
   }
+
+  @Patch(':id/status')
+  updateTicketStatus(
+    @Request() req: any,
+    @Param('id') id: string,
+    @Body('status') status: any
+  ) {
+    if (req.user.role !== 'admin') {
+      throw new ForbiddenException('Only admins can update ticket status');
+    }
+    return this.supportService.updateTicketStatus(id, status);
+  }
 }

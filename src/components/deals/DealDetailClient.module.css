@@ -6,8 +6,7 @@
 
 .header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   padding: 1.5rem 2rem 32px 2rem;
   background: linear-gradient(0deg, #f8fafc 0px, #ffffff 16px);
   border-bottom: 1px solid #e2e8f0;
@@ -17,7 +16,8 @@
 .headerContent {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
+  width: 100%;
 }
 
 .titleRow {
@@ -82,7 +82,7 @@
 
 .infoCardsGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 12px;
   width: 100%;
   margin-top: 8px;
@@ -193,5 +193,13 @@
 
   .sidebarWrapper {
     display: none; /* Hide sidebar on mobile, show in modal instead */
+  }
+  
+  .infoCardsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .financeGridItem {
+    grid-column: 1 / -1;
   }
 }

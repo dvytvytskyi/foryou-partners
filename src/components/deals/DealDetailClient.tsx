@@ -8,6 +8,7 @@ import { leadsApi } from '@/lib/api-leads';
 import { DealHistory } from '@/components/deals/DealHistory';
 import { BrokerSidebar } from '@/components/deals/BrokerCard';
 import { BriefModal } from '@/components/deals/BriefModal';
+import { RequestPayoutModal } from '@/components/payouts/RequestPayoutModal';
 import styles from './DealDetailClient.module.css';
 
 const ArrowLeftIcon = () => (
@@ -26,6 +27,8 @@ const ChatIcon = () => (
 export function DealDetailClient({ id, locale, dict }: { id: string; locale: string; dict: any }) {
   const router = useRouter();
   const [isBriefModalOpen, setIsBriefModalOpen] = React.useState(false);
+  const [isPayoutModalOpen, setIsPayoutModalOpen] = React.useState(false);
+  const [payoutRequested, setPayoutRequested] = React.useState(false);
 
   const { data: lead, isLoading, isError } = useQuery({
     queryKey: ['lead', id],
@@ -41,8 +44,14 @@ export function DealDetailClient({ id, locale, dict }: { id: string; locale: str
 
   const pipelines = pipelinesData?.items || [];
   
+  React.useEffect(() => {
+    if (lead?.id) {
+      setPayoutRequested(localStorage.getItem(`payout_requested_${lead.id}`) === 'true');
+    }
+  }, [lead?.id]);
+
   const resolveStatusName = (rawStatus: string | null) => {
-    if (!rawStatus) return dict.unknown || 'Неизвестно';
+    if (!rawStatus) return dict.unknown || dict.hardcoded.unknown;
     if (!rawStatus.includes(':')) {
       for (const p of pipelines) {
         const status = p.statuses?.find((s: any) => s.id.toString() === rawStatus);
@@ -56,16 +65,24 @@ export function DealDetailClient({ id, locale, dict }: { id: string; locale: str
       const status = pipeline.statuses?.find((s: any) => s.id.toString() === statusId);
       if (status) return status.name;
     }
-    return `${dict.status || 'Статус'} ${statusId}`;
+    return `${dict.status || dict.hardcoded.status} ${statusId}`;
   };
 
   if (isLoading) {
-    return <div style={{ padding: '2rem', textAlign: 'center', color: '#64748b' }}>{dict.loading || 'Загрузка деталей...'}</div>;
+    return <div style={{ padding: '2rem', textAlign: 'center', color: '#64748b' }}>{dict.loading || dict.hardcoded.loading_details}</div>;
   }
 
   if (isError || !lead) {
-    return <div style={{ padding: '2rem', textAlign: 'center', color: '#dc2626' }}>{dict.not_found || 'Сделка не найдена'}</div>;
+    return <div style={{ padding: '2rem', textAlign: 'center', color: '#dc2626' }}>{dict.not_found || dict.hardcoded.deal_not_found}</div>;
   }
+
+  const handlePayoutSuccess = () => {
+    setIsPayoutModalOpen(false);
+    setPayoutRequested(true);
+    if (lead?.id) {
+      localStorage.setItem(`payout_requested_${lead.id}`, 'true');
+    }
+  };
 
   const statusName = resolveStatusName(lead.status);
 
@@ -75,7 +92,7 @@ export function DealDetailClient({ id, locale, dict }: { id: string; locale: str
     const diffDays = Math.round((new Date(dateStr).getTime() - Date.now()) / (1000 * 60 * 60 * 24));
     try {
       const rtf = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' });
-      return rtf.format(diffDays, 'day').replace('назад', '').trim(); // Remove "назад" because we'll add it if needed or the string handles it
+      return rtf.format(diffDays, 'day').replace(dict.hardcoded.back, '').trim(); // Remove "назад" because we'll add it if needed or the string handles it
     } catch (e) {
       return '';
     }
@@ -83,7 +100,7 @@ export function DealDetailClient({ id, locale, dict }: { id: string; locale: str
 
   const diffDays = lead.created_at ? Math.round((Date.now() - new Date(lead.created_at).getTime()) / (1000 * 60 * 60 * 24)) : 0;
   const timeStr = new Intl.RelativeTimeFormat(locale === 'ru' ? 'ru-RU' : 'en-US', { numeric: 'always' }).format(-diffDays, 'day');
-  const passedText = locale === 'ru' ? `Передан ${timeStr.replace('назад', '').trim()} назад` : `Passed ${timeStr}`;
+  const passedText = locale === 'ru' ? `Передан ${timeStr.replace(dict.hardcoded.back, '').trim()} назад` : `Passed ${timeStr}`;
 
   // Extract type
   const getCustomField = (name: string) => {
@@ -96,9 +113,9 @@ export function DealDetailClient({ id, locale, dict }: { id: string; locale: str
     return field.values[0].value;
   };
 
-  const propertyType = getCustomField('Тип') || getCustomField('Тип недвижимости') || 'Не указано';
+  const propertyType = getCustomField(dict.hardcoded.type) || getCustomField(dict.hardcoded.property_type) || dict.hardcoded.hc_18;
   const formatBudget = (budget: number | null) => {
-    if (!budget) return 'Не указано';
+    if (!budget) return dict.hardcoded.hc_18;
     if (budget >= 1000000) return `${(budget / 1000000).toFixed(1).replace('.0', '')}M AED`;
     if (budget >= 1000) return `${(budget / 1000).toFixed(0)}K AED`;
     return `${budget.toLocaleString()} AED`;
@@ -127,18 +144,48 @@ export function DealDetailClient({ id, locale, dict }: { id: string; locale: str
             }}
             style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#1B4FA6', textDecoration: 'none', fontSize: '15px', fontWeight: 500, fontFamily: 'var(--font-inter)', cursor: 'pointer' }}
           >
-            <ArrowLeftIcon /> {dict.back || 'Назад к сделкам'}
+            <ArrowLeftIcon /> {dict.back || dict.hardcoded.back_to_deals}
           </a>
           
           <div className={styles.titleRow}>
-            <h1 className={styles.title}>
-              {lead.title}
-            </h1>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+              <h1 className={styles.title}>
+                {lead.title}
+              </h1>
+              <span style={{ 
+                display: 'inline-flex', 
+                alignItems: 'center', 
+                gap: '6px', 
+                padding: '4px 12px', 
+                borderRadius: '20px', 
+                background: '#ecfdf5', 
+                color: '#10b981', 
+                fontSize: '13px', 
+                fontWeight: 500 
+              }}>
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981' }}></span>
+                {statusName}
+              </span>
+            </div>
+
+            <div className={styles.actionsDesktopOnly}>
+              <button 
+                className={styles.btnAsk}
+                onClick={() => {
+                  window.dispatchEvent(new CustomEvent('open-ticket-modal', { 
+                    detail: { subject: `${dict.question_subject || dict.hardcoded.question_about_deal} ${lead.title}` } 
+                  }));
+                }}
+              >
+                <ChatIcon /> {dict.ask_question || dict.hardcoded.ask_a_question}
+              </button>
+            </div>
+
             <button 
               className={styles.btnBrief}
               onClick={() => setIsBriefModalOpen(true)}
             >
-              {dict.brief || 'Бриф клиента'}
+              {dict.brief || dict.hardcoded.client_brief}
             </button>
           </div>
 
@@ -149,32 +196,28 @@ export function DealDetailClient({ id, locale, dict }: { id: string; locale: str
 
           <div className={styles.infoCardsGrid}>
             <div className={styles.infoCard}>
-              <span className={styles.infoCardLabel}>{dict.type || 'Тип'}</span>
+              <span className={styles.infoCardLabel}>{dict.type || dict.hardcoded.type}</span>
               <span className={styles.infoCardValue}>{propertyType}</span>
             </div>
             <div className={styles.infoCard}>
-              <span className={styles.infoCardLabel}>{dict.budget || 'Бюджет'}</span>
+              <span className={styles.infoCardLabel}>{dict.budget || dict.hardcoded.budget}</span>
               <span className={styles.infoCardValue}>{formatBudget(lead.budget)}</span>
             </div>
+            {payoutRequested ? (
+              <button className={`${styles.btnFinance} ${styles.financeGridItem}`} style={{ background: '#10b981', color: 'white', border: 'none', cursor: 'default' }}>
+                <LockIcon />
+                {dict.payout_requested || 'Выплата запрошена'}
+              </button>
+            ) : (
+              <button 
+                className={`${styles.btnFinance} ${styles.financeGridItem}`}
+                style={{ background: '#1B4FA6', color: '#fff', border: 'none', cursor: 'pointer' }}
+                onClick={() => setIsPayoutModalOpen(true)}
+              >
+                💰 {dict.request_payout || 'Запросить выплату'}
+              </button>
+            )}
           </div>
-
-          <button className={styles.btnFinance}>
-            <LockIcon />
-            {dict.finances_locked || 'Финансы появятся после закрытия'}
-          </button>
-        </div>
-
-        <div className={styles.actionsDesktopOnly}>
-          <button 
-            className={styles.btnAsk}
-            onClick={() => {
-              window.dispatchEvent(new CustomEvent('open-ticket-modal', { 
-                detail: { subject: `${dict.question_subject || 'Вопрос по сделке:'} ${lead.title}` } 
-              }));
-            }}
-          >
-            <ChatIcon /> {dict.ask_question || 'Задать вопрос'}
-          </button>
         </div>
       </div>
 
@@ -191,6 +234,15 @@ export function DealDetailClient({ id, locale, dict }: { id: string; locale: str
         lead={lead} 
         dict={dict.broker || {}} 
       />
+
+      {isPayoutModalOpen && (
+        <RequestPayoutModal
+          onClose={() => setIsPayoutModalOpen(false)}
+          onSuccess={handlePayoutSuccess}
+          defaultDetails={`Сделка: ${lead.title} (ID: ${lead.id})`}
+          dict={dict.payouts || { hardcoded: dict.hardcoded }}
+        />
+      )}
     </div>
   );
 }

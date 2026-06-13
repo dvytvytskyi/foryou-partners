@@ -74,6 +74,14 @@ export function Sidebar({ dict, isOpen, onClose }: { dict: any; isOpen?: boolean
 
       <nav className={styles.navSection}>
         <div className={styles.navGroup}>
+          <Link 
+            href={`/${currentLocale}/transfer`}
+            className={`${styles.navItem} ${pathname.includes('/transfer') ? styles.navItemActive : ''} ${styles.desktopOnlyNavItem}`}
+            onClick={onClose}
+          >
+            <img src="/icons/Plus.png" alt={dict.transfer} className={styles.icon} />
+            <span>{dict.transfer}</span>
+          </Link>
           {MAIN_ITEMS.map((item) => (
             <Link 
               key={item.href} 

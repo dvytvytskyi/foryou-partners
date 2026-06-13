@@ -57,7 +57,7 @@ export function DealsClient({ dict }: { dict: any }) {
         {view === 'list' ? <DealsTable dict={dict} /> : <DealsBoard dict={dict} />}
       </div>
 
-      <AddLeadModal 
+      <AddLeadModal dict={dict} 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
         onSuccess={handleSuccess} 

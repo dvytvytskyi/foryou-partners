@@ -15,18 +15,18 @@ export function KnowledgeBase({ dict }: { dict: any }) {
   const articles = [
     {
       id: 1,
-      tag: { label: 'Презентация', type: 'blue' },
-      title: 'Коэксклюзивные проекты',
-      description: 'Полную презентацию эксклюзивных и коэксклюзивных проектов можно скачать по ссылке.',
+      tag: { label: dict.hardcoded.presentation, type: 'blue' },
+      title: dict.hardcoded.co_exclusive_projects,
+      description: dict.hardcoded.you_can_download_the_full_pres,
       author: 'Floyd Miles',
       date: 'Mar 5 04:25',
       avatar: 'https://i.pravatar.cc/100?img=11'
     },
     {
       id: 2,
-      tag: { label: 'Презентация', type: 'blue' },
-      title: 'ВНЖ и Гражданство: Дубай, Абу-Даби, Оман, Катар, Майами и Турция',
-      description: 'Новая условия в декабре 2026',
+      tag: { label: dict.hardcoded.presentation, type: 'blue' },
+      title: dict.hardcoded.residence_permit_and_citizensh,
+      description: dict.hardcoded.new_conditions_in_december_202,
       author: 'Albert Flores',
       date: 'Oct 4 15:49',
       avatar: 'https://i.pravatar.cc/100?img=12'
@@ -34,8 +34,8 @@ export function KnowledgeBase({ dict }: { dict: any }) {
     {
       id: 3,
       tag: { label: 'Event', type: 'purple' },
-      title: 'Встреча / обучение современным тенденциям рынка ОАЭ',
-      description: 'Оставьте заявку',
+      title: dict.hardcoded.meeting_training_on_modern_uae,
+      description: dict.hardcoded.leave_a_request,
       author: 'Albert Flores',
       date: 'Oct 4 15:49',
       avatar: 'https://i.pravatar.cc/100?img=12'

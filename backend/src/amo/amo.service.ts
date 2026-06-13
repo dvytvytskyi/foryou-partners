@@ -1301,7 +1301,7 @@ export class AmoService {
     }
 
     const leadPayload: any = {
-      name: `Заявка от партнера: ${dto.name}`,
+      name: `Partners: ${dto.name}`,
       pipeline_id: 8696950,
       status_id: 70457446, // "ЗАЯВКА ПОЛУЧЕНА" instead of "ПАРТНЕРЫ"
     };
@@ -1421,6 +1421,7 @@ export class AmoService {
     country?: string;
     direction?: string;
     partnerType?: string;
+    referredById?: string;
   }): Promise<{ externalLeadId: number }> {
     const domain = this.configService.getOrThrow<string>('AMO_DOMAIN');
     const accessToken = await this.getAccessToken();
@@ -1493,6 +1494,10 @@ export class AmoService {
       `Направление: ${dto.direction || 'Не указано'}`,
       `Тип партнера: ${dto.partnerType || 'Не указан'}`,
     ];
+
+    if (dto.referredById) {
+      commentParts.push(`Запросил(а): Партнер с ID ${dto.referredById}`);
+    }
 
     if (dto.partnerType) {
       leadCustomFields.push({

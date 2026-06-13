@@ -6,9 +6,10 @@ interface CreateTicketModalProps {
   onClose: () => void;
   onSuccess: () => void;
   initialSubject?: string;
+  dict?: any;
 }
 
-export function CreateTicketModal({ onClose, onSuccess, initialSubject = '' }: CreateTicketModalProps) {
+export function CreateTicketModal({ onClose, onSuccess, initialSubject = '', dict }: CreateTicketModalProps) {
   const [subject, setSubject] = useState(initialSubject);
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,12 +26,12 @@ export function CreateTicketModal({ onClose, onSuccess, initialSubject = '' }: C
     setError(null);
 
     if (!subject.trim()) {
-      setError('Введите тему вопроса');
+      setError(dict.hardcoded.enter_the_question_subject);
       return;
     }
 
     if (!message.trim()) {
-      setError('Опишите ваш вопрос подробно');
+      setError(dict.hardcoded.describe_your_question_in_deta);
       return;
     }
 
@@ -42,7 +43,7 @@ export function CreateTicketModal({ onClose, onSuccess, initialSubject = '' }: C
       });
       onSuccess();
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Не удалось создать обращение. Попробуйте позже.');
+      setError(err.response?.data?.message || dict.hardcoded.failed_to_create_ticket_please);
       setIsSubmitting(false);
     }
   };
@@ -51,33 +52,33 @@ export function CreateTicketModal({ onClose, onSuccess, initialSubject = '' }: C
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={e => e.stopPropagation()}>
         <div className={styles.header}>
-          <h2>Задать вопрос</h2>
-          <button className={styles.closeBtn} onClick={onClose} type="button" aria-label="Закрыть">&times;</button>
+          <h2>{dict.hardcoded.ask_a_question}</h2>
+          <button className={styles.closeBtn} onClick={onClose} type="button" aria-label={dict.hardcoded.close}>&times;</button>
         </div>
         
         <form onSubmit={handleSubmit} className={styles.form}>
           {error && <div className={styles.error}>{error}</div>}
           
           <div className={styles.field}>
-            <label htmlFor="ticket-subject">Тема вопроса</label>
+            <label htmlFor="ticket-subject">{dict.hardcoded.question_subject}</label>
             <input 
               id="ticket-subject"
               type="text" 
               value={subject}
               onChange={e => setSubject(e.target.value)}
-              placeholder="Например: Питання по угоді або Виплати"
+              placeholder={dict.hardcoded.e_g_deal_questions_or_payouts}
               maxLength={255}
               required
             />
           </div>
           
           <div className={styles.field}>
-            <label htmlFor="ticket-message">Подробное описание</label>
+            <label htmlFor="ticket-message">{dict.hardcoded.detailed_description}</label>
             <textarea 
               id="ticket-message"
               value={message}
               onChange={e => setMessage(e.target.value)}
-              placeholder="Опишите ваш вопрос или проблему подробно..."
+              placeholder={dict.hardcoded.describe_your_question_or_prob}
               rows={5}
               maxLength={2000}
               required
@@ -86,10 +87,10 @@ export function CreateTicketModal({ onClose, onSuccess, initialSubject = '' }: C
           
           <div className={styles.actions}>
             <button type="button" className={styles.btnSecondary} onClick={onClose} disabled={isSubmitting}>
-              Отмена
-            </button>
+              {dict.hardcoded.cancel}
+                                      </button>
             <button type="submit" className={styles.btnPrimary} disabled={isSubmitting}>
-              {isSubmitting ? 'Отправка...' : 'Отправить'}
+              {isSubmitting ? dict.hardcoded.sending : dict.hardcoded.send}
             </button>
           </div>
         </form>

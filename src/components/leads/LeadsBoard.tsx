@@ -7,6 +7,10 @@ import styles from './LeadsBoard.module.css';
 import { LeadDrawer } from './LeadDrawer';
 import { useAuthStore } from '@/lib/stores/auth.store';
 
+import dictRu from '@/i18n/dictionaries/ru.json';
+import dictEn from '@/i18n/dictionaries/en.json';
+const dict = typeof window !== 'undefined' && window.location.pathname.startsWith('/en') ? dictEn : dictRu;
+
 interface PartnerTab {
   id: string | null; // null for 'All'
   name: string;
@@ -15,14 +19,14 @@ interface PartnerTab {
 
 const HIDDEN_COLUMN_NAMES = new Set([
   'Incoming leads',
-  'СОЗДАН ЛИД',
+  dict.hardcoded.lead_created,
 ]);
 
 function isHiddenColumn(name: string): boolean {
   return HIDDEN_COLUMN_NAMES.has(name.trim());
 }
 
-export function LeadsBoard({ dict }: { dict: any }) {
+export function LeadsBoard({ dict }: { dict?: any }) {
   const [board, setBoard] = useState<BoardResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedLeadId, setSelectedLeadId] = useState<string | null>(null);

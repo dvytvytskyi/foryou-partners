@@ -1,11 +1,15 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useState, Suspense } from 'react';
 import Link from 'next/link';
 import { api } from '@/lib/api';
-export default function RegisterForm({ dict }: { dict: any }) {
+
+function RegisterFormInner({ dict }: { dict: any }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const referredById = searchParams.get('ref') || undefined;
+  
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
@@ -22,11 +26,11 @@ export default function RegisterForm({ dict }: { dict: any }) {
     e.preventDefault();
     setError(null);
     if (!partnerType) {
-      setError('Оберіть тип партнера / Выберите тип партнера');
+      setError(dict.hardcoded.select_partner_type);
       return;
     }
     if (!direction) {
-      setError('Оберіть напрямок / Выберите направление');
+      setError(dict.hardcoded.select_direction);
       return;
     }
     if (password !== confirmPassword) {
@@ -39,7 +43,7 @@ export default function RegisterForm({ dict }: { dict: any }) {
     }
     setLoading(true);
     try {
-      await api.post('/auth/register', { email, password, firstName, lastName, phone, direction, partnerType });
+      await api.post('/auth/register', { email, password, firstName, lastName, phone, direction, partnerType, referredById });
       router.push('/pending');
     } catch (err: any) {
       setError(err.response?.data?.error?.message || dict.errors.register_failed);
@@ -118,10 +122,10 @@ export default function RegisterForm({ dict }: { dict: any }) {
             required
           >
             <option value="" disabled>{dict.partner_type_default}</option>
-            <option value="фриланс-брокер">{dict.partner_type_freelance}</option>
-            <option value="агентство">{dict.partner_type_agency}</option>
-            <option value="банк-прайват клиенты">{dict.partner_type_bank}</option>
-            <option value="другое (заполнить поле ниже)">{dict.partner_type_other}</option>
+            <option value={dict.hardcoded.freelance_broker}>{dict.partner_type_freelance}</option>
+            <option value={dict.hardcoded.agency}>{dict.partner_type_agency}</option>
+            <option value={dict.hardcoded.bank_private_clients}>{dict.partner_type_bank}</option>
+            <option value={dict.hardcoded.other_fill_field_below}>{dict.partner_type_other}</option>
           </select>
         </div>
 
@@ -134,10 +138,10 @@ export default function RegisterForm({ dict }: { dict: any }) {
             required
           >
             <option value="" disabled>{dict.direction_default}</option>
-            <option value="Дубай">{dict.direction_dubai}</option>
-            <option value="Абу-Даби">{dict.direction_abudhabi}</option>
-            <option value="РАК">{dict.direction_rak}</option>
-            <option value="Оман">{dict.direction_oman}</option>
+            <option value={dict.hardcoded.dubai}>{dict.direction_dubai}</option>
+            <option value={dict.hardcoded.abu_dhabi}>{dict.direction_abudhabi}</option>
+            <option value={dict.hardcoded.rak}>{dict.direction_rak}</option>
+            <option value={dict.hardcoded.oman}>{dict.direction_oman}</option>
           </select>
         </div>
 
@@ -204,5 +208,13 @@ export default function RegisterForm({ dict }: { dict: any }) {
           {dict.has_account} <Link href="/login" className="auth-link" style={{ color: '#3b82f6', textDecoration: 'none' }}>{dict.login_link} &rarr;</Link>
         </div>
       </form>
+  );
+}
+
+export default function RegisterForm({ dict }: { dict: any }) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <RegisterFormInner dict={dict} />
+    </Suspense>
   );
 }

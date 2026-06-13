@@ -54,12 +54,12 @@ export function ProfileClient({ dict }: { dict: any }) {
 
   const handleUpdatePassword = async () => {
     if (passwordData.newPassword !== passwordData.confirmPassword) {
-      setPasswordStatus({ type: 'error', message: dict.settings?.password_mismatch || 'Новые пароли не совпадают' });
+      setPasswordStatus({ type: 'error', message: dict.settings?.password_mismatch || dict.hardcoded.new_passwords_do_not_match });
       return;
     }
     
     if (passwordData.newPassword.length < 6) {
-      setPasswordStatus({ type: 'error', message: dict.settings?.password_length || 'Пароль должен содержать минимум 6 символов' });
+      setPasswordStatus({ type: 'error', message: dict.settings?.password_length || dict.hardcoded.password_must_be_at_least_6_ch });
       return;
     }
 
@@ -71,13 +71,13 @@ export function ProfileClient({ dict }: { dict: any }) {
         currentPassword: passwordData.currentPassword,
         newPassword: passwordData.newPassword
       });
-      setPasswordStatus({ type: 'success', message: dict.settings?.password_success || 'Пароль успешно обновлен' });
+      setPasswordStatus({ type: 'success', message: dict.settings?.password_success || dict.hardcoded.password_successfully_updated });
       setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
     } catch (err: any) {
       console.error('Failed to update password', err);
       setPasswordStatus({ 
         type: 'error', 
-        message: err.response?.data?.message || dict.settings?.password_error || 'Не удалось обновить пароль' 
+        message: err.response?.data?.message || dict.settings?.password_error || dict.hardcoded.failed_to_update_password 
       });
     } finally {
       setUpdatingPassword(false);
@@ -101,7 +101,7 @@ export function ProfileClient({ dict }: { dict: any }) {
     );
   }
 
-  if (!profile) return <div className="p-8 text-center text-red-500">Не удалось загрузить данные профиля</div>;
+  if (!profile) return <div className="p-8 text-center text-red-500">{dict.hardcoded.failed_to_load_profile_data}</div>;
 
   return (
     <div className={styles.container}>
@@ -174,7 +174,7 @@ export function ProfileClient({ dict }: { dict: any }) {
               )}
 
               <div className={styles.formGroup}>
-                <label className={styles.inputLabel}>{dict.settings?.current_password || 'Текущий пароль'}</label>
+                <label className={styles.inputLabel}>{dict.settings?.current_password || dict.hardcoded.current_password}</label>
                 <input 
                   type="password" 
                   className={styles.input} 
@@ -186,7 +186,7 @@ export function ProfileClient({ dict }: { dict: any }) {
 
               <div className={styles.passwordGrid}>
                 <div className={styles.formGroup}>
-                  <label className={styles.inputLabel}>{dict.settings?.new_password || 'Новый пароль'}</label>
+                  <label className={styles.inputLabel}>{dict.settings?.new_password || dict.hardcoded.new_password}</label>
                   <input 
                     type="password" 
                     className={styles.input} 
@@ -195,7 +195,7 @@ export function ProfileClient({ dict }: { dict: any }) {
                   />
                 </div>
                 <div className={styles.formGroup}>
-                  <label className={styles.inputLabel}>{dict.settings?.confirm_password || 'Подтвердите пароль'}</label>
+                  <label className={styles.inputLabel}>{dict.settings?.confirm_password || dict.hardcoded.confirm_password}</label>
                   <input 
                     type="password" 
                     className={styles.input} 
@@ -210,7 +210,7 @@ export function ProfileClient({ dict }: { dict: any }) {
                 onClick={handleUpdatePassword}
                 disabled={updatingPassword || !passwordData.currentPassword || !passwordData.newPassword}
               >
-                {updatingPassword ? (dict.settings?.updating || 'Обновление...') : (dict.settings?.update_password || 'Обновить пароль')}
+                {updatingPassword ? (dict.settings?.updating || dict.hardcoded.updating) : (dict.settings?.update_password || dict.hardcoded.update_password)}
               </button>
             </div>
           </div>

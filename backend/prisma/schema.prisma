@@ -49,6 +49,7 @@ model User {
   refreshSessions   RefreshSession[]
   ticketMessages    TicketMessage[]
   notifications     Notification[]
+  knowledgeArticles KnowledgeArticle[]
   partner           Partner?          @relation(fields: [partnerId], references: [id])
 
   @@index([partnerId])
@@ -321,4 +322,22 @@ enum NotificationType {
   NEW_PARTNER
   SUPPORT_TICKET
   NEW_LEAD
+}
+
+model KnowledgeArticle {
+  id             String   @id @default(uuid())
+  titleRu        String   @map("title_ru")
+  titleEn        String   @map("title_en")
+  descriptionRu  String   @map("description_ru") @db.Text
+  descriptionEn  String   @map("description_en") @db.Text
+  linksRu        Json?    @map("links_ru")
+  linksEn        Json?    @map("links_en")
+  authorId       String   @map("author_id")
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  author      User     @relation(fields: [authorId], references: [id])
+
+  @@index([createdAt(sort: Desc)])
+  @@map("knowledge_articles")
 }

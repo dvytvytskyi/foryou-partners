@@ -6,12 +6,14 @@ interface RequestPayoutModalProps {
   onClose: () => void;
   onSuccess: () => void;
   maxAmount?: number;
+  dict?: any;
+  defaultDetails?: string;
 }
 
-export function RequestPayoutModal({ onClose, onSuccess, maxAmount }: RequestPayoutModalProps) {
+export function RequestPayoutModal({ onClose, onSuccess, maxAmount, dict, defaultDetails }: RequestPayoutModalProps) {
   const [amount, setAmount] = useState('');
   const [type, setType] = useState('BANK_TRANSFER');
-  const [details, setDetails] = useState('');
+  const [details, setDetails] = useState(defaultDetails || '');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -21,17 +23,17 @@ export function RequestPayoutModal({ onClose, onSuccess, maxAmount }: RequestPay
     const parsedAmount = parseFloat(amount);
     
     if (isNaN(parsedAmount) || parsedAmount <= 0) {
-      setError('Введите корректную сумму больше 0');
+      setError(dict.hardcoded.enter_a_valid_amount_greater_t);
       return;
     }
     
     if (maxAmount !== undefined && parsedAmount > maxAmount) {
-      setError(`Сумма не может превышать ваш доступный баланс (${maxAmount} AED)`);
+      setError(dict?.hardcoded?.amount_exceeds_balance ? `${dict.hardcoded.amount_exceeds_balance} (${maxAmount} AED)` : `Сумма не может превышать ваш доступный баланс (${maxAmount} AED)`);
       return;
     }
 
     if (type !== 'CASH' && !details.trim()) {
-      setError('Пожалуйста, укажите реквизиты для выплаты');
+      setError(dict.hardcoded.please_provide_payment_details);
       return;
     }
 
@@ -44,7 +46,7 @@ export function RequestPayoutModal({ onClose, onSuccess, maxAmount }: RequestPay
       });
       onSuccess();
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Не удалось создать запрос на выплату');
+      setError(err.response?.data?.message || dict.hardcoded.failed_to_create_payout_reques);
       setIsSubmitting(false);
     }
   };
@@ -53,7 +55,7 @@ export function RequestPayoutModal({ onClose, onSuccess, maxAmount }: RequestPay
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={e => e.stopPropagation()}>
         <div className={styles.header}>
-          <h2>Запросить выплату</h2>
+          <h2>{dict.hardcoded.request_payout}</h2>
           <button className={styles.closeBtn} onClick={onClose}>&times;</button>
         </div>
         
@@ -61,7 +63,7 @@ export function RequestPayoutModal({ onClose, onSuccess, maxAmount }: RequestPay
           {error && <div className={styles.error}>{error}</div>}
           
           <div className={styles.field}>
-            <label>Сумма (AED)</label>
+            <label>{dict.hardcoded.amount_aed}</label>
             <input 
               type="number" 
               step="0.01" 
@@ -71,22 +73,22 @@ export function RequestPayoutModal({ onClose, onSuccess, maxAmount }: RequestPay
               required
             />
             {maxAmount !== undefined && (
-              <span className={styles.hint}>Доступно: {maxAmount.toLocaleString()} AED</span>
+              <span className={styles.hint}>{dict.hardcoded.available} {maxAmount.toLocaleString()} AED</span>
             )}
           </div>
           
           <div className={styles.field}>
-            <label>Способ выплаты</label>
+            <label>{dict.hardcoded.payment_method}</label>
             <select value={type} onChange={e => setType(e.target.value)}>
-              <option value="BANK_TRANSFER">Банковский перевод</option>
-              <option value="USDT">Криптовалюта (USDT)</option>
-              <option value="CASH">Наличные</option>
+              <option value="BANK_TRANSFER">{dict.hardcoded.bank_transfer}</option>
+              <option value="USDT">{dict.hardcoded.cryptocurrency_usdt}</option>
+              <option value="CASH">{dict.hardcoded.cash}</option>
             </select>
           </div>
           
           {type !== 'CASH' && (
             <div className={styles.field}>
-              <label>{type === 'USDT' ? 'Адрес кошелька (TRC20/ERC20)' : 'Банковские реквизиты (IBAN, Swift и т.д.)'}</label>
+              <label>{type === 'USDT' ? dict.hardcoded.wallet_address_trc20_erc20 : dict.hardcoded.bank_details_iban_swift_etc}</label>
               <textarea 
                 value={details}
                 onChange={e => setDetails(e.target.value)}
@@ -99,10 +101,10 @@ export function RequestPayoutModal({ onClose, onSuccess, maxAmount }: RequestPay
           
           <div className={styles.actions}>
             <button type="button" className={styles.btnSecondary} onClick={onClose} disabled={isSubmitting}>
-              Отмена
-            </button>
+              {dict.hardcoded.cancel}
+                                      </button>
             <button type="submit" className={styles.btnPrimary} disabled={isSubmitting}>
-              {isSubmitting ? 'Отправка...' : 'Подтвердить'}
+              {isSubmitting ? dict.hardcoded.sending : dict.hardcoded.confirm}
             </button>
           </div>
         </form>

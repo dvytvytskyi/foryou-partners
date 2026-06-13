@@ -91,5 +91,5 @@ export function extractApiError(error: unknown): string {
     return body?.error?.message ?? error.message;
   }
   if (error instanceof Error) return error.message;
-  return 'Невідома помилка';
+  return "Unknown error";
 }

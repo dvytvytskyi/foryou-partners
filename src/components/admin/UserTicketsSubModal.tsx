@@ -14,9 +14,10 @@ interface Ticket {
 interface UserTicketsSubModalProps {
   user: { partnerId?: string; name: string; email: string };
   onClose: () => void;
+  dict?: any;
 }
 
-export function UserTicketsSubModal({ user, onClose }: UserTicketsSubModalProps) {
+export function UserTicketsSubModal({ user, onClose, dict }: UserTicketsSubModalProps) {
   const [tickets, setTickets] = useState<Ticket[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -54,23 +55,23 @@ export function UserTicketsSubModal({ user, onClose }: UserTicketsSubModalProps)
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={e => e.stopPropagation()}>
         <div className={styles.header}>
-          <h3>Тикеты: {user.name || user.email}</h3>
+          <h3>{dict.hardcoded.hc_27} {user.name || user.email}</h3>
           <button className={styles.closeBtn} onClick={onClose}>&times;</button>
         </div>
         <div className={styles.body}>
           {loading ? (
-            <div className={styles.loading}>Загрузка тикетов...</div>
+            <div className={styles.loading}>{dict.hardcoded.loading_tickets}</div>
           ) : !user.partnerId ? (
-            <div className={styles.empty}>Пользователь не является партнером</div>
+            <div className={styles.empty}>{dict.hardcoded.user_is_not_a_partner}</div>
           ) : tickets.length === 0 ? (
-            <div className={styles.empty}>У этого пользователя еще нет тикетов</div>
+            <div className={styles.empty}>{dict.hardcoded.this_user_has_no_tickets_yet}</div>
           ) : (
             <table className={styles.table}>
               <thead>
                 <tr>
-                  <th>Тема</th>
-                  <th>Статус</th>
-                  <th>Последнее обновление</th>
+                  <th>{dict.hardcoded.subject}</th>
+                  <th>{dict.hardcoded.status}</th>
+                  <th>{dict.hardcoded.last_update}</th>
                 </tr>
               </thead>
               <tbody>

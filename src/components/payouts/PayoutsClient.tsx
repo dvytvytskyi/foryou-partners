@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import styles from './Payouts.module.css';
 import { api } from '@/lib/api';
 import { RequestPayoutModal } from '@/components/payouts/RequestPayoutModal';
+import { useAuthStore } from '@/lib/stores/auth.store';
 
 const ChatIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -36,15 +37,17 @@ export function PayoutsClient({ dict }: { dict: any }) {
   const pathname = usePathname();
   const currentLocale = pathname.split('/')[1] === 'en' ? 'en-US' : 'ru-RU';
   const isEn = currentLocale === 'en-US';
+  const user = useAuthStore((state) => state.user);
+  const isAdmin = user?.role === 'admin';
 
   const mapText = (text: string) => {
     if (!text || !isEn) return text;
     const lower = text.toLowerCase();
-    if (lower === 'выплачено') return 'Paid';
-    if (lower === 'ожидает') return 'Pending';
-    if (lower === 'отклонено') return 'Rejected';
-    if (lower === 'вы') return 'You';
-    if (lower === 'банковский перевод') return 'Bank Transfer';
+    if (lower === dict.hardcoded.hc_36) return 'Paid';
+    if (lower === dict.hardcoded.hc_44) return 'Pending';
+    if (lower === dict.hardcoded.rejected) return 'Rejected';
+    if (lower === dict.hardcoded.hc_35) return 'You';
+    if (lower === dict.hardcoded.hc_34) return 'Bank Transfer';
     return text;
   };
 
@@ -78,6 +81,16 @@ export function PayoutsClient({ dict }: { dict: any }) {
     return () => window.removeEventListener('open-payout-modal', handleOpenModal);
   }, []);
 
+  const handleStatusChange = async (id: string, newStatus: string) => {
+    try {
+      await api.patch(`/payouts/${id}/status`, { status: newStatus });
+      fetchData();
+    } catch (err: any) {
+      console.error('Failed to update status', err);
+      alert(err.response?.data?.message || 'Failed to update status');
+    }
+  };
+
   const [sortConfig, setSortConfig] = useState<{ key: string, direction: 'asc' | 'desc' } | null>(null);
 
   const requestSort = (key: string) => {
@@ -110,13 +123,13 @@ export function PayoutsClient({ dict }: { dict: any }) {
     return date.toLocaleDateString(currentLocale, { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
   };
 
-  if (loading && !data) return <div style={{ padding: '2rem' }}>Загрузка...</div>;
-  if (!data) return <div style={{ padding: '2rem' }}>Ошибка загрузки данных</div>;
+  if (loading && !data) return <div style={{ padding: '2rem' }}>{dict.hardcoded.loading}</div>;
+  if (!data) return <div style={{ padding: '2rem' }}>{dict.hardcoded.error_loading_data}</div>;
 
   return (
     <div className={styles.pageContainer}>
       {isModalOpen && (
-        <RequestPayoutModal 
+        <RequestPayoutModal dict={dict} 
           onClose={() => setIsModalOpen(false)}
           onSuccess={() => {
             setIsModalOpen(false);
@@ -142,7 +155,7 @@ export function PayoutsClient({ dict }: { dict: any }) {
             <span>AED</span>
           </div>
           <button className={styles.btnWhite} onClick={() => setIsModalOpen(true)}>
-            {dict.request_btn || 'Запросить выплату'}
+            {dict.request_btn || dict.hardcoded.request_payout}
           </button>
         </div>
         <div className={styles.card}>
@@ -173,7 +186,21 @@ export function PayoutsClient({ dict }: { dict: any }) {
             <div key={item.id} className={styles.row}>
               <div className={styles.cell}>{formatDate(item.date)}</div>
               <div className={styles.cell}>
-                <span className={`${styles.badge} ${styles[`badge_${item.statusType}`]}`}>{mapText(item.status)}</span>
+                {isAdmin ? (
+                  <select
+                    value={item.rawStatus || 'PENDING'}
+                    onChange={(e) => handleStatusChange(item.id, e.target.value)}
+                    className={`${styles.badge} ${styles[`badge_${item.statusType}`]} ${styles.statusSelect}`}
+                    style={{ cursor: 'pointer', appearance: 'auto' }}
+                  >
+                    <option value="PENDING">{isEn ? 'Pending' : 'Ожидает'}</option>
+                    <option value="PROCESSING">{isEn ? 'Processing' : 'В обработке'}</option>
+                    <option value="COMPLETED">{isEn ? 'Paid' : 'Выплачено'}</option>
+                    <option value="CANCELLED">{isEn ? 'Cancelled' : 'Отменено'}</option>
+                  </select>
+                ) : (
+                  <span className={`${styles.badge} ${styles[`badge_${item.statusType}`]}`}>{mapText(item.status)}</span>
+                )}
               </div>
               <div className={styles.cell}>{mapText(item.user)}</div>
               <div className={styles.cellAmount}>{item.amount}</div>

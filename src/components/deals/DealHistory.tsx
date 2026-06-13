@@ -48,7 +48,7 @@ export function DealHistory({ lead, dict }: { lead?: LeadDetail; dict?: any }) {
   const pipelines = pipelinesData?.items || [];
   
   const resolveStatusName = (rawStatus: string | null) => {
-    if (!rawStatus) return dict?.unknown || 'Неизвестно';
+    if (!rawStatus) return dict?.unknown || dict.hardcoded.unknown;
     if (!rawStatus.includes(':')) {
       for (const p of pipelines) {
         const status = p.statuses?.find((s: any) => s.id.toString() === rawStatus);
@@ -62,7 +62,7 @@ export function DealHistory({ lead, dict }: { lead?: LeadDetail; dict?: any }) {
       const status = pipeline.statuses?.find((s: any) => s.id.toString() === statusId);
       if (status) return status.name;
     }
-    return `${dict?.status || 'Статус'} ${statusId}`;
+    return `${dict?.status || dict.hardcoded.status} ${statusId}`;
   };
 
   const { data: notes, isLoading: isNotesLoading } = useQuery({
@@ -81,7 +81,7 @@ export function DealHistory({ lead, dict }: { lead?: LeadDetail; dict?: any }) {
     onError: (err: any) => {
       console.error('Failed to send message:', err);
       const msg = err?.response?.data?.error?.message || err?.response?.data?.message || err.message;
-      alert(`Ошибка при отправке: ${msg}`);
+      alert(dict?.hardcoded?.failed_to_send ? `${dict.hardcoded.failed_to_send}: ${msg}` : `Failed to send: ${msg}`);
     }
   });
 
@@ -134,14 +134,14 @@ export function DealHistory({ lead, dict }: { lead?: LeadDetail; dict?: any }) {
         <div className={styles.feed} style={{ flex: 1, overflowY: 'auto', padding: '16px', display: 'flex', flexDirection: 'column' }}>
           
           {(isLoading || isNotesLoading) ? (
-            <div style={{ textAlign: 'center', color: '#64748b', marginTop: '1rem' }}>{dict?.loading_history || 'Загрузка истории...'}</div>
+            <div style={{ textAlign: 'center', color: '#64748b', marginTop: '1rem' }}>{dict?.loading_history || dict.hardcoded.loading_history}</div>
           ) : combinedEvents.length === 0 ? (
             <div className={`${styles.event} ${styles.systemEvent}`} style={{ marginBottom: '8px' }}>
               <div className={styles.sysAvatar}>FY</div>
               <div className={styles.eventBody}>
                 <div className={styles.eventHeader}>
                   <span className={styles.actionText}>
-                    {dict?.deal_created || 'Сделка создана и передана брокеру'}
+                    {dict?.deal_created || dict.hardcoded.deal_created_and_transferred_t}
                     <span style={{ color: '#a1a1aa', marginLeft: '8px' }}>({new Date(lead.created_at).toLocaleString(currentLocale)})</span>
                   </span>
                 </div>
@@ -156,9 +156,9 @@ export function DealHistory({ lead, dict }: { lead?: LeadDetail; dict?: any }) {
                     <div className={styles.sysAvatar}>FY</div>
                     <div className={styles.eventBody}>
                       <div className={styles.eventHeader}>
-                        <span className={styles.authorName}>{item.changed_by || dict?.system || 'Система'}</span>
+                        <span className={styles.authorName}>{item.changed_by || dict?.system || dict.hardcoded.system}</span>
                         <span className={styles.actionText}>
-                          {dict?.status_change || 'Изменение статуса:'} <span style={{ fontWeight: 600 }}>{item.from_status === 'Создано' ? (dict?.created || 'Создано') : (resolveStatusName(item.from_status) || (dict?.created || 'Создано'))}</span> &rarr; <span style={{ fontWeight: 600 }}>{resolveStatusName(item.to_status)}</span>
+                          {dict?.status_change || dict.hardcoded.hc_12} <span style={{ fontWeight: 600 }}>{item.from_status === dict.hardcoded.created ? (dict?.created || dict.hardcoded.created) : (resolveStatusName(item.from_status) || (dict?.created || dict.hardcoded.created))}</span> &rarr; <span style={{ fontWeight: 600 }}>{resolveStatusName(item.to_status)}</span>
                           <span style={{ color: '#a1a1aa', marginLeft: '8px' }}>({event.date.toLocaleString(currentLocale)})</span>
                         </span>
                       </div>
@@ -167,7 +167,7 @@ export function DealHistory({ lead, dict }: { lead?: LeadDetail; dict?: any }) {
                 );
               } else {
                 const n = event.data;
-                const isPartner = n.text.includes('[От партнера') || n.text.includes('[Від партнера');
+                const isPartner = n.text.includes(dict.hardcoded.hc_3) || n.text.includes(dict.hardcoded._from_partner);
                 const text = isPartner ? n.text.replace(/\[(От|Від) партнера.*?\]:\n?/, '') : n.text;
                 
                 return (
@@ -204,7 +204,7 @@ export function DealHistory({ lead, dict }: { lead?: LeadDetail; dict?: any }) {
           </label>
           <input 
             type="text" 
-            placeholder={dict?.type_message || "Написать сообщение..."} 
+            placeholder={dict?.type_message || dict.hardcoded.type_a_message} 
             className={styles.commentInput} 
             style={{ background: 'transparent', flex: 1 }} 
             value={commentText}

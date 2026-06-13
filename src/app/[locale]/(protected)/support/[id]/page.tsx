@@ -8,6 +8,10 @@ import { api } from '@/lib/api';
 import { useAuthStore } from '@/lib/stores/auth.store';
 import styles from './TicketDetail.module.css';
 
+import dictRu from '@/i18n/dictionaries/ru.json';
+import dictEn from '@/i18n/dictionaries/en.json';
+const dict = typeof window !== 'undefined' && window.location.pathname.startsWith('/en') ? dictEn : dictRu;
+
 interface Message {
   id: string;
   senderId: string;
@@ -72,35 +76,35 @@ export default function TicketDetailPage() {
       await fetchTicket();
     } catch (error) {
       console.error('Failed to send reply', error);
-      alert('Не удалось отправить сообщение');
+      alert(dict.hardcoded.failed_to_send_message);
     } finally {
       setSending(false);
     }
   };
 
   const handleCloseTicket = async () => {
-    if (!confirm('Вы уверены, что хотите закрыть этот тикет?')) return;
+    if (!confirm(dict.hardcoded.are_you_sure_you_want_to_close)) return;
     try {
       await api.patch(`/support/tickets/${ticketId}/close`);
       await fetchTicket();
     } catch (error) {
       console.error('Failed to close ticket', error);
-      alert('Не удалось закрыть тикет');
+      alert(dict.hardcoded.failed_to_close_ticket);
     }
   };
 
   const getStatusLabel = (status: string) => {
     switch (status) {
-      case 'OPEN': return 'Открыт';
-      case 'IN_PROGRESS': return 'В работе';
-      case 'RESOLVED': return 'Решен';
-      case 'CLOSED': return 'Закрыт';
+      case 'OPEN': return dict.hardcoded.open;
+      case 'IN_PROGRESS': return dict.hardcoded.in_progress;
+      case 'RESOLVED': return dict.hardcoded.resolved;
+      case 'CLOSED': return dict.hardcoded.closed;
       default: return status;
     }
   };
 
-  if (loading) return <div style={{ padding: '2rem', textAlign: 'center' }}>Загрузка...</div>;
-  if (!ticket) return <div style={{ padding: '2rem', textAlign: 'center' }}>Обращение не найдено</div>;
+  if (loading) return <div style={{ padding: '2rem', textAlign: 'center' }}>{dict.hardcoded.loading}</div>;
+  if (!ticket) return <div style={{ padding: '2rem', textAlign: 'center' }}>{dict.hardcoded.ticket_not_found}</div>;
 
   return (
     <div className={styles.container}>
@@ -112,9 +116,45 @@ export default function TicketDetailPage() {
           <h1 className={styles.title}>{ticket.subject}</h1>
         </div>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <span className={`${styles.statusBadge} ${styles[`status${ticket.status}`]}`}>
-            {getStatusLabel(ticket.status)}
-          </span>
+          {user?.role === 'admin' ? (
+            <select
+              value={ticket.status}
+              onChange={async (e) => {
+                const newStatus = e.target.value;
+                try {
+                  await api.patch(`/support/tickets/${ticketId}/status`, { status: newStatus });
+                  await fetchTicket();
+                } catch (error) {
+                  console.error('Failed to update status', error);
+                  alert('Failed to update status');
+                }
+              }}
+              className={`${styles.statusBadge} ${styles[`status${ticket.status}`]}`}
+              style={{ 
+                cursor: 'pointer', 
+                appearance: 'none', 
+                outline: 'none', 
+                border: 'none', 
+                paddingRight: '2rem', 
+                fontFamily: 'inherit', 
+                fontWeight: 'inherit', 
+                fontSize: 'inherit',
+                backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'right 0.5rem center',
+                backgroundSize: '1em'
+              }}
+            >
+              <option value="OPEN" style={{ background: 'white', color: '#18181b' }}>{dict.hardcoded.open}</option>
+              <option value="IN_PROGRESS" style={{ background: 'white', color: '#18181b' }}>{dict.hardcoded.in_progress}</option>
+              <option value="RESOLVED" style={{ background: 'white', color: '#18181b' }}>{dict.hardcoded.resolved}</option>
+              <option value="CLOSED" style={{ background: 'white', color: '#18181b' }}>{dict.hardcoded.closed}</option>
+            </select>
+          ) : (
+            <span className={`${styles.statusBadge} ${styles[`status${ticket.status}`]}`}>
+              {getStatusLabel(ticket.status)}
+            </span>
+          )}
         </div>
       </div>
 
@@ -124,9 +164,9 @@ export default function TicketDetailPage() {
             const isOwn = msg.senderId === user?.id;
             let senderName = '';
             if (isOwn) {
-              senderName = 'Вы';
+              senderName = dict.hardcoded.you;
             } else {
-              senderName = msg.sender.role === 'admin' ? 'Служба поддержки' : ticket.partner?.name || 'Партнер';
+              senderName = msg.sender.role === 'admin' ? dict.hardcoded.support_service : ticket.partner?.name || dict.hardcoded.partner;
             }
 
             return (
@@ -151,7 +191,7 @@ export default function TicketDetailPage() {
                 className={styles.replyInput}
                 value={replyText}
                 onChange={(e) => setReplyText(e.target.value)}
-                placeholder={ticket.status === 'CLOSED' ? "Тикет закрыт" : "Введите ваше сообщение..."}
+                placeholder={ticket.status === 'CLOSED' ? dict.hardcoded.ticket_closed : dict.hardcoded.type_your_message}
                 disabled={sending || ticket.status === 'CLOSED'}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && !e.shiftKey) {
@@ -166,7 +206,7 @@ export default function TicketDetailPage() {
                 disabled={sending || !replyText.trim() || ticket.status === 'CLOSED'}
               >
                 <Send size={16} />
-                <span>{sending ? 'Отправка...' : 'Отправить'}</span>
+                <span>{sending ? dict.hardcoded.sending : dict.hardcoded.send}</span>
               </button>
             </div>
           </form>

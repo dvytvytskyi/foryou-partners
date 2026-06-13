@@ -18,6 +18,7 @@ import { PayoutsModule } from './payouts/payouts.module';
 import { ReferralsModule } from './referrals/referrals.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { SupportModule } from './support/support.module';
+import { KnowledgeModule } from './knowledge/knowledge.module';
 
 @Module({
   imports: [
@@ -45,6 +46,7 @@ import { SupportModule } from './support/support.module';
     ReferralsModule,
     NotificationsModule,
     SupportModule,
+    KnowledgeModule,
   ],
 })
 export class AppModule {}

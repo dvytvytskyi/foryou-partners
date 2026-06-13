@@ -32,11 +32,11 @@ const MessageCircleIcon = () => (
   </svg>
 );
 
-function getStatusBadgeType(statusName: string) {
+function getStatusBadgeType(statusName: string, dict?: any) {
   const lower = statusName.toLowerCase();
-  if (lower.includes('успешно') || lower.includes('успешно')) return 'green';
-  if (lower.includes('отказ') || lower.includes('отказ') || lower.includes('архив')) return 'red';
-  if (lower.includes('контакт') || lower.includes('переговор') || lower.includes('презентац')) return 'blue';
+  if (lower.includes(dict.hardcoded.hc_51) || lower.includes(dict.hardcoded.hc_51)) return 'green';
+  if (lower.includes(dict.hardcoded.hc_45) || lower.includes(dict.hardcoded.hc_45) || lower.includes(dict.hardcoded.hc_33)) return 'red';
+  if (lower.includes(dict.hardcoded.contact) || lower.includes(dict.hardcoded.negotiation) || lower.includes(dict.hardcoded.hc_47)) return 'blue';
   return 'orange';
 }
 
@@ -133,14 +133,14 @@ export function DealsTable({ dict }: { dict: any }) {
     // Hardcoded fallbacks if pipelines are missing or failed to fetch
     const statusId = rawStatus.includes(':') ? rawStatus.split(':')[1] : rawStatus;
     const fallbacks: Record<string, string> = {
-      '142': 'Успешно реализовано',
-      '143': 'Закрыто и не реализовано',
-      '74717798': 'Первичный контакт',
-      '74717802': 'Переговоры',
-      '74717806': 'Принимают решение',
-      '74717810': 'Согласование договора',
-      '84853590': 'Квалификация',
-      '84853926': 'Встреча назначена'
+      '142': dict.hardcoded.hc_30,
+      '143': dict.hardcoded.hc_11,
+      '74717798': dict.hardcoded.hc_21,
+      '74717802': dict.hardcoded.hc_22,
+      '74717806': dict.hardcoded.hc_23,
+      '74717810': dict.hardcoded.contract_agreement,
+      '84853590': dict.hardcoded.qualification,
+      '84853926': dict.hardcoded.hc_8
     };
 
     if (fallbacks[statusId]) {
@@ -191,17 +191,12 @@ export function DealsTable({ dict }: { dict: any }) {
         ) : (
           leads.map((deal) => {
             const statusLabel = resolveStatusName(deal.status);
-            const badgeType = getStatusBadgeType(statusLabel);
+            const badgeType = getStatusBadgeType(statusLabel, dict);
 
             return (
               <Link href={`/${pathname.split('/')[1]}/deals/${deal.id}`} key={deal.id} className={styles.row}>
                 <div className={styles.cell}>
                   <span className={styles.clientName}>{deal.title}</span>
-                  {deal.contact_name && (
-                    <span className={styles.comments} style={{ marginTop: 4, display: 'block', color: '#64748b', fontSize: 12 }}>
-                      {deal.contact_name}
-                    </span>
-                  )}
                 </div>
                 <div className={styles.cell}>
                   <span className={styles.format}>{deal.broker_name || dict.unassigned}</span>

@@ -1,0 +1,978 @@
+{
+  "pages": {
+    "auth": {
+      "existing": {},
+      "hardcoded": [
+        "Select partner type",
+        "Select direction",
+        "freelance-broker",
+        "agency",
+        "bank-private clients",
+        "other (fill field below)",
+        "Dubai",
+        "Abu Dhabi",
+        "RAK",
+        "Oman"
+      ]
+    },
+    "dashboard": {
+      "existing": {
+        "dashboard": {
+          "loading": "Loading...",
+          "stats": {
+            "periods": {
+              "7d": "7 days",
+              "30d": "30 days",
+              "90d": "90 days",
+              "1y": "Year"
+            },
+            "leads_transferred": "Leads Transferred",
+            "new": "New",
+            "in_progress": "In Progress",
+            "active": "Active",
+            "closed_successfully": "Closed Successfully",
+            "conversion": "Conversion",
+            "total_earned": "Total Earned (AED)",
+            "commission": "Commission"
+          },
+          "recent_events": {
+            "title": "Recent Events",
+            "search_placeholder": "Search",
+            "filter": "Filter",
+            "date": "Date",
+            "user": "User",
+            "type": "Type",
+            "event": "Event",
+            "client": "Client",
+            "action": "Action",
+            "empty": "No events yet.",
+            "open": "Open"
+          },
+          "referrals": {
+            "title": "Referral System",
+            "more": "Learn more",
+            "total_earned": "Total Earned from Referrals (AED)",
+            "currency": "AED",
+            "active_partners": "Active Partners",
+            "closed_deals": "Closed Deals"
+          },
+          "knowledge_base": {
+            "title": "Knowledge Base",
+            "view_all": "View all"
+          }
+        }
+      },
+      "hardcoded": [
+        "Presentation",
+        "Co-exclusive projects",
+        "You can download the full presentation of exclusive and co-exclusive projects via the link.",
+        "Residence Permit and Citizenship: Dubai, Abu Dhabi, Oman, Qatar, Miami and Turkey",
+        "New conditions in December 2026",
+        "Meeting / training on modern UAE market trends",
+        "Leave a request",
+        "manager",
+        "change",
+        "deal moved to a new status",
+        "client",
+        "successfully",
+        "deal closed successfully",
+        "Successfully realized",
+        "Closed and not realized",
+        "Initial contact",
+        "Negotiations",
+        "Making a decision",
+        "Contract agreement",
+        "Qualification",
+        "Meeting arranged"
+      ]
+    },
+    "deals": {
+      "existing": {
+        "leads_page": {
+          "my_leads": "My leads",
+          "updated": "Updated",
+          "just_now": "Just now",
+          "min_ago": "1 min ago",
+          "mins_ago": "mins ago",
+          "no_leads": "No leads found for this selection.",
+          "columns": {
+            "name": "Lead Name",
+            "status": "Status",
+            "budget": "Budget",
+            "phone": "Phone",
+            "tasks": "Tasks",
+            "broker": "Broker",
+            "source": "Source",
+            "created": "Created at",
+            "edited": "Last edited"
+          }
+        },
+        "deals_page": {
+          "add_lead": "Add Lead",
+          "search": "Search deals...",
+          "search_client": "Search client...",
+          "filter": "Filter",
+          "empty": "No deals found.",
+          "unassigned": "Not assigned",
+          "unknown": "Unknown",
+          "loading_table": "Loading...",
+          "error_table": "Error loading deals",
+          "empty_table": "No deals found",
+          "loading_board": "Loading board...",
+          "error_board": "Error loading board",
+          "table": {
+            "client": "Client",
+            "broker": "Broker",
+            "city_budget": "City / Budget",
+            "status": "Status",
+            "updated": "Updated At"
+          },
+          "pagination": {
+            "prev": "Previous",
+            "next": "Next",
+            "page": "Page",
+            "of": "of"
+          }
+        },
+        "deal_detail": {
+          "back": "Back to deals",
+          "status": "Status",
+          "unknown": "Unknown",
+          "loading": "Loading details...",
+          "not_found": "Deal not found",
+          "ask_question": "Ask a question",
+          "question_subject": "Question about deal:",
+          "history": {
+            "created": "Created",
+            "source": "Source",
+            "not_specified": "Not specified",
+            "budget": "Budget",
+            "finances_locked": "Finances will appear<br/>after closing",
+            "loading_history": "Loading history...",
+            "deal_created": "Deal created and assigned to broker",
+            "system": "System",
+            "status_change": "Status changed:",
+            "type_message": "Type a message..."
+          },
+          "broker": {
+            "not_assigned": "Not assigned",
+            "broker": "Broker",
+            "assigned": "Assigned",
+            "broker_desc": "The broker leads the deal via AmoCRM. All actions and comments are broadcasted to your cabinet.",
+            "call": "Call",
+            "client_data": "Client Data",
+            "client_name": "Client Name",
+            "client_phone": "Client Phone",
+            "city": "City",
+            "budget": "Budget",
+            "comment": "Comment",
+            "no_comments": "No comments"
+          }
+        }
+      },
+      "hardcoded": [
+        "Goal",
+        "Purpose of purchase",
+        "Readiness",
+        "Location",
+        "Communication language",
+        "Language",
+        "Not assigned",
+        "Broker",
+        "Assigned",
+        "The broker leads the deal via AmoCRM. All actions and comments are broadcasted to your cabinet.",
+        "Call",
+        "Write",
+        "Client brief",
+        "Not specified",
+        "Client name",
+        "Client's phone",
+        "Budget",
+        "Comment",
+        "No comments",
+        "Unknown",
+        "Status",
+        "Loading details...",
+        "Deal not found",
+        "back",
+        "Transferred",
+        "Type",
+        "Property type",
+        "Not specified",
+        "Back to deals",
+        "Client brief",
+        "Budget",
+        "Finances will appear after closing",
+        "Question about deal:",
+        "Ask a question",
+        "Unknown",
+        "Status",
+        "Error sending:",
+        "Loading history...",
+        "Deal created and transferred to a broker",
+        "System",
+        "Status change:",
+        "Created",
+        "[From partner",
+        "[From partner",
+        "Type a message...",
+        "successfully",
+        "declined",
+        "archive",
+        "contact",
+        "negotiation",
+        "presentation",
+        "Successfully realized",
+        "Closed and not realized",
+        "Initial contact",
+        "Negotiations",
+        "Making a decision",
+        "Contract agreement",
+        "Qualification",
+        "Meeting arranged",
+        "Comments / Chat",
+        "Loading...",
+        "No messages. Write to the broker.",
+        "[From partner",
+        "Write a comment...",
+        "LEAD CREATED"
+      ]
+    },
+    "payouts": {
+      "existing": {
+        "payouts_page": {
+          "total_earned": "Total Earned (AED)",
+          "available": "Available to Request (AED)",
+          "request_btn": "Request Payout",
+          "total_paid": "Total Paid (AED)",
+          "history": "Payout History",
+          "search": "Search",
+          "filter": "Filter",
+          "table": {
+            "date": "Date",
+            "status": "Status",
+            "user": "User",
+            "amount": "Amount",
+            "type": "Type",
+            "open": "Open"
+          },
+          "footer": "There is no minimum withdrawal amount. Payment method — bank transfer, cash, or USDT — is discussed with your manager individually. Processing time is up to 7 business days."
+        }
+      },
+      "hardcoded": [
+        "Payouts - FOR YOU Partners",
+        "paid out",
+        "waiting",
+        "rejected",
+        "you",
+        "bank transfer",
+        "Loading...",
+        "Error loading data",
+        "Request payout"
+      ]
+    },
+    "referrals": {
+      "existing": {
+        "referrals_page": {
+          "loading": "Loading...",
+          "title": "Referral Program",
+          "subtitle_1": "Invite other partners and earn 1% from each of their successful deals.",
+          "subtitle_2": "Lifetime. From FOR YOU REAL ESTATE's share, not yours.",
+          "link_generating": "Link is generating...",
+          "copy_title": "Copy link",
+          "copy_prompt": "Your referral link (copy text):",
+          "copy_error": "Referral link not loaded yet. Please wait.",
+          "stats": {
+            "earned": "Earned from referrals (AED)",
+            "currency": "AED",
+            "active_partners": "Active Partners",
+            "closed_deals": "Closed Deals"
+          },
+          "partners": {
+            "title": "Invited Partners",
+            "from": "since",
+            "closed": "closed",
+            "empty": "You have no invited partners yet."
+          },
+          "deals": {
+            "title": "Referrals' Deals",
+            "partner": "Partner",
+            "status": "Status",
+            "date": "Date",
+            "your_percent": "Your 1%",
+            "empty": "Your referrals have no deals yet."
+          }
+        }
+      },
+      "hardcoded": [
+        "Referrals - FOR YOU Partners",
+        "Active"
+      ]
+    },
+    "settings": {
+      "existing": {
+        "profile_page": {
+          "admin": "Administrator",
+          "role": "Partner Agency",
+          "since": "Member since",
+          "email_verified": "Email Verified",
+          "yes": "Yes",
+          "logout": "Log Out",
+          "notifications": "Email Notifications",
+          "security": "Security & Password",
+          "settings": {
+            "status_change": "Deal Status Change",
+            "status_change_desc": "Receive notifications when a deal moves to a new stage.",
+            "broker_change": "Broker Assignment",
+            "broker_change_desc": "Get notified when a new broker is assigned to your deal.",
+            "weekly_report": "Weekly Report",
+            "weekly_report_desc": "Weekly summary of your deals and conversion statistics.",
+            "current_password": "Current Password",
+            "new_password": "New Password",
+            "confirm_password": "Confirm Password",
+            "update_password": "Update Password",
+            "updating": "Updating...",
+            "password_mismatch": "New passwords do not match",
+            "password_length": "Password must be at least 6 characters",
+            "password_success": "Password updated successfully",
+            "password_error": "Failed to update password"
+          }
+        },
+        "settings_page": {
+          "title": "Settings",
+          "tabs": {
+            "partner": "Partner",
+            "admin": "Admin"
+          },
+          "table": {
+            "reg_date": "Registration Date",
+            "name": "Full Name",
+            "email": "Email",
+            "phone": "Phone Number",
+            "status": "Status",
+            "referrals": "Referrals",
+            "last_login": "Last Login"
+          },
+          "status": {
+            "new": "New Request",
+            "active": "Active",
+            "blocked": "Blocked"
+          },
+          "loading": "Loading...",
+          "empty": "No data to display",
+          "page": "Page",
+          "of": "of",
+          "total": "Total",
+          "prev": "Prev",
+          "next": "Next"
+        }
+      },
+      "hardcoded": [
+        "New passwords do not match",
+        "Password must be at least 6 characters",
+        "Password successfully updated",
+        "Failed to update password",
+        "Failed to load profile data",
+        "Current password",
+        "New password",
+        "Confirm password",
+        "Updating...",
+        "Update password"
+      ]
+    },
+    "knowledge": {
+      "existing": {
+        "knowledge_page": {
+          "title": "Knowledge Base",
+          "articles": [
+            {
+              "badge": "Presentation",
+              "title": "Co-exclusive projects",
+              "desc": "You can download the full presentation of exclusive and co-exclusive projects via the link."
+            },
+            {
+              "badge": "Presentation",
+              "title": "Residence Permit and Citizenship: Dubai, Abu Dhabi, Oman, Qatar, Miami and Turkey",
+              "desc": "New conditions in December 2026"
+            },
+            {
+              "badge": "Event",
+              "title": "Meeting / training on modern UAE market trends",
+              "desc": "Leave a request"
+            },
+            {
+              "badge": "Article",
+              "title": "TOP 5",
+              "desc": "Dubai projects in May"
+            }
+          ]
+        }
+      }
+    },
+    "support": {
+      "existing": {
+        "help_page": {
+          "categories": [
+            {
+              "title": "Getting Started",
+              "desc": "Learn the basics of the For You Partner Portal and how to navigate."
+            },
+            {
+              "title": "Leads Management",
+              "desc": "Understand how leads are matched and how to track their status."
+            },
+            {
+              "title": "Account & Security",
+              "desc": "Manage your profile, notification settings, and password."
+            }
+          ],
+          "direct_support": "Direct Support",
+          "hours": "Mon-Fri, 9:00 AM - 6:00 PM (GST)",
+          "email_support": "Email Support",
+          "faq_title": "Frequently Asked Questions",
+          "faqs": [
+            {
+              "q": "How are leads matched to my account?",
+              "a": "Leads are automatically matched based on the CRM tags assigned to your partner profile and the lead sources you are authorized for."
+            },
+            {
+              "q": "Can I change my assigned broker?",
+              "a": "Broker assignments are managed in amoCRM. If you need to request a change, please contact the administrator via the support chat."
+            },
+            {
+              "q": "How often is data synchronized?",
+              "a": "Data is synchronized in real-time via webhooks. Any update in amoCRM appears in your portal within seconds."
+            }
+          ],
+          "footer": "Version 1.2.4 (Production) •",
+          "terms": "Terms of Service"
+        },
+        "support_page": {
+          "loading": "Loading...",
+          "empty_admin": "No tickets yet",
+          "empty_user": "You don't have any tickets yet",
+          "empty_desc": "If you have questions or need help, create a new support ticket.",
+          "create_btn": "Ask a question",
+          "search": "Search tickets...",
+          "table": {
+            "subject": "Ticket Subject",
+            "status": "Status",
+            "updated_at": "Updated At"
+          },
+          "status": {
+            "open": "Open",
+            "in_progress": "In Progress",
+            "resolved": "Resolved",
+            "closed": "Closed"
+          },
+          "modal": {
+            "title": "New Ticket",
+            "subject_label": "Subject",
+            "subject_placeholder": "E.g.: Payout issue",
+            "message_label": "Message",
+            "message_placeholder": "Describe your question or problem in detail...",
+            "cancel": "Cancel",
+            "submit": "Submit",
+            "submitting": "Submitting..."
+          }
+        },
+        "feedback_page": {
+          "title": "Share your thoughts",
+          "categories": [
+            {
+              "id": "bug",
+              "label": "Bug Report",
+              "desc": "Technical issues or broken features"
+            },
+            {
+              "id": "feature",
+              "label": "New Feature",
+              "desc": "Suggestions for new functionality"
+            },
+            {
+              "id": "other",
+              "label": "General",
+              "desc": "General feedback or questions"
+            }
+          ],
+          "form": {
+            "subject": "Subject",
+            "subject_placeholder": "Summarize your feedback...",
+            "desc": "Description",
+            "desc_placeholder": "Tell us more details...",
+            "attachments": "Attachments (optional)",
+            "upload_text": "Click to upload or drag and drop",
+            "upload_hint": "PNG, JPG or PDF up to 10MB",
+            "submit": "Submit Feedback",
+            "success": "Sent Successfully"
+          },
+          "history": {
+            "title": "Your Previous Feedback"
+          },
+          "roadmap": {
+            "title": "Product Roadmap",
+            "desc": "See what we're working on based on your feedback.",
+            "upvote": "Upvote Features",
+            "upvote_desc": "Join our community calls every Friday to discuss new features.",
+            "urgent_title": "Need urgent help?",
+            "urgent_desc": "For critical system issues, please use the 24/7 Support Chat in the help center."
+          }
+        }
+      },
+      "hardcoded": [
+        "Failed to send message",
+        "Are you sure you want to close this ticket?",
+        "Failed to close ticket",
+        "Open",
+        "In progress",
+        "Resolved",
+        "Closed",
+        "Loading...",
+        "Ticket not found",
+        "You",
+        "Support service",
+        "Partner",
+        "Ticket closed",
+        "Type your message...",
+        "Sending...",
+        "Send"
+      ]
+    },
+    "admin": {
+      "existing": {
+        "admin_partners_page": {
+          "access_denied": "Access Denied",
+          "add_btn": "Add New Partner",
+          "stats": {
+            "total": "Total Partners",
+            "active": "Active Now",
+            "leads": "Total Leads",
+            "sources": "AmoCRM Sources"
+          },
+          "table": {
+            "title": "Managed Partners",
+            "search": "Search partners...",
+            "name": "Partner Name",
+            "status": "Status",
+            "leads": "Leads",
+            "sources": "AmoCRM Sources",
+            "loading": "Loading partners...",
+            "empty": "No partners found."
+          },
+          "status": {
+            "active": "Active",
+            "inactive": "Inactive",
+            "no_email": "No email",
+            "no_sources": "No sources linked"
+          },
+          "delete_confirm": "Are you sure you want to delete partner {name} and all their data? This action cannot be undone."
+        }
+      }
+    },
+    "transfer": {
+      "existing": {
+        "transfer_page": {
+          "title": "Submit Lead"
+        }
+      },
+      "hardcoded": [
+        "Russian",
+        "Investment",
+        "1-3 months",
+        "Dubai",
+        "Directly",
+        "Failed to transfer client. Check the data.",
+        "Fill out the required fields and confirm your consent",
+        "Language:",
+        "Purpose:",
+        "Readiness:",
+        "Property type:",
+        "Additional:",
+        "Name*",
+        "Last name",
+        "Phone*",
+        "Preferred communication language",
+        "Request parameters",
+        "Budget, AED",
+        "Direction",
+        "Abu Dhabi",
+        "RAK",
+        "Oman",
+        "How to contact",
+        "Only through me",
+        "Property type",
+        "Apartment",
+        "Location / area",
+        "Goal",
+        "For living",
+        "Resale",
+        "Readiness",
+        "Now",
+        "3-6 months",
+        "Additional information",
+        "Comment",
+        "I confirm that the client has consented to sharing their contact with FOR YOU REAL ESTATE.*",
+        "Transferring...",
+        "Transfer client",
+        "Stages",
+        "What will happen next",
+        "The broker leads the deal via AmoCRM. All actions and comments are broadcasted to your cabinet.",
+        "Checking duplicates in database",
+        "Creating a deal in the Partner Leads funnel",
+        "Broker assignment",
+        "Notification of work start",
+        "Client successfully transferred!",
+        "The deal has been created in the funnel and is waiting for a broker assignment. We will notify you as soon as the broker starts working with the client.",
+        "Go to deal",
+        "Transfer another one"
+      ]
+    },
+    "other": {
+      "hardcoded": [
+        "Design system (UI Kit)",
+        "For Partner Portal — For You Real Estate",
+        "Typography (All text 14px)",
+        "Header H1 (14px + Uppercase)",
+        "Header H2 (14px)",
+        "Body text (14px) - Inter Regular. It is used everywhere.",
+        "Colors",
+        "Buttons (Text 14px)",
+        "Primary button",
+        "Secondary",
+        "Ghost",
+        "Forms (Hidden autocomplete)",
+        "Email",
+        "Password",
+        "Lead table example",
+        "Client",
+        "Status",
+        "Broker",
+        "Alexander V.",
+        "In progress",
+        "Dmitry Markov",
+        "Maria K.",
+        "New",
+        "Olena Sytnyk",
+        "Unknown error"
+      ]
+    }
+  },
+  "modals": {
+    "UserModal": [
+      "Are you sure you want to delete this request?",
+      "successfully",
+      "realized",
+      "not realized",
+      "closed",
+      "declined",
+      "cancel",
+      "archive",
+      "User",
+      "Not specified",
+      "Registration date:",
+      "Approve",
+      "Reject",
+      "Revoke access",
+      "Restore access",
+      "Statistics in development",
+      "Statistics",
+      "Deals",
+      "Tickets",
+      "Loading...",
+      "User is not a partner",
+      "No deals to display",
+      "Name",
+      "Status",
+      "Budget",
+      "Creation date",
+      "This user has no tickets yet",
+      "Subject",
+      "Last update"
+    ],
+    "UserTicketsSubModal": [
+      "Tickets:",
+      "Loading tickets...",
+      "User is not a partner",
+      "This user has no tickets yet",
+      "Subject",
+      "Status",
+      "Last update"
+    ],
+    "AddLeadModal": [
+      "Client name is required",
+      "Error creating lead. Try again later.",
+      "Transfer client",
+      "Enter your client's data. We will automatically create a deal in the CRM system and it will appear in your list.",
+      "Client's full name *",
+      "John Doe",
+      "Phone",
+      "City",
+      "Kyiv, Dubai...",
+      "Budget ($)",
+      "E.g. 150000",
+      "Comment (request)",
+      "What exactly is the client looking for? Any preferences?",
+      "Cancel",
+      "Sending..."
+    ],
+    "LeadDrawer": [
+      "Status set to:",
+      "Property value in Dirhams",
+      "Source",
+      "Client type",
+      "Purpose of purchase",
+      "When do you plan to purchase property?",
+      "Warmth",
+      "% commission",
+      "Commission amount in Dirhams",
+      "No entries in the change log"
+    ],
+    "RequestPayoutModal": [
+      "Enter a valid amount greater than 0",
+      "The amount cannot exceed your available balance (",
+      "Please provide payment details",
+      "Failed to create payout request",
+      "Request payout",
+      "Amount (AED)",
+      "Available:",
+      "Payment method",
+      "Bank transfer",
+      "Cryptocurrency (USDT)",
+      "Cash",
+      "Wallet address (TRC20/ERC20)",
+      "Bank details (IBAN, Swift, etc.)",
+      "Cancel",
+      "Sending...",
+      "Confirm"
+    ],
+    "CreateTicketModal": [
+      "Enter the question subject",
+      "Describe your question in detail",
+      "Failed to create ticket. Please try again later.",
+      "Ask a question",
+      "Close",
+      "Question subject",
+      "E.g. Deal questions or Payouts",
+      "Detailed description",
+      "Describe your question or problem in detail...",
+      "Cancel",
+      "Sending...",
+      "Send"
+    ]
+  },
+  "components": {
+    "layout": {
+      "existing": {
+        "layout": {
+          "sidebar": {
+            "transfer": "Submit Lead",
+            "dashboard": "Dashboard",
+            "deals": "Deals",
+            "payouts": "Payouts",
+            "referrals": "Referrals",
+            "knowledge": "Knowledge Base",
+            "support": "Ask a Question",
+            "tickets": "Tickets",
+            "settings": "Settings"
+          },
+          "header": {
+            "search": "Search for...",
+            "profile": "Profile",
+            "logout": "Log out",
+            "notifications": "Notifications",
+            "mark_all_read": "Mark all as read",
+            "loading": "Loading...",
+            "no_notifications": "No new notifications"
+          },
+          "page_header": {
+            "titles": {
+              "dashboard": "Dashboard",
+              "transfer": "Submit Lead",
+              "deals": "Deals",
+              "payouts": "Payouts",
+              "referrals": "Referrals",
+              "support": "Support",
+              "knowledge": "Knowledge Base",
+              "settings": "Settings"
+            },
+            "transfer_desc": "Fill out the client brief — a broker will contact them within the business day.",
+            "request_payout": "Request Payout",
+            "ask_question": "Ask a Question"
+          }
+        },
+        "notification_dropdown": {
+          "notifications": "Notifications",
+          "mark_all_read": "Mark all as read",
+          "loading": "Loading...",
+          "no_notifications": "No new notifications",
+          "types": {
+            "NEW_PARTNER": "New Partner",
+            "SYSTEM_ALERT": "System Alert",
+            "SUPPORT_TICKET": "Support Ticket Reply",
+            "DEFAULT_TITLE": "Notification",
+            "PAYOUT_STATUS_CHANGED": "Payout Status Changed"
+          }
+        }
+      },
+      "hardcoded": [
+        "Leads",
+        "Profile",
+        "Partners",
+        "Logout",
+        "And",
+        "Irina K.",
+        "Notifications",
+        "Mark all as read",
+        "Loading...",
+        "No new notifications",
+        "Dashboard",
+        "All",
+        "Deals",
+        "Navigation",
+        "Dashboard",
+        "Home page",
+        "Deal management",
+        "Payouts",
+        "Finance & Payouts",
+        "Referrals",
+        "Referral program",
+        "Support service",
+        "Help & tickets",
+        "Profile",
+        "Account settings",
+        "City not specified",
+        "No budget",
+        "Search deals or pages...",
+        "Loading...",
+        "Nothing found for \"",
+        "navigation",
+        "select",
+        "close"
+      ]
+    }
+  },
+  "backend": {
+    "amo": [
+      "<html><body style=\"font-family:sans-serif;padding:2rem\">\n          <h2>✅ amoCRM connected successfully!</h2>\n          <p>Access token saved. Now you can run leads backfill.</p>\n          <p><a href=\"/api/v1/amo-crm/backfill\" style=\"color:blue\">Click here to run backfill</a> (POST request required)</p>\n        </body></html>",
+      "Source",
+      "City",
+      "Comment",
+      "tel",
+      "Request from partner:",
+      "[From partner",
+      "New partner:",
+      "Name:",
+      "Phone:",
+      "Not specified",
+      "Country:",
+      "Not specified",
+      "Direction:",
+      "Not specified",
+      "Partner type:"
+    ],
+    "analytics": [
+      "Manager",
+      "Successfully",
+      "Change",
+      "Deal closed successfully",
+      "Deal moved to a new status",
+      "Client"
+    ],
+    "auth": [
+      "Password Reset — For You Real Estate",
+      "Follow the link to reset your password:",
+      "The link is valid for 1 hour.",
+      "<p>To reset your password, please follow the link:</p>\n        <p><a href=\"",
+      "</a></p>\n        <p>The link is valid for 1 hour.</p>\n        <p>If you did not request a password reset, please ignore this email.</p>"
+    ],
+    "leads": [
+      "Successfully",
+      "Declined",
+      "Unassigned",
+      "Initial contact",
+      "Negotiations",
+      "Making a decision",
+      "Deposit",
+      "Declined / Archive",
+      "New lead",
+      "Deposit / Booking",
+      "Agreement",
+      "New lead (FB)",
+      "In progress",
+      "Archive",
+      "Request from website",
+      "LEAD CREATED",
+      "REQUEST RECEIVED",
+      "REQUEST TAKEN INTO WORK",
+      "ESTABLISH CONTACT",
+      "QUALIFICATION PASSED",
+      "PRESENTATION ARRANGED",
+      "PRESENTATION CONDUCTED",
+      "MEETING ARRANGED",
+      "MEETING CONDUCTED",
+      "OBJECT SELECTION",
+      "PROPOSAL / OFFER",
+      "AGREEMENT ON CONDITIONS",
+      "BOOKING / DEPOSIT",
+      "PREPARATION OF DOCUMENTS",
+      "CONTRACT SIGNED",
+      "WAITING FOR PAYMENT",
+      "SUCCESSFULLY REALIZED",
+      "CLOSED AND NOT REALIZED",
+      "General funnel",
+      "Sales funnel",
+      "Website",
+      "Rent",
+      "Lead from partner:",
+      "All funnels (Metadata Unavailable)",
+      "Failed to send message to AmoCRM. Perhaps the deal was deleted or the ID is invalid."
+    ],
+    "payouts": [
+      "Waiting",
+      "Processing",
+      "Paid out",
+      "Cancelled",
+      "You",
+      "Bank transfer",
+      "Cash"
+    ],
+    "referrals": [
+      "Active",
+      "Under verification",
+      "Partner",
+      "Closed",
+      "Negotiations"
+    ],
+    "scripts": [
+      "src"
+    ],
+    "support": [
+      "New ticket message",
+      "New ticket message:",
+      "Reply from support"
+    ],
+    "webhook": [
+      "Client",
+      "Status change:",
+      "<div style=\"font-family:sans-serif;max-width:560px;margin:0 auto\">\n            <h2 style=\"color:#003077\">Client Status Change</h2>\n            <p>Client status <strong>",
+      "</strong> changed:</p>\n            <p style=\"font-size:16px\">\n              <span style=\"color:#71717a\">",
+      "\" style=\"display:inline-block;margin-top:16px;padding:10px 20px;background:#003077;color:white;text-decoration:none;border-radius:6px\">\n              View Leads\n            </a>\n            <p style=\"margin-top:24px;font-size:12px;color:#a1a1aa\">For You Real Estate Partner Portal</p>\n          </div>",
+      "Lead status change",
+      "Status of lead \"",
+      "\" changed:",
+      "Broker changed:",
+      "<div style=\"font-family:sans-serif;max-width:560px;margin:0 auto\">\n            <h2 style=\"color:#003077\">Change of Responsible Broker</h2>\n            <p>For client <strong>",
+      "</strong> responsible broker has changed.</p>",
+      "<p>New broker: <strong>",
+      "Broker assigned",
+      "Broker",
+      "assigned to lead \"",
+      "Source",
+      "City",
+      "Comment",
+      "approve",
+      "approve",
+      "Yes"
+    ]
+  }
+}

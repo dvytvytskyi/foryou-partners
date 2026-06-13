@@ -5,6 +5,10 @@ import { api } from '@/lib/api';
 import { LeadDetail } from '@/types/lead';
 import styles from './LeadDrawer.module.css';
 
+import dictRu from '@/i18n/dictionaries/ru.json';
+import dictEn from '@/i18n/dictionaries/en.json';
+const dict = typeof window !== 'undefined' && window.location.pathname.startsWith('/en') ? dictEn : dictRu;
+
 interface Message {
   id: string;
   sender: 'system' | 'broker' | 'partner' | 'client';
@@ -15,10 +19,12 @@ interface Message {
 
 interface LeadDrawerProps {
   leadId: string | null;
+  isOpen?: boolean;
   onClose: () => void;
+  dict?: any;
 }
 
-export function LeadDrawer({ leadId, onClose }: LeadDrawerProps) {
+export function LeadDrawer({ leadId, isOpen, onClose, dict }: LeadDrawerProps) {
   const [lead, setLead] = useState<any | null>(null);
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -52,7 +58,7 @@ export function LeadDrawer({ leadId, onClose }: LeadDrawerProps) {
         const realMessages: Message[] = historyRes.value.data.items.map((h: any, idx: number) => {
           const fromName = h.from_status_name ?? h.from_status ?? '—';
           const toName = h.to_status_name ?? h.to_status ?? '—';
-          const text = fromName ? `${fromName} → ${toName}` : `Статус встановлено: ${toName}`;
+          const text = fromName ? `${fromName} → ${toName}` : (dict?.hardcoded?.status_set ? `${dict.hardcoded.status_set} ${toName}` : `Status set to: ${toName}`);
           return {
             id: String(idx),
             sender: 'system' as const,
@@ -154,15 +160,15 @@ export function LeadDrawer({ leadId, onClose }: LeadDrawerProps) {
               </div>
               <div className={styles.infoItem}>
                 <label>Property Value (AED)</label>
-                <div className={styles.value}>{getCustomFieldValue('Стоимость объекта в Дирхамах')}</div>
+                <div className={styles.value}>{getCustomFieldValue(dict.hardcoded.property_value_in_dirhams)}</div>
               </div>
               <div className={styles.infoItem}>
                 <label>Source</label>
-                <div className={styles.value}>{lead.source || getCustomFieldValue('Источник')}</div>
+                <div className={styles.value}>{lead.source || getCustomFieldValue(dict.hardcoded.source)}</div>
               </div>
               <div className={styles.infoItem}>
                 <label>Client Type</label>
-                <div className={styles.value}>{getCustomFieldValue('Тип клиента')}</div>
+                <div className={styles.value}>{getCustomFieldValue(dict.hardcoded.client_type)}</div>
               </div>
             </div>
 
@@ -175,23 +181,23 @@ export function LeadDrawer({ leadId, onClose }: LeadDrawerProps) {
             <div className={styles.customFieldsGrid}>
               <div className={styles.fieldRow}>
                 <span className={styles.fieldLabel}>Goal:</span>
-                <span className={styles.fieldValue}>{getCustomFieldValue('Цель покупки')}</span>
+                <span className={styles.fieldValue}>{getCustomFieldValue(dict.hardcoded.purpose_of_purchase)}</span>
               </div>
               <div className={styles.fieldRow}>
                 <span className={styles.fieldLabel}>Timeline:</span>
-                <span className={styles.fieldValue}>{getCustomFieldValue('Когда вы планируете приобрести недвижимость?')}</span>
+                <span className={styles.fieldValue}>{getCustomFieldValue(dict.hardcoded.when_do_you_plan_to_purchase_p)}</span>
               </div>
               <div className={styles.fieldRow}>
                 <span className={styles.fieldLabel}>Warmth:</span>
-                <span className={styles.fieldValue}>{getCustomFieldValue('Теплота')}</span>
+                <span className={styles.fieldValue}>{getCustomFieldValue(dict.hardcoded.warmth)}</span>
               </div>
               <div className={styles.fieldRow}>
                 <span className={styles.fieldLabel}>Commission (%):</span>
-                <span className={styles.fieldValue}>{getCustomFieldValue('% комиссии')}</span>
+                <span className={styles.fieldValue}>{getCustomFieldValue(dict.hardcoded._commission)}</span>
               </div>
               <div className={styles.fieldRow}>
                 <span className={styles.fieldLabel}>Commission (AED):</span>
-                <span className={styles.fieldValue}>{getCustomFieldValue('Сумма комиссии в Дирхамах')}</span>
+                <span className={styles.fieldValue}>{getCustomFieldValue(dict.hardcoded.commission_amount_in_dirhams)}</span>
               </div>
               <div className={styles.fieldRow}>
                 <span className={styles.fieldLabel}>Comments:</span>
@@ -206,7 +212,7 @@ export function LeadDrawer({ leadId, onClose }: LeadDrawerProps) {
               <h3 className={styles.chatTitle}>Internal Notes & History</h3>
               <div className={styles.messagesList}>
                 {messages.length === 0 ? (
-                  <p className={styles.emptyHistory}>Немає записів у журналі змін</p>
+                  <p className={styles.emptyHistory}>{dict.hardcoded.no_entries_in_the_change_log}</p>
                 ) : (
                   messages.map((msg) => (
                     <div key={msg.id} className={`${styles.messageWrapper} ${styles[`msg-${msg.sender}`]}`}>

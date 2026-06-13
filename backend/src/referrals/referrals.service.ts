@@ -43,13 +43,13 @@ export class ReferralsService {
       name: p.name,
       joined: p.createdAt.toISOString(),
       deals: p.leadSnapshots.length,
-      status: p.isActive ? 'Активен' : 'На верификации',
+      status: p.isActive ? 'Active' : 'Pending',
     }));
 
     // Mock recent deals for now since we don't have direct linkage between Commission and who generated it yet
     const recentDeals = referralCommissions.map(c => ({
-      partner: c.description ? c.description.replace('Referral bonus from ', '') : 'Партнер',
-      status: c.status === 'PAID' ? 'Закрыта' : 'Переговоры',
+      partner: c.description ? c.description.replace('Referral bonus from ', '') : 'Partner',
+      status: c.status === 'PAID' ? 'Closed' : 'Negotiations',
       date: c.createdAt.toISOString(),
       amount: `+ ${Number(c.amount)} ${c.currency}`,
       statusType: c.status === 'PAID' ? 'green' : 'blue',

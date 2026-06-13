@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import styles from './Referrals.module.css';
 import { api } from '@/lib/api';
 
@@ -35,6 +36,7 @@ const SortIcon = () => (
 );
 
 export function ReferralsClient({ dict }: { dict: any }) {
+  const pathname = usePathname();
   const [data, setData] = useState<{
     stats: { totalEarned: number, activePartners: number, totalClosedDeals: number },
     partners: any[],
@@ -102,7 +104,17 @@ export function ReferralsClient({ dict }: { dict: any }) {
 
   const formatDate = (d: string) => {
     const date = new Date(d);
-    return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', year: 'numeric' });
+    const locale = pathname.startsWith('/en') ? 'en-US' : 'ru-RU';
+    return date.toLocaleDateString(locale, { day: 'numeric', month: 'short', year: 'numeric' });
+  };
+
+  const getStatusText = (status: string) => {
+    if (status === 'Active') return dict.hardcoded?.active || 'Активен';
+    if (status === 'Pending') return dict.hardcoded?.on_verification || 'На верификации';
+    if (status === 'Closed') return dict.hardcoded?.hc_12 || 'Закрыта';
+    if (status === 'Negotiations') return dict.hardcoded?.hc_22 || 'Переговоры';
+    if (status === 'Partner') return dict.hardcoded?.partner || 'Партнер';
+    return status;
   };
 
   if (loading) return <div style={{ padding: '2rem' }}>{dict.loading}</div>;
@@ -168,8 +180,8 @@ export function ReferralsClient({ dict }: { dict: any }) {
               <div key={idx} className={styles.partnerItem}>
                 <span className={styles.partnerName}>{p.name}</span>
                 <span className={styles.partnerMeta}>{dict.partners.from} {formatDate(p.joined)} · {p.deals} {dict.partners.closed}</span>
-                <span className={p.status === 'Активен' || p.status === 'Active' ? styles.badgeActive : styles.badgePending}>
-                  {p.status}
+                <span className={p.status === 'Active' ? styles.badgeActive : styles.badgePending}>
+                  {getStatusText(p.status)}
                 </span>
               </div>
             ))}
@@ -190,11 +202,11 @@ export function ReferralsClient({ dict }: { dict: any }) {
             </div>
             {sortedDeals.map((d, idx) => (
               <div key={idx} className={styles.tableRow}>
-                <div className={styles.tableCell}>{d.partner}</div>
+                <div className={styles.tableCell}>{d.partner === 'Partner' ? (dict.hardcoded?.partner || 'Партнер') : d.partner}</div>
                 <div className={styles.tableCell}>
                   <span className={d.statusType === 'blue' ? styles.statusBlue : styles.statusGreen}>
                     <span className={styles.statusDot} style={{ background: d.statusType === 'blue' ? '#3b82f6' : '#10b981' }}></span>
-                    {d.status}
+                    {getStatusText(d.status)}
                   </span>
                 </div>
                 <div className={styles.tableCell}>{formatDate(d.date)}</div>

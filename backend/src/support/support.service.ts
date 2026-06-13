@@ -210,5 +210,13 @@ export class SupportService {
     });
     return ticket;
   }
+
+  async updateTicketStatus(id: string, status: any) {
+    const ticket = await this.prisma.ticket.update({
+      where: { id },
+      data: { status, updatedAt: new Date() },
+    });
+    return ticket;
+  }
 }
 
